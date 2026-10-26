@@ -161,4 +161,4 @@ The executed verification uses the two bundled Maxwell formulations, both author
 
 Corrections supported by reproducible geometries, convergence studies and measured comparisons are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md), [CHANGELOG.md](CHANGELOG.md) and [CITATION.cff](CITATION.cff).
 
-MIT licensed. Research foundations: [Ceviche](https://github.com/fancompute/ceviche), [Meep](https://github.com/NanoComp/meep), [NeuralOperator](https://github.com/NeuralOperator/neuraloperator), and [Kovachki et al., JMLR 2023](https://jmlr.org/papers/v24/21-1524.html).
+[MIT licensed](LICENSE).

@@ -149,7 +149,6 @@ def train(dataset, output, epochs=1400, seed=17):
     tx = torch.from_numpy(x)
     ty = torch.from_numpy(powers)
     tf = torch.from_numpy(targets)
-    train_ids = torch.from_numpy(ids["train"])
     val_ids = torch.from_numpy(ids["validation"])
     train_x = torch.from_numpy(x_train)
     train_y = torch.from_numpy(powers_train)
@@ -191,7 +190,6 @@ def train(dataset, output, epochs=1400, seed=17):
                 vp = torch.softmax(response(tx[val_ids]), dim=1)
                 val = float(((vp - ty[val_ids]) ** 2).mean())
                 vf = float(((field(tx[val_ids]) - tf[val_ids]) ** 2).mean())
-                criterion = val * 12 + vf * 0.12
             if val < best_r:
                 best_r = val
                 state_r = (
