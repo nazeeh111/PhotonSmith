@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "photonsmith"
+version = "0.1.0"
+description = "Local 2D photonic inverse-design laboratory with independently checked Maxwell physics"
+readme = "README.md"
+authors = [{name = "Nazeeh Abdul-Hadi"}]
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = ["numpy==2.3.5", "scipy==1.18.1"]
+keywords = ["photonics", "inverse-design", "electromagnetics", "scientific-computing"]
+classifiers = ["Development Status :: 3 - Alpha", "Intended Audience :: Science/Research", "Programming Language :: Python :: 3", "Topic :: Scientific/Engineering :: Physics"]
+
+[project.scripts]
+photonsmith = "photonsmith.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/nazeeh111/PhotonSmith"
+Documentation = "https://github.com/nazeeh111/PhotonSmith#readme"
+Issues = "https://github.com/nazeeh111/PhotonSmith/issues"
+
+[project.optional-dependencies]
+train = ["torch==2.14.1"]
+dev = ["pytest==9.1.1", "matplotlib==3.11.2", "build>=1.2,<2", "ruff==0.14.10"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["photonsmith"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"web" = "photonsmith/assets/web"
+"experiments/dataset.npz" = "photonsmith/assets/experiments/dataset.npz"
+"experiments/dataset.json" = "photonsmith/assets/experiments/dataset.json"
+"experiments/surrogate.npz" = "photonsmith/assets/experiments/surrogate.npz"
+"experiments/surrogate.json" = "photonsmith/assets/experiments/surrogate.json"
+"experiments/benchmarks.json" = "photonsmith/assets/experiments/benchmarks.json"
+"experiments/sample.json" = "photonsmith/assets/experiments/sample.json"
+"experiments/sample-config.json" = "photonsmith/assets/experiments/sample-config.json"
+"experiments/manifest.json" = "photonsmith/assets/experiments/manifest.json"
+"experiments/designs" = "photonsmith/assets/experiments/designs"
+
+[tool.hatch.build.targets.sdist]
+include = ["/photonsmith", "/web", "/experiments", "/tests", "/docs", "/optional", "/scripts", "/.github", "/README.md", "/LICENSE", "/CITATION.cff", "/CONTRIBUTING.md", "/CHANGELOG.md", "/PhotonSmith.command", "/run.py", "/requirements.lock", "/pyproject.toml"]
+exclude = ["**/__pycache__", "*.pyc", "**/*.log", "/experiments/benchmark-progress.json"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

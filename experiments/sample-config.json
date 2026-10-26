@@ -1,0 +1,24 @@
+{
+  "schema": "photonsmith-config-v1",
+  "params": [
+    0.19992768803744176,
+    0.5896131643921697,
+    0.16149680212548964,
+    0.76213298222436,
+    0.6462930896013312,
+    0.8669562126364109
+  ],
+  "wavelength": 1.55,
+  "target_order": 1,
+  "period": 2.4,
+  "layer_height": 0.3,
+  "material_index": 2.0,
+  "min_lateral_bar_gap": 0.36,
+  "harmonics": 13,
+  "independent": {
+    "nx": 128,
+    "steps_per_layer": 60
+  },
+  "convention": "exp(-i omega t), +z incident, E_perp",
+  "selected_method": "surrogate"
+}

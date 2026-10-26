@@ -1,0 +1,95 @@
+{
+  "spectral_convergence": [
+    {
+      "harmonics": 3,
+      "efficiency": 0.9330849814903031,
+      "balance": 1.0000000000000013,
+      "residual": 4.185339734544403e-16
+    },
+    {
+      "harmonics": 5,
+      "efficiency": 0.9365008998534038,
+      "balance": 0.9999999999999991,
+      "residual": 7.913152145498413e-16
+    },
+    {
+      "harmonics": 7,
+      "efficiency": 0.93593202981545,
+      "balance": 1.0000000000000018,
+      "residual": 2.121312623566841e-15
+    },
+    {
+      "harmonics": 9,
+      "efficiency": 0.9358787717897128,
+      "balance": 1.0000000000000033,
+      "residual": 5.504561520146403e-15
+    },
+    {
+      "harmonics": 11,
+      "efficiency": 0.9358918221336727,
+      "balance": 0.9999999999999982,
+      "residual": 1.3244925558900931e-14
+    },
+    {
+      "harmonics": 13,
+      "efficiency": 0.9358595492317339,
+      "balance": 1.0000000000000135,
+      "residual": 6.54338329918001e-14
+    }
+  ],
+  "grid_convergence": [
+    {
+      "nx": 32,
+      "steps_per_layer": 15,
+      "efficiency": 0.9268329270177542,
+      "transmission": 0.9666012671474741,
+      "reflection": 0.0333987328525263,
+      "balance": 1.0000000000000004,
+      "residual": 9.855968813366636e-15
+    },
+    {
+      "nx": 64,
+      "steps_per_layer": 30,
+      "efficiency": 0.9354303247159934,
+      "transmission": 0.9657276333295137,
+      "reflection": 0.03427236667048575,
+      "balance": 0.9999999999999994,
+      "residual": 2.553450269810055e-14
+    },
+    {
+      "nx": 96,
+      "steps_per_layer": 45,
+      "efficiency": 0.9357007377532072,
+      "transmission": 0.964521510115555,
+      "reflection": 0.035478489884446185,
+      "balance": 1.000000000000001,
+      "residual": 4.803839365060016e-14
+    },
+    {
+      "nx": 128,
+      "steps_per_layer": 60,
+      "efficiency": 0.9358044989554115,
+      "transmission": 0.9640430805636053,
+      "reflection": 0.03595691943639641,
+      "balance": 1.0000000000000018,
+      "residual": 7.109846123791751e-14
+    }
+  ],
+  "primary_efficiency": 0.9358595492317339,
+  "independent_efficiency": 0.9358044989554115,
+  "efficiency_absolute_difference": 5.505027632235482e-05,
+  "spectral_last_delta": 3.227290193885679e-05,
+  "grid_last_delta": 0.00010376120220434437,
+  "passed": true,
+  "criteria": {
+    "cross_solver_abs_max": 0.015,
+    "spectral_last_three_range_max": 0.003,
+    "grid_delta_max": 0.005,
+    "balance_error_max": 1e-06,
+    "primary_residual_max": 1e-08,
+    "complex_field_relative_l2_max": 0.1
+  },
+  "solver": "independent real-space finite differences with discrete radiation boundary",
+  "note": "Two scalar TE Maxwell formulations; not a 3D, Meep, fabrication, or measurement verification.",
+  "complex_field_relative_l2": 0.0065020591251406384
+}

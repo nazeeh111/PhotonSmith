@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "checks": 11,
+  "rows": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "seconds": 0.25321508303750306
+    },
+    {
+      "path": "/api/bootstrap",
+      "method": "GET",
+      "status": 200,
+      "seconds": 0.5816612499766052
+    },
+    {
+      "path": "/api/simulate",
+      "method": "POST",
+      "status": 200,
+      "seconds": 0.7644492919789627
+    },
+    {
+      "path": "/api/validate",
+      "method": "POST",
+      "status": 200,
+      "seconds": 3.1669468749314547
+    },
+    {
+      "path": "/api/optimize",
+      "method": "POST",
+      "status": 200,
+      "seconds": 2.878529208013788
+    },
+    {
+      "path": "/api/simulate",
+      "method": "POST",
+      "status": 400,
+      "seconds": 0.029002040973864496
+    },
+    {
+      "path": "/api/optimize",
+      "method": "POST",
+      "status": 400,
+      "seconds": 0.004948540939949453
+    },
+    {
+      "path": "/api/optimize",
+      "method": "POST",
+      "status": 400,
+      "seconds": 0.0029308750526979566
+    },
+    {
+      "path": "/api/simulate",
+      "method": "POST",
+      "status": 403,
+      "seconds": 0.008599749999120831
+    },
+    {
+      "path": "/../pyproject.toml",
+      "method": "GET",
+      "status": 404,
+      "seconds": 0.003466750029474497
+    },
+    {
+      "path": "/api/unknown",
+      "method": "POST",
+      "status": 404,
+      "seconds": 0.009895666968077421
+    }
+  ],
+  "model_dataset_sha256": "2e37e903e6ecdaf71ee9e84ef43d71e997a2911b8812435a11f04fa753a9e9c0",
+  "simulated_efficiency": 0.9308650025813007,
+  "independent_validation": {
+    "spectral_convergence": [
+      {
+        "harmonics": 3,
+        "efficiency": 0.9284736880650969,
+        "balance": 1.0000000000000004,
+        "residual": 4.768324224419141e-16
+      },
+      {
+        "harmonics": 5,
+        "efficiency": 0.9318202968355368,
+        "balance": 1.0000000000000002,
+        "residual": 7.827099367614621e-16
+      },
+      {
+        "harmonics": 7,
+        "efficiency": 0.930916072191424,
+        "balance": 1.0000000000000044,
+        "residual": 2.0255677763638205e-15
+      },
+      {
+        "harmonics": 9,
+        "efficiency": 0.9308650025813007,
+        "balance": 0.9999999999999984,
+        "residual": 3.705817817646313e-15
+      },
+      {
+        "harmonics": 11,
+        "efficiency": 0.9307881916336551,
+        "balance": 0.9999999999999986,
+        "residual": 1.459919984896867e-14
+      },
+      {
+        "harmonics": 13,
+        "efficiency": 0.9307112225685032,
+        "balance": 0.9999999999999983,
+        "residual": 9.342149483541918e-14
+      }
+    ],
+    "grid_convergence": [
+      {
+        "nx": 32,
+        "steps_per_layer": 15,
+        "efficiency": 0.9143296665720151,
+        "transmission": 0.9657556804638551,
+        "reflection": 0.03424431953614472,
+        "balance": 0.9999999999999998,
+        "residual": 8.67199389227778e-15
+      },
+      {
+        "nx": 64,
+        "steps_per_layer": 30,
+        "efficiency": 0.928623842708434,
+        "transmission": 0.9667982223168096,
+        "reflection": 0.03320177768319016,
+        "balance": 0.9999999999999998,
+        "residual": 2.4593913972222723e-14
+      },
+      {
+        "nx": 96,
+        "steps_per_layer": 45,
+        "efficiency": 0.9299480137448589,
+        "transmission": 0.9660160958590529,
+        "reflection": 0.03398390414094689,
+        "balance": 0.9999999999999998,
+        "residual": 4.6242503208431e-14
+      }
+    ],
+    "primary_efficiency": 0.9307112225685032,
+    "independent_efficiency": 0.9299480137448589,
+    "efficiency_absolute_difference": 0.0007632088236443346,
+    "spectral_last_delta": 0.00015378001279742204,
+    "grid_last_delta": 0.0013241710364249037,
+    "passed": true,
+    "criteria": {
+      "cross_solver_abs_max": 0.015,
+      "spectral_last_three_range_max": 0.003,
+      "grid_delta_max": 0.005,
+      "balance_error_max": 1e-06,
+      "primary_residual_max": 1e-08
+    },
+    "solver": "independent real-space finite differences with discrete radiation boundary",
+    "note": "Two scalar TE Maxwell formulations; not a 3D, Meep, fabrication, or measurement verification."
+  },
+  "note": "Actual HTTP requests against the running loopback application; no browser rendering claim."
+}

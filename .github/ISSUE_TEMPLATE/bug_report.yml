@@ -1,0 +1,23 @@
+name: Reproducible problem
+description: Report a solver, workflow, packaging or studio problem.
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include the command or exact geometry JSON, wavelength, method and numerical settings. Avoid large field arrays unless needed.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: PhotonSmith version, Python, OS, and NumPy/SciPy versions.
+    validations:
+      required: true

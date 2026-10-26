@@ -1,0 +1,24 @@
+test_adjoint_against_finite_difference (test_physics.MaxwellTests.test_adjoint_against_finite_difference) ... ok
+test_fd_z_refinement (test_physics.MaxwellTests.test_fd_z_refinement) ... ok
+test_field_is_complex_and_geometry_binary (test_physics.MaxwellTests.test_field_is_complex_and_geometry_binary) ... ok
+test_independent_real_space_solver (test_physics.MaxwellTests.test_independent_real_space_solver) ... ok
+test_lossless_power_and_residual (test_physics.MaxwellTests.test_lossless_power_and_residual) ... ok
+test_translation_and_reflection_symmetry (test_physics.MaxwellTests.test_translation_and_reflection_symmetry) ... ok
+test_uniform_binary_coefficient (test_physics.MaxwellTests.test_uniform_binary_coefficient) ... ok
+test_vacuum_exact (test_physics.MaxwellTests.test_vacuum_exact) ... ok
+test_validation (test_physics.MaxwellTests.test_validation) ... ok
+test_api_invalid_inputs (test_workflow.WorkflowTests.test_api_invalid_inputs) ... ok
+test_geometry_level_split_and_artifact_provenance (test_workflow.WorkflowTests.test_geometry_level_split_and_artifact_provenance) ... ok
+test_minimum_lateral_feature_enforced (test_workflow.WorkflowTests.test_minimum_lateral_feature_enforced) ... ok
+test_public_optimizer_rejects_malformed_geometry (test_workflow.WorkflowTests.test_public_optimizer_rejects_malformed_geometry) ... ok
+test_random_search_is_reproducible_and_bounded (test_workflow.WorkflowTests.test_random_search_is_reproducible_and_bounded) ... ok
+test_saved_sample_independently_passes (test_workflow.WorkflowTests.test_saved_sample_independently_passes) ... ok
+test_surrogate_gradient_matches_finite_difference (test_workflow.WorkflowTests.test_surrogate_gradient_matches_finite_difference) ... ok
+test_surrogate_objective_rejects_wrong_channel (test_workflow.WorkflowTests.test_surrogate_objective_rejects_wrong_channel) ... ok
+test_surrogate_translation_gauge_and_power (test_workflow.WorkflowTests.test_surrogate_translation_gauge_and_power) ... ok
+test_uniform_slab_fresnel_limit (test_workflow.WorkflowTests.test_uniform_slab_fresnel_limit) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.273s
+
+OK

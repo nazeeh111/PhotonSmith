@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use PhotonSmith in research, cite the software and identify the exact release and experiment configuration."
+title: "PhotonSmith: a local laboratory for verified 2D photonic inverse design"
+version: 0.1.0
+date-released: 2026-10-25
+authors:
+  - family-names: Abdul-Hadi
+    given-names: Nazeeh
+repository-code: "https://github.com/nazeeh111/PhotonSmith"
+url: "https://github.com/nazeeh111/PhotonSmith"
+license: MIT
+type: software
+keywords:
+  - photonics
+  - inverse design
+  - electromagnetic simulation
+  - machine learning

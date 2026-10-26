@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101e29" />
+    <title>PhotonSmith · Inverse design laboratory</title>
+    <meta
+      name="description"
+      content="A local, reproducible laboratory for designing and independently verifying two-dimensional photonic gratings."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="PhotonSmith home"
+        ><svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M3 25 16 3l13 22M7 25h18M10 19h12M13 13h6" /></svg
+        ><span
+          >Photon<span class="brand-light">Smith</span
+          ><small>INVERSE DESIGN LABORATORY</small></span
+        ></a
+      >
+      <nav aria-label="Workspace">
+        <button class="nav active" data-tab="studio" aria-current="page">
+          Design studio</button
+        ><button class="nav" data-tab="experiments">
+          Experiments <span>↗</span></button
+        ><button class="nav" data-tab="method">Method & limits</button>
+      </nav>
+      <div class="local-status">
+        <i></i> Local computation <span>2D · TE</span>
+      </div>
+    </header>
+    <main>
+      <section id="studio-tab" class="tab-panel">
+        <div class="workspace-heading">
+          <div>
+            <p class="eyebrow">PHOTONICS / PERIODIC DIFFRACTION</p>
+            <h1>A geometry for your optical target.</h1>
+            <p class="heading-sub">
+              Design a dielectric grating. Let Maxwell’s equations have the
+              final word.
+            </p>
+          </div>
+          <div class="heading-actions">
+            <select id="sample" aria-label="Sample design">
+              <option value="current">Sample design</option>
+              <option value="reset">Aligned starting grating</option></select
+            ><button class="button ghost" id="export">↓ Export</button>
+          </div>
+        </div>
+        <div class="workbench">
+          <aside class="controls">
+            <section class="control-section">
+              <div class="section-heading">
+                <span class="step">01</span>
+                <h2>Optical target</h2>
+                <span class="tag">AIR → AIR</span>
+              </div>
+              <label class="label-row" for="wavelength"
+                >Wavelength
+                <output id="wavelength-value"
+                  >1.550 <small>µm</small></output
+                ></label
+              ><input
+                id="wavelength"
+                type="range"
+                min="1.3"
+                max="1.7"
+                value="1.55"
+                step=".01"
+              />
+              <div class="range-ends">
+                <span>1.30 µm</span><span>1.70 µm</span>
+              </div>
+              <p class="control-label">Transmitted diffraction order</p>
+              <div
+                class="segmented"
+                id="target"
+                role="group"
+                aria-label="Target diffraction order"
+              >
+                <button data-order="-1">−1 <span>↙</span></button
+                ><button data-order="0">0 <span>↓</span></button
+                ><button data-order="1" class="selected">
+                  +1 <span>↘</span>
+                </button>
+              </div>
+              <p class="angle-note" id="angle">Output angle +40.2° in air</p>
+              <p class="control-note">
+                Maximize incident power steered into the selected outgoing
+                order.
+              </p>
+            </section>
+            <section class="control-section">
+              <div class="section-heading">
+                <span class="step">02</span>
+                <h2>Geometry</h2>
+                <button
+                  class="text-button"
+                  id="reset"
+                  title="Reset to aligned grating"
+                >
+                  Reset
+                </button>
+              </div>
+              <div class="geometry-meta">
+                <span>Period <b>2.40 µm</b></span
+                ><span>3 layers <b>0.30 µm each</b></span>
+              </div>
+              <canvas
+                id="geometry"
+                width="520"
+                height="230"
+                role="img"
+                aria-label="Three-layer periodic geometry editor. Click in a layer to change its lateral shift."
+              ></canvas>
+              <p class="canvas-note">
+                Click a layer to move its center. Sliders also support keyboard
+                editing.
+              </p>
+              <div id="geometry-inputs"></div>
+              <div class="material-grid">
+                <label
+                  >Refractive index
+                  <input
+                    id="material"
+                    type="number"
+                    min="1"
+                    max="2.5"
+                    value="2"
+                    required
+                    step=".05" /></label
+                ><label
+                  >Lateral min. feature / µm
+                  <input
+                    id="min-feature"
+                    type="number"
+                    min=".12"
+                    max=".72"
+                    value=".36"
+                    required
+                    step=".03"
+                /></label>
+              </div>
+              <p class="control-note">
+                Lossless dielectric, constant index. Lateral bar widths and
+                periodic gaps are constrained. Layer height stays 0.30 µm. The
+                geometry family imposes a 0.36 µm lateral floor even when a
+                lower minimum is selected.
+              </p>
+            </section>
+            <section class="control-section run-section">
+              <div class="section-heading">
+                <span class="step">03</span>
+                <h2>Search & verify</h2>
+              </div>
+              <label class="control-label" for="method"
+                >Optimization method</label
+              ><select id="method">
+                <option value="surrogate">ML-assisted search</option>
+                <option value="adjoint">Direct adjoint</option>
+                <option value="random">Random search baseline</option></select
+              ><label class="label-row iterations-label" for="iterations"
+                >Iterations / evaluations
+                <output id="iterations-value">20</output></label
+              ><input
+                id="iterations"
+                type="range"
+                min="5"
+                max="50"
+                value="20"
+                step="5"
+              /><button class="button primary" id="optimize">
+                <span>Optimize geometry</span><span>↗</span></button
+              ><button class="button secondary" id="simulate">
+                Simulate current design <span>→</span>
+              </button>
+              <p class="compute-note">
+                <span>◉</span> Runs on this computer. No cloud API.
+              </p>
+            </section>
+          </aside>
+          <div class="results">
+            <section class="field-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">FULL-WAVE SOLUTION</p>
+                  <h2>Light, through your design.</h2>
+                </div>
+                <span class="state-pill" id="solve-state"
+                  ><i></i> Awaiting simulation</span
+                >
+              </div>
+              <div class="metrics">
+                <div>
+                  <span>Target-order efficiency</span
+                  ><strong id="efficiency">—<small>%</small></strong
+                  ><small
+                    id="surrogate-estimate"
+                    class="surrogate-estimate"
+                  ></small>
+                </div>
+                <div>
+                  <span>Total transmission</span
+                  ><strong id="transmission">—<small>%</small></strong>
+                </div>
+                <div>
+                  <span>Power balance · T + R</span
+                  ><strong class="metric-small" id="balance">—</strong>
+                </div>
+                <div>
+                  <span>Search wall time</span
+                  ><strong class="metric-small" id="runtime"
+                    >—<small>s</small></strong
+                  >
+                </div>
+              </div>
+              <div class="field-stage">
+                <div class="field-caption">
+                  <span id="field-title"
+                    >Re(E<sub>⊥</sub> e<sup>−iωt</sup>)</span
+                  ><span>2 periodic cells · Normal incidence <b>↓</b></span>
+                </div>
+                <canvas
+                  id="field"
+                  aria-label="Animated Maxwell electric field across two periodic cells with equal x and z physical scale"
+                ></canvas>
+                <div class="field-empty" id="field-empty">
+                  <svg viewBox="0 0 90 50" aria-hidden="true">
+                    <path d="M0 25c10-28 20 28 30 0s20 28 30 0 20 28 30 0" />
+                  </svg>
+                  <p>Waiting for a Maxwell solution</p>
+                  <small
+                    >The field shown here comes from the solved complex electric
+                    field.</small
+                  >
+                </div>
+                <div class="axis axis-x">
+                  x / µm <span id="x-range">0 — 4.80</span>
+                </div>
+                <div class="axis axis-z">z / µm</div>
+                <div class="field-scale">
+                  <span>−</span><i></i><span>+</span
+                  ><small>Normalized amplitude</small>
+                </div>
+              </div>
+              <div class="field-toolbar">
+                <div
+                  class="segmented dark"
+                  role="group"
+                  aria-label="Field visualization"
+                >
+                  <button data-view="real" class="selected" aria-pressed="true">
+                    Electric field</button
+                  ><button data-view="intensity" aria-pressed="false">
+                    Relative |E|²</button
+                  ><button data-view="geometry" aria-pressed="false">
+                    Geometry
+                  </button>
+                </div>
+                <div class="playback">
+                  <label
+                    ><input type="checkbox" id="overlay" checked />
+                    Geometry</label
+                  ><button
+                    id="play"
+                    class="icon-button"
+                    aria-label="Pause field animation"
+                    title="Pause animation"
+                  >
+                    Ⅱ
+                  </button>
+                </div>
+              </div>
+            </section>
+            <div
+              id="notice"
+              class="notice"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></div>
+            <div class="chart-grid">
+              <section class="chart-panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">SPECTRAL RESPONSE</p>
+                    <h2>Across the band</h2>
+                  </div>
+                  <span class="legend"><i></i> Target order</span>
+                </div>
+                <svg
+                  id="spectrum"
+                  viewBox="0 0 520 230"
+                  role="img"
+                  aria-label="Diffraction efficiency as a function of wavelength"
+                ></svg>
+                <div class="chart-footer">
+                  <span>Wavelength / µm</span
+                  ><span id="spectrum-note">Simulation pending</span>
+                </div>
+              </section>
+              <section class="chart-panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">OPTIMIZATION TRACE</p>
+                    <h2>Every step, recorded</h2>
+                  </div>
+                  <span class="legend amber"><i></i> Best efficiency</span>
+                </div>
+                <svg
+                  id="history"
+                  viewBox="0 0 520 230"
+                  role="img"
+                  aria-label="Optimization efficiency history"
+                ></svg>
+                <div class="chart-footer">
+                  <span>Iteration / evaluation</span
+                  ><span id="history-note">Run a search to begin</span>
+                </div>
+              </section>
+            </div>
+            <section class="verification-panel">
+              <div class="verification-intro">
+                <p class="eyebrow">INDEPENDENT VALIDATION</p>
+                <h2>Prediction meets physics.</h2>
+                <p>
+                  An independent Maxwell formulation checks the candidate. A
+                  small numerical residual alone is not physical validation.
+                </p>
+                <button class="button verify" id="validate">
+                  Verify current design <span>↗</span>
+                </button>
+              </div>
+              <div class="verification-evidence" id="validation-evidence">
+                <div class="evidence-state">
+                  <span class="evidence-icon">◇</span>
+                  <div>
+                    <strong>No independent check yet</strong>
+                    <p>Run verification after simulation or optimization.</p>
+                  </div>
+                </div>
+                <dl>
+                  <div>
+                    <dt>Independent efficiency</dt>
+                    <dd id="ind-efficiency">—</dd>
+                  </div>
+                  <div>
+                    <dt>Refined-solver disagreement</dt>
+                    <dd id="ind-difference">—</dd>
+                  </div>
+                  <div>
+                    <dt>Lateral feature constraint</dt>
+                    <dd id="feature-check">—</dd>
+                  </div>
+                </dl>
+                <p id="validation-note" class="validation-note">
+                  The studio distinguishes surrogate predictions, forward
+                  solves, and independent verification.
+                </p>
+              </div>
+            </section>
+            <div class="bottom-meta">
+              <span>PhotonSmith · Research prototype</span
+              ><button class="text-button" data-tab="method">
+                Read assumptions & limitations ↗</button
+              ><span id="solver-label">2D Maxwell · TE polarization</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="experiments-tab" class="tab-panel informational" hidden>
+        <p class="eyebrow">REPRODUCIBLE EVIDENCE</p>
+        <h1>Measure the method.</h1>
+        <p class="intro">
+          Benchmarks compare held-out physical simulations, constrained design
+          quality, and measured search time. Training and dataset costs belong
+          in the accounting.
+        </p>
+        <div id="experiment-content">
+          <p>Loading saved experiment evidence…</p>
+        </div>
+        <button class="button secondary back-studio" data-tab="studio">
+          ← Return to design studio
+        </button>
+      </section>
+      <section id="method-tab" class="tab-panel informational" hidden>
+        <p class="eyebrow">METHOD & LIMITATIONS</p>
+        <h1>A small laboratory. Clear boundaries.</h1>
+        <p class="intro">
+          PhotonSmith studies one tractable problem: steering normally incident
+          light through a periodic, three-layer dielectric grating.
+        </p>
+        <div class="method-grid">
+          <article>
+            <span class="step">01</span>
+            <h2>Specify</h2>
+            <p>
+              Choose a wavelength and outgoing diffraction order. Six geometric
+              parameters set bar widths and lateral shifts. The structure is
+              periodic across x and invariant along the electric-field
+              direction.
+            </p>
+          </article>
+          <article>
+            <span class="step">02</span>
+            <h2>Search</h2>
+            <p>
+              A compact neural surrogate proposes geometries using physically
+              simulated training examples. Direct adjoint optimization and
+              random search provide comparison methods.
+            </p>
+          </article>
+          <article>
+            <span class="step">03</span>
+            <h2>Solve</h2>
+            <p>
+              Maxwell’s equations determine the complex electric field and
+              reflected and transmitted power in each propagating diffraction
+              order. Evanescent orders are retained numerically.
+            </p>
+          </article>
+          <article>
+            <span class="step">04</span>
+            <h2>Verify</h2>
+            <p>
+              An independently formulated solver and numerical refinement check
+              whether the candidate’s predicted efficiency survives a more
+              demanding physical calculation.
+            </p>
+          </article>
+        </div>
+        <div class="limitation-box">
+          <h2>What this result does and does not establish</h2>
+          <p>
+            This is a two-dimensional, monochromatic, linear, lossless
+            dielectric model with a constant refractive index. It does not model
+            finite grating size, material dispersion, absorption, vertical
+            confinement, roughness, fabrication yield, or a three-dimensional
+            device. Feature constraints apply to the parameterized bars and
+            gaps; they are not a manufacturing qualification.
+          </p>
+          <p>
+            The displayed animation is the time-harmonic complex field at a
+            selected wavelength, not a time-domain pulse simulation. The
+            surrogate is a compact finite-parameter response model, not a
+            demonstrated resolution-independent Fourier neural operator.
+            Performance and acceleration claims are limited to the recorded
+            experiments.
+          </p>
+        </div>
+        <div id="method-provenance" class="provenance-box"></div>
+        <button class="button secondary back-studio" data-tab="studio">
+          ← Return to design studio
+        </button>
+      </section>
+    </main>
+    <dialog id="export-dialog" aria-labelledby="export-heading">
+      <form method="dialog">
+        <button class="dialog-close" aria-label="Close export">×</button>
+      </form>
+      <p class="eyebrow">REPRODUCE & REUSE</p>
+      <h2 id="export-heading">Take the experiment with you.</h2>
+      <p>
+        Export the current geometry, selected target, and measured results.
+        Numerical arrays and provenance are included when available.
+      </p>
+      <button class="button primary" id="export-json">
+        Download experiment JSON <span>↓</span></button
+      ><button class="button secondary" id="export-svg">
+        Download geometry SVG <span>↓</span>
+      </button>
+      <p class="control-note">
+        Geometry exports use micrometers. JSON includes solved results and any
+        ML estimate, labeled separately. After an edit, simulate again to
+        include current results.
+      </p>
+    </dialog>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "sha256": {
+    "benchmarks.json": "ffdb709d50dec09c1638bd418e96e082accd7d5930d54e6659f156727a96b9ac",
+    "dataset.json": "83c79ae2dcac8653a9a6cfde3fdcdd99f0eef44c67989532e5ff750e3a31af87",
+    "dataset.npz": "2e37e903e6ecdaf71ee9e84ef43d71e997a2911b8812435a11f04fa753a9e9c0",
+    "designs/1410nm-order-1.json": "9ce7fff3818cd442d9a3117ba9da58f4b8dbfe43b7e1aace51ee918fd4dec032",
+    "designs/1550nm-refined-config.json": "17c0fbf4eb0ca93c656fb171283d48febacebfd3af2b796772387008c6ae7978",
+    "designs/1630nm-order+1.json": "224148b15088531b11f40a4b7f46ed56843c193a847d8239c2c348864a24c29b",
+    "designs/interactive-refined-1550nm.json": "bf63ba3ebec2013dde9f10cbd65fa438634d71abd1bbf504577701dbd8a23b1e",
+    "designs/interactive-refined-validation.json": "f09a7528deff9a58c86f36626579907b0b1357f013dabbbfeea45f3ff2fd42e5",
+    "sample-config.json": "168245c3e2870325247745683f31f7a1697c6abf95fee8417ec968427fc9e017",
+    "sample.json": "e90422452135c80e2a7856cc2e7d5077afe1a1b9271ccb1b5524894cb80d7116",
+    "surrogate.json": "7123c7c0e215bb8f3d2b77d81f69e42f56f95bd6796847d5a421fd02947deef2",
+    "surrogate.npz": "e5f2d0b066963cc6f02c97181581d202d0a20304f72b0b5ea79f143ca73ba1ff"
+  }
+}
