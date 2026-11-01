@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "photonsmith"
-version = "0.2.0rc2"
+version = "0.2.0rc3"
 description = "Local 2D photonic inverse-design laboratory with independently checked Maxwell physics"
 readme = "README.md"
 authors = [{name = "Nazeeh Abdul-Hadi"}]
@@ -45,7 +45,7 @@ exclude = ["**/_boundary_native.*"]
 
 [tool.hatch.build.targets.sdist]
 include = ["/benchmarks", "/photonsmith", "/native", "/requirements-boundary.lock", "/web", "/experiments", "/tests", "/docs", "/optional", "/scripts", "/.github", "/README.md", "/LICENSE", "/CITATION.cff", "/CONTRIBUTING.md", "/CHANGELOG.md", "/PhotonSmith.command", "/run.py", "/requirements.lock", "/pyproject.toml"]
-exclude = ["**/_boundary_native.*", "**/__pycache__", "*.pyc", "**/*.log", "/experiments/benchmark-progress.json"]
+exclude = ["**/_boundary_native.*", "**/__pycache__", "*.pyc", "/experiments/benchmark-progress.json"]
 
 [tool.ruff]
 target-version = "py312"

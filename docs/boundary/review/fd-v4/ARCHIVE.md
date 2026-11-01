@@ -1,0 +1,1 @@
+Historical separately authored coding-agent review scripts and receipts. Some routing paths retain the original local task; these are not the supported portable commands. The production verifier and its unit tests are portable in photonsmith.gradient_check. No outside-human validation is inferred.

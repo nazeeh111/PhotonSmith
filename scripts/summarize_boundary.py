@@ -23,6 +23,15 @@ def validate_evidence(folder, cases, raw, manifest):
     if manifest.get('methods', list(METHODS)) != list(METHODS):
         raise ValueError('Manifest method set differs from this experiment')
     reps = manifest['repeat_count']
+    scheme = manifest.get('finite_difference_scheme')
+    independent_declared = (any(k in manifest for k in ('finite_difference_scheme','finite_difference_case_ids',
+                             'finite_difference_steps','finite_difference_normalization'))
+                            or 'photonsmith/gradient_check.py' in manifest.get('sources',{})
+                            or any(v.get('scheme') for c in cases for v in c['verification'].get('finite_differences',[])))
+    if independent_declared:
+        from photonsmith.gradient_check import SCHEME,STEPS
+        if scheme!=SCHEME or manifest.get('finite_difference_case_ids')!=case_ids or manifest.get('finite_difference_steps')!=list(STEPS):
+            raise ValueError('Independent finite-difference plan differs from complete frozen inputs')
     if type(reps) is not int or reps < 3:
         raise ValueError('At least three paired repeats required')
     if [c['case'] for c in cases] != planned:
@@ -54,7 +63,7 @@ def validate_evidence(folder, cases, raw, manifest):
         for key in ('max_power_error','balance_error','residual'):
             if not np.isfinite(verification[key]) or verification[key] < 0:
                 raise ValueError('Invalid numerical verification')
-        if ci < 8:
+        if scheme is not None or ci < 8:
             fd = verification.get('finite_differences', [])
             if [v['step'] for v in fd] != [1e-4,1e-5,1e-6]:
                 raise ValueError('Missing required finite-difference step sweep')
@@ -62,6 +71,9 @@ def validate_evidence(folder, cases, raw, manifest):
                 g = np.asarray(check['gradient'], dtype=float)
                 if g.shape != (6,) or not np.all(np.isfinite(g)):
                     raise ValueError('Invalid finite-difference gradient')
+                if scheme is not None:
+                    from photonsmith.gradient_check import validate_record
+                    validate_record(case['case']['params'],check)
 
 
 def summarize(folder):
@@ -87,7 +99,15 @@ def summarize(folder):
         if 'finite_differences' in c['verification']:
             g=np.array(next(iter(reference.values()))['gradient'])
             for test in c['verification']['finite_differences']:
-                fd.append({'case':c['case']['id'],'step':test['step'],'max_normalized_error':float(np.max(abs(g-test['gradient'])/np.maximum(1,abs(g))))})
+                estimate=np.asarray(test['gradient'])
+                analytic_error=float(np.max(abs(g-estimate)/np.maximum(1,abs(g))))
+                row={'case':c['case']['id'],'step':test['step'],'max_normalized_error':analytic_error}
+                if manifest.get('finite_difference_scheme'):
+                    fd_error=float(np.max(abs(g-estimate)/np.maximum(1,abs(estimate))))
+                    row.update(normalized_by_analytic_error=analytic_error,normalized_by_fd_error=fd_error,
+                               max_normalized_error=max(analytic_error,fd_error),scheme=test['scheme'],
+                               second_order_max_error=float(np.max(abs(g-test['second_order_gradient'])/np.maximum(1,abs(g)))))
+                fd.append(row)
     summary={};rng=np.random.default_rng(37833)
     for method in rows[0]['speedup']:
         logs=np.log([r['speedup'][method] for r in rows]);boot=np.exp(logs[rng.integers(0,len(logs),(10000,len(logs)))].mean(axis=1))
@@ -95,6 +115,11 @@ def summarize(folder):
     external=min((m for m in summary if m!='legacy'),key=lambda m:summary[m]['geometric_mean_wall_speedup'])
     result={'cases':len(cases),'raw_rows':len(raw),'failed_attempts':0,'summary':summary,'fastest_tested_external_aggregate':external,'max_power_error':max(c['verification']['max_power_error'] for c in cases),'max_balance_error':max(c['verification']['balance_error'] for c in cases),'max_residual':max(c['verification']['residual'] for c in cases),'max_normalized_gradient_error_by_method':{k:max(v) for k,v in gradient.items()},'max_value_error_by_method':{k:max(v) for k,v in value.items()},'finite_differences':fd,'case_ratios':rows}
     result['local_gates']={'legacy_speed':summary['legacy']['geometric_mean_wall_speedup']>=5,'external_speed':summary[external]['geometric_mean_wall_speedup']>=2,'external_interval':summary[external]['paired_case_bootstrap_95pct'][0]>1,'power':result['max_power_error']<=1e-7,'balance':result['max_balance_error']<=1e-8,'gradients':max(result['max_normalized_gradient_error_by_method'].values())<=2e-5,'finite_difference':max(x['max_normalized_error'] for x in fd)<=2e-5}
+    if manifest.get('finite_difference_scheme'):
+        result['finite_difference_protocol']={'scheme':manifest['finite_difference_scheme'],'cases':len(cases),
+                                              'components_per_case':6,'steps':manifest['finite_difference_steps'],
+                                              'limit':2e-5,'normalization':'both denominators; worst controls gate'}
+        result['all_local_gates_pass']=all(result['local_gates'].values())
     return result
 
 if __name__=='__main__':

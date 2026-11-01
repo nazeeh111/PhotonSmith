@@ -11,6 +11,7 @@ from pathlib import Path
 import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from photonsmith import native,physics
+from photonsmith.gradient_check import dense_checks,SCHEME,STEPS
 
 
 def meent_torch(p,m,wl):
@@ -98,6 +99,11 @@ def main():
     source=Path(__file__).resolve().parents[1]
     manifest={'cases_sha256':hashlib.sha256(args.cases.read_bytes()).hexdigest(),'platform':platform.platform(),'python':sys.version,'packages':{d.metadata['Name']:d.version for d in importlib.metadata.distributions()},'sources':{p:hashlib.sha256((source/p).read_bytes()).hexdigest() for p in ['photonsmith/physics.py','photonsmith/boundary.py','photonsmith/native.py','native/boundary.cpp','scripts/benchmark_boundary.py']},'native_library':json.loads((source/'photonsmith/_boundary_native.dylib.json').read_text()) if sys.platform=='darwin' else {},'jax_devices':str(jax.devices()),'requested_threads':1,'repeat_count':args.repeats,'warmup':[]}
     manifest_path=args.output/'manifest.json'
+    manifest['sources'].update({p:hashlib.sha256((source/p).read_bytes()).hexdigest()
+                                for p in ['photonsmith/gradient_check.py','scripts/summarize_boundary.py']})
+    manifest.update(finite_difference_scheme=SCHEME,finite_difference_case_ids=case_ids,
+                    finite_difference_steps=list(STEPS),
+                    finite_difference_normalization='both analytic and independent-FD denominators; worst controls gate')
     manifest.update(cases_sha256=hashlib.sha256(frozen_inputs).hexdigest(),expected_case_ids=case_ids,
                     methods=['native','legacy','meent_torch','meent_jax_jit','grcwa_autograd'],
                     thread_observations=[])
@@ -141,15 +147,7 @@ def main():
                         except Exception:row={'case':c['id'],'rep':rep,'method':name,'error':traceback.format_exc()}
                         raw.write(json.dumps(row)+'\n');raw.flush();observations[name].append(row)
                 verification=power_check(p,m,wl)
-                if ci<8:
-                    fd=[]
-                    for h in (1e-4,1e-5,1e-6):
-                        g=[]
-                        for k in range(6):
-                            plus=p.copy();minus=p.copy();plus[k]+=h;minus[k]-=h
-                            g.append((native.objective_gradient(plus,wavelength=wl,harmonics=m)[0]-native.objective_gradient(minus,wavelength=wl,harmonics=m)[0])/(2*h))
-                        fd.append({'step':h,'gradient':g})
-                    verification['finite_differences']=fd
+                verification['finite_differences']=dense_checks(p,wl,m)
                 rows.append({'case':c,'observations':observations,'verification':verification})
                 (args.output/'cases.json').write_text(json.dumps(rows,indent=2)+'\n')
                 print(f'{ci+1}/{len(cases)} {c["id"]} power_error={verification["max_power_error"]:.3g}',flush=True)

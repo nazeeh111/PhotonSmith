@@ -1,10 +1,10 @@
 # Experimental native TE solver
 
-**Corrected research candidate, 0.2.0rc2. Independent human validation remains open.** The original public candidate passed Linux/macOS CI; automated review then exposed a sharp-resonance gradient defect and two reproducibility gaps. [Corrections and their evidence](CORRECTIONS.md). This revision needs its own public exact-source checks.
+**Validation candidate, 0.2.0rc3. Independent human validation remains open.** The original public candidate passed Linux/macOS CI; automated review then exposed a sharp-resonance gradient defect and two reproducibility gaps. [Corrections and their evidence](CORRECTIONS.md). This revision needs its own public exact-source checks.
 
 The new C++17/LAPACK backend solves supported lossless, one-dimensionally periodic TE Maxwell problems and computes analytic material/geometry gradients. It does not replace the existing solver, trained model, browser studio or archived experiments.
 
-The original kernel's frozen 48-case study on an Apple M4 measured a 3.79× paired wall-time speedup over meent JAX JIT, the fastest tested external comparator. That number belongs to the original source. The corrected kernel receives fresh confirmation v3; [results, raw records and caveats](REPORT.md) distinguish source versions. Shared-machine measurements are not portable speed guarantees.
+The original kernel's frozen 48-case study on an Apple M4 measured a 3.79× paired wall-time speedup over meent JAX JIT, the fastest tested external comparator. That number belongs to the original source. The production kernel is unchanged from the corrected public commit `c259ff80eb4c41b88031d3b7ea6f220c518fe299`; the stronger independent fourth-order gradient check passes all seven local gates in fresh confirmation v4. Its measured JAX wall speedup is 2.78x [2.61, 2.97]. See [the v4 method and evidence](VALIDATION_V4.md); [results, raw records and caveats](REPORT.md) distinguish source versions. Shared-machine measurements are not portable speed guarantees.
 
 ## Build and use
 

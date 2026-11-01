@@ -1,3 +1,11 @@
+# Current verification and preserved publication history
+
+The latest local evidence is [validation v4](VALIDATION_V4.md): all seven local gates pass using a stronger independent fourth-order oracle at all original step sizes and the unchanged 2e-5 bound. Latest JAX wall speedup is 2.78x [2.61, 2.97]; all 48 cases, 1,680 timing attempts and 864 gradient estimates are retained. The production kernel is unchanged. Historical v3 stays failed. Independent Meep controls/convergence have passed all nine stages and 535 raw-data/identity checks; [the Meep report](MEEP_V4.md) gives the bounded result. Outside-human validation is absent. V4 publication is pending.
+
+The report below is preserved from public commit `c259ff80eb4c41b88031d3b7ea6f220c518fe299` and describes its historical v3/v2 results and pre-publication status. Its 3.19x and 3.79x figures belong to those measurements. Use the v4 page above for the current result.
+
+---
+
 # Measured result and remaining proof
 
 **The full external-validation finish line is not achieved.** The original candidate is public in PR #1 and passed native Linux/macOS and portable-package CI. Subsequent automated review identified a sharp-resonance gradient defect and two reproducibility gaps. See [the correction record](CORRECTIONS.md). The corrected 0.2.0rc2 candidate requires its own measured evidence and exact-source remote checks. Nothing here establishes independent human review, adoption or physical-device performance.

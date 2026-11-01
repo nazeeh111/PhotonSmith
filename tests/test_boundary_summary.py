@@ -98,6 +98,17 @@ class SummaryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Invalid numerical verification'):
             summary.summarize(self.folder)
 
+    def test_lost_independent_scheme_cannot_downgrade_to_first_eight_cases(self):
+        path=self.folder/'manifest.json'
+        original=json.loads(path.read_text())
+        for marker,value in [('finite_difference_case_ids',[]),('finite_difference_steps',[1e-4,1e-5,1e-6]),
+                             ('finite_difference_normalization','both denominators'),
+                             ('sources',{**original['sources'],'photonsmith/gradient_check.py':'0'*64})]:
+            changed={**original,marker:value}
+            path.write_text(json.dumps(changed))
+            with self.subTest(marker=marker),self.assertRaisesRegex(ValueError,'Independent finite-difference plan'):
+                summary.summarize(self.folder)
+
 
 if __name__ == '__main__':
     unittest.main()

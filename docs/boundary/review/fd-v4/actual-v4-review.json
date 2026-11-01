@@ -1,0 +1,354 @@
+{
+  "scope": "actual v4 module controls and schema mutation checks; no held-out scientific scoring",
+  "sources": {
+    "photonsmith/gradient_check.py": "e3656becfbfafe40074b7e4b10d62ac96f87c57e8971f94b640d899660a4bf7e",
+    "scripts/summarize_boundary.py": "986499900809dbbc275ff931c828c4e4cd8dfddd5423cb6a78a717adeed2d627",
+    "scripts/benchmark_boundary.py": "86557ecae0a1a1280c8c50a0f6079f383f8c6b45a2d0b28355709d2bb49ce767"
+  },
+  "control_checks": 24,
+  "max_control_normalized_error": 4.928772390222491e-10,
+  "controls": [
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "constant",
+      "step": 0.0001,
+      "error": 2.220446049250313e-12
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "constant",
+      "step": 1e-05,
+      "error": 2.2204460492503128e-11
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "constant",
+      "step": 1e-06,
+      "error": 2.220446049250313e-10
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "linear",
+      "step": 0.0001,
+      "error": 1.1547207634521328e-11
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "linear",
+      "step": 1e-05,
+      "error": 6.308786826281221e-11
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "linear",
+      "step": 1e-06,
+      "error": 4.091447181053809e-10
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "quartic",
+      "step": 0.0001,
+      "error": 1.4120825638668185e-12
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "quartic",
+      "step": 1e-05,
+      "error": 3.824626799311586e-11
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "quartic",
+      "step": 1e-06,
+      "error": 2.693039865183285e-10
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "exponential",
+      "step": 0.0001,
+      "error": 2.8373414728832813e-12
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "exponential",
+      "step": 1e-05,
+      "error": 5.6891491517774284e-11
+    },
+    {
+      "params": [
+        0.15,
+        0.85,
+        0.5,
+        0.0,
+        1.0,
+        0.5
+      ],
+      "function": "exponential",
+      "step": 1e-06,
+      "error": 4.928772390222491e-10
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "constant",
+      "step": 0.0001,
+      "error": 2.220446049250313e-12
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "constant",
+      "step": 1e-05,
+      "error": 2.2204460492503128e-11
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "constant",
+      "step": 1e-06,
+      "error": 0.0
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "linear",
+      "step": 0.0001,
+      "error": 1.1547207634521328e-11
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "linear",
+      "step": 1e-05,
+      "error": 7.002676216671944e-11
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "linear",
+      "step": 1e-06,
+      "error": 6.368472416085069e-11
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "quartic",
+      "step": 0.0001,
+      "error": 3.699606593299265e-12
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "quartic",
+      "step": 1e-05,
+      "error": 3.426685443302579e-11
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "quartic",
+      "step": 1e-06,
+      "error": 6.62821549851502e-11
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "exponential",
+      "step": 0.0001,
+      "error": 8.784473148892857e-12
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "exponential",
+      "step": 1e-05,
+      "error": 6.144491859760848e-11
+    },
+    {
+      "params": [
+        0.15001,
+        0.84999,
+        0.4,
+        1e-05,
+        0.99999,
+        0.3
+      ],
+      "function": "exponential",
+      "step": 1e-06,
+      "error": 1.3638497275980654e-10
+    }
+  ],
+  "schema_mutations": [
+    {
+      "mutation": "missing_late_case",
+      "rejected": true
+    },
+    {
+      "mutation": "missing_step",
+      "rejected": true
+    },
+    {
+      "mutation": "lost_scheme",
+      "rejected": true
+    },
+    {
+      "mutation": "wrong_sample",
+      "rejected": true
+    },
+    {
+      "mutation": "wrong_value",
+      "rejected": true
+    },
+    {
+      "mutation": "wrong_oracle",
+      "rejected": true
+    },
+    {
+      "mutation": "duplicate_step",
+      "rejected": true
+    }
+  ]
+}
