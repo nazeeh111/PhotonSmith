@@ -1,0 +1,130 @@
+{
+  "source_sha256": "8cb56b74d338e261b4880537be898bca6015fde0dc5a9e89e9bdbf3bfb114215",
+  "records": [
+    {
+      "kind": "evanescent_thick_limit",
+      "h": 0.1,
+      "r": "(-0.037750054673602665-0.3110065522195745j)",
+      "dr": "(0.009996642467805036+0.021151492191115298j)",
+      "r_limit_error": 0.7035237707406008,
+      "dr_limit_error": 0.05536350754023165,
+      "t_abs": 0.9496577582732807,
+      "scored": false
+    },
+    {
+      "kind": "evanescent_thick_limit",
+      "h": 1.0,
+      "r": "(-0.3813773648854843-0.9198545832115332j)",
+      "dr": "(0.048151536614794904-0.018249935629141803j)",
+      "r_limit_error": 0.004568177533689428,
+      "dr_limit_error": 0.0016838905237474572,
+      "t_abs": 0.09175429852459789,
+      "scored": false
+    },
+    {
+      "kind": "evanescent_thick_limit",
+      "h": 100.0,
+      "r": "(-0.3846153846153847-0.9230769230769231j)",
+      "dr": "(0.04733727810650793-0.01972386587771387j)",
+      "r_limit_error": 5.551115123125783e-17,
+      "dr_limit_error": 2.066823834994047e-15,
+      "t_abs": 9.504369641376024e-131,
+      "scored": true
+    },
+    {
+      "kind": "evanescent_thick_limit",
+      "h": 10000.0,
+      "r": "(-0.3846153846153847-0.9230769230769231j)",
+      "dr": "(0.04733727810644854-0.019723865877680883j)",
+      "r_limit_error": 5.551115123125783e-17,
+      "dr_limit_error": 6.789988532402452e-14,
+      "t_abs": 0.0,
+      "scored": true
+    },
+    {
+      "kind": "evanescent_thick_limit",
+      "h": 1000000.0,
+      "r": "(-0.38461538461538464-0.9230769230769231j)",
+      "dr": "(0.047337278081124284-0.01972386590472534j)",
+      "r_limit_error": 0.0,
+      "dr_limit_error": 3.706880421340341e-11,
+      "t_abs": 0.0,
+      "scored": true
+    },
+    {
+      "kind": "evanescent_thick_limit",
+      "h": 10000000.0,
+      "r": "(-0.3846153846153846-0.9230769230769229j)",
+      "dr": "(0.04733727795273922-0.019723866095567994j)",
+      "r_limit_error": 2.2887833992611187e-16,
+      "dr_limit_error": 2.666576976200758e-10,
+      "t_abs": 0.0,
+      "scored": true
+    },
+    {
+      "kind": "all_propagating_channels",
+      "case": 0,
+      "unitarity_error": 5.551115123125783e-15,
+      "reciprocity_error": 1.887379141862766e-15,
+      "channels_tested": 16,
+      "pairs_tested": 63
+    },
+    {
+      "kind": "all_propagating_channels",
+      "case": 1,
+      "unitarity_error": 2.4646951146678475e-14,
+      "reciprocity_error": 1.8762769116165146e-14,
+      "channels_tested": 16,
+      "pairs_tested": 63
+    },
+    {
+      "kind": "all_propagating_channels",
+      "case": 2,
+      "unitarity_error": 1.021405182655144e-14,
+      "reciprocity_error": 7.882583474838611e-15,
+      "channels_tested": 16,
+      "pairs_tested": 63
+    },
+    {
+      "kind": "all_propagating_channels",
+      "case": 3,
+      "unitarity_error": 3.26405569239796e-14,
+      "reciprocity_error": 9.825473767932635e-15,
+      "channels_tested": 16,
+      "pairs_tested": 63
+    },
+    {
+      "kind": "thick_propagating_slab",
+      "h": 0.2,
+      "transmission_error": 1.1102230246251565e-16,
+      "derivative_error": 1.3877787807814457e-17,
+      "derivative_relative_error": 1.3877787807814457e-17,
+      "balance_error": 2.220446049250313e-16
+    },
+    {
+      "kind": "thick_propagating_slab",
+      "h": 100.0,
+      "transmission_error": 3.3306690738754696e-16,
+      "derivative_error": 7.105427357601002e-15,
+      "derivative_relative_error": 3.3050905347132526e-16,
+      "balance_error": 2.220446049250313e-16
+    },
+    {
+      "kind": "thick_propagating_slab",
+      "h": 10000.0,
+      "transmission_error": 0.0,
+      "derivative_error": 0.0,
+      "derivative_relative_error": 0.0,
+      "balance_error": 0.0
+    },
+    {
+      "kind": "thick_propagating_slab",
+      "h": 1000000.0,
+      "transmission_error": 0.0,
+      "derivative_error": 2.3283064365386963e-10,
+      "derivative_relative_error": 6.172540148916232e-16,
+      "balance_error": 0.0
+    }
+  ],
+  "limits": "Independent coding-agent numerical review only; not outside-human validation. Auxiliary arbitrary-channel tests use the internal linear factorization, while slab and thick-evanescent references are independently derived analytic formulas."
+}

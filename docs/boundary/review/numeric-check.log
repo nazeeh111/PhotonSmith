@@ -1,0 +1,8 @@
+{
+  "source_sha256": "5f895a8ed24bb14a2e02662eaf4741a0a5bd341792b57c796de30d31c3ed28e4",
+  "check": "independent transfer/Frechet comparison at repeated and zero modal eigenvalues",
+  "max_value_error": 2.3314683517128287e-15,
+  "max_gradient_error": 5.551115123125783e-16,
+  "max_balance_error": 1.1102230246251565e-15,
+  "limits": "Review-authored finite matrix numerical checks; not external researcher validation, not a continuum proof. Degenerate matrix tests deliberately use general positive Hermitian operators, which need not be Toeplitz convolutions of physical epsilon."
+}

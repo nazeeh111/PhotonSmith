@@ -1,0 +1,33 @@
+{
+  "method": "native",
+  "harmonics": 15,
+  "case_id": "m15-05",
+  "params": [
+    0.33279389430861617,
+    0.4824181406432829,
+    0.2853600705942064,
+    0.7437253136886751,
+    0.003471667124314015,
+    0.5042186559198891
+  ],
+  "wavelength": 1.7437753936692226,
+  "input_manifest_sha256": "dd26f909b8dd8e8971b70c7706080ebb5dd11f4dc2ac2ea326afa79e876c1676",
+  "runs": 10,
+  "finite": true,
+  "max_rss_bytes": 53936128,
+  "preimport_max_rss_bytes": 21495808,
+  "scope": "fresh process; imports and JIT included; process high-water mark, not allocation attributable solely to solver",
+  "threads_before": {
+    "status": "observed",
+    "total_process_threads": 1,
+    "running_process_threads": 1,
+    "scope": "this process only, includes idle runtime workers"
+  },
+  "threads_after": {
+    "status": "observed",
+    "total_process_threads": 1,
+    "running_process_threads": 1,
+    "scope": "this process only, includes idle runtime workers"
+  },
+  "threadpools": []
+}

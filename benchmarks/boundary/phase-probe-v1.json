@@ -1,0 +1,765 @@
+{
+  "scope": "supplementary actual generic native API, fixed frozen cases; matrix epsilon construction excluded; forward-only versus forward+full3layer-matrixVJP. Incremental differences are estimates, not direct isolated reverse-phase timings. All pairs including negative/noisy differences retained. Not the primary6parametercomparison.",
+  "results": [
+    {
+      "case_id": "m3-00",
+      "harmonics": 3,
+      "observations": [
+        {
+          "rep": 0,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00020266699721105397,
+          "cpu": 0.00020199999999997997
+        },
+        {
+          "rep": 0,
+          "method": "forward",
+          "wall": 0.0001547090068925172,
+          "cpu": 0.00015399999999998748
+        },
+        {
+          "rep": 1,
+          "method": "forward",
+          "wall": 0.00014787499094381928,
+          "cpu": 0.00014799999999998148
+        },
+        {
+          "rep": 1,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0004259579873178154,
+          "cpu": 0.0003070000000000017
+        },
+        {
+          "rep": 2,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0003691660240292549,
+          "cpu": 0.0003690000000000082
+        },
+        {
+          "rep": 2,
+          "method": "forward",
+          "wall": 0.00023583401343785226,
+          "cpu": 0.00023600000000001398
+        },
+        {
+          "rep": 3,
+          "method": "forward",
+          "wall": 0.00021054100943729281,
+          "cpu": 0.00021199999999998997
+        },
+        {
+          "rep": 3,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00023100001271814108,
+          "cpu": 0.00023000000000000798
+        },
+        {
+          "rep": 4,
+          "method": "forward",
+          "wall": 0.00018966602510772645,
+          "cpu": 0.00018899999999999473
+        },
+        {
+          "rep": 4,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00024654099252074957,
+          "cpu": 0.000248000000000026
+        },
+        {
+          "rep": 5,
+          "method": "forward",
+          "wall": 0.00022266700398176908,
+          "cpu": 0.00022300000000002873
+        },
+        {
+          "rep": 5,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00030683400109410286,
+          "cpu": 0.00030799999999997496
+        },
+        {
+          "rep": 6,
+          "method": "forward",
+          "wall": 0.00038958300137892365,
+          "cpu": 0.0003610000000000002
+        },
+        {
+          "rep": 6,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00028308399487286806,
+          "cpu": 0.0002830000000000332
+        },
+        {
+          "rep": 7,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00022391698439605534,
+          "cpu": 0.00022500000000003073
+        },
+        {
+          "rep": 7,
+          "method": "forward",
+          "wall": 0.00015641699428670108,
+          "cpu": 0.00015700000000001824
+        },
+        {
+          "rep": 8,
+          "method": "forward",
+          "wall": 0.0001467500114813447,
+          "cpu": 0.00014700000000000824
+        },
+        {
+          "rep": 8,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00017837501945905387,
+          "cpu": 0.00017800000000001148
+        },
+        {
+          "rep": 9,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00017495799693278968,
+          "cpu": 0.00017499999999998073
+        },
+        {
+          "rep": 9,
+          "method": "forward",
+          "wall": 0.00013729199417866766,
+          "cpu": 0.00013699999999999823
+        },
+        {
+          "rep": 10,
+          "method": "forward",
+          "wall": 0.00013641599798575044,
+          "cpu": 0.00013599999999996948
+        },
+        {
+          "rep": 10,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0001747499918565154,
+          "cpu": 0.00017499999999998073
+        },
+        {
+          "rep": 11,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00017037501675076783,
+          "cpu": 0.00017000000000000348
+        },
+        {
+          "rep": 11,
+          "method": "forward",
+          "wall": 0.00014045799616724253,
+          "cpu": 0.00013999999999997348
+        },
+        {
+          "rep": 12,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00016895798034965992,
+          "cpu": 0.00016899999999997473
+        },
+        {
+          "rep": 12,
+          "method": "forward",
+          "wall": 0.00013416699948720634,
+          "cpu": 0.00013499999999999623
+        },
+        {
+          "rep": 13,
+          "method": "forward",
+          "wall": 0.0001342089963145554,
+          "cpu": 0.00013499999999999623
+        },
+        {
+          "rep": 13,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00016812499961815774,
+          "cpu": 0.00016900000000003024
+        },
+        {
+          "rep": 14,
+          "method": "forward",
+          "wall": 0.00013262499123811722,
+          "cpu": 0.00013299999999999423
+        },
+        {
+          "rep": 14,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00016791699454188347,
+          "cpu": 0.00016800000000000148
+        }
+      ],
+      "median_forward_wall": 0.00014787499094381928,
+      "median_forward_and_adjoint_wall": 0.00020266699721105397,
+      "median_paired_incremental_adjoint_cpu_estimate": 3.799999999998249e-05,
+      "median_paired_incremental_adjoint_wall_estimate": 3.766600275412202e-05
+    },
+    {
+      "case_id": "m5-02",
+      "harmonics": 5,
+      "observations": [
+        {
+          "rep": 0,
+          "method": "forward",
+          "wall": 0.0003129579999949783,
+          "cpu": 0.0003130000000000077
+        },
+        {
+          "rep": 0,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0003768750175368041,
+          "cpu": 0.00037799999999998946
+        },
+        {
+          "rep": 1,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00037200000951997936,
+          "cpu": 0.00037200000000003897
+        },
+        {
+          "rep": 1,
+          "method": "forward",
+          "wall": 0.0002969999914057553,
+          "cpu": 0.000296000000000074
+        },
+        {
+          "rep": 2,
+          "method": "forward",
+          "wall": 0.000297874998068437,
+          "cpu": 0.0002989999999999382
+        },
+        {
+          "rep": 2,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0003702079993672669,
+          "cpu": 0.00036999999999998145
+        },
+        {
+          "rep": 3,
+          "method": "forward",
+          "wall": 0.00029404100496321917,
+          "cpu": 0.0002929999999999877
+        },
+        {
+          "rep": 3,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.000369208020856604,
+          "cpu": 0.0003689999999999527
+        },
+        {
+          "rep": 4,
+          "method": "forward",
+          "wall": 0.0002944160078186542,
+          "cpu": 0.0002949999999999342
+        },
+        {
+          "rep": 4,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.002187375008361414,
+          "cpu": 0.0006289999999999907
+        },
+        {
+          "rep": 5,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.012982541986275464,
+          "cpu": 0.001048000000000049
+        },
+        {
+          "rep": 5,
+          "method": "forward",
+          "wall": 0.0020920829847455025,
+          "cpu": 0.0006030000000000202
+        },
+        {
+          "rep": 6,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0009019589924719185,
+          "cpu": 0.0007179999999999964
+        },
+        {
+          "rep": 6,
+          "method": "forward",
+          "wall": 0.0007903339865151793,
+          "cpu": 0.0006439999999999779
+        },
+        {
+          "rep": 7,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0006816250097472221,
+          "cpu": 0.0006509999999999572
+        },
+        {
+          "rep": 7,
+          "method": "forward",
+          "wall": 0.0006809170008637011,
+          "cpu": 0.0005129999999999857
+        },
+        {
+          "rep": 8,
+          "method": "forward",
+          "wall": 0.000786917022196576,
+          "cpu": 0.0005589999999999762
+        },
+        {
+          "rep": 8,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0007061669894028455,
+          "cpu": 0.0006639999999999979
+        },
+        {
+          "rep": 9,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0008559169946238399,
+          "cpu": 0.0008050000000000557
+        },
+        {
+          "rep": 9,
+          "method": "forward",
+          "wall": 0.0007681670249439776,
+          "cpu": 0.0005359999999999809
+        },
+        {
+          "rep": 10,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0006524169875774533,
+          "cpu": 0.0006530000000000147
+        },
+        {
+          "rep": 10,
+          "method": "forward",
+          "wall": 0.0006087080109864473,
+          "cpu": 0.0005319999999999769
+        },
+        {
+          "rep": 11,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0006177919858600944,
+          "cpu": 0.0005769999999999387
+        },
+        {
+          "rep": 11,
+          "method": "forward",
+          "wall": 0.000589625007705763,
+          "cpu": 0.0004939999999999944
+        },
+        {
+          "rep": 12,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.000495915999636054,
+          "cpu": 0.0004959999999999409
+        },
+        {
+          "rep": 12,
+          "method": "forward",
+          "wall": 0.0006627499824389815,
+          "cpu": 0.0004490000000000327
+        },
+        {
+          "rep": 13,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0007695830136071891,
+          "cpu": 0.0005720000000000169
+        },
+        {
+          "rep": 13,
+          "method": "forward",
+          "wall": 0.0004787500074598938,
+          "cpu": 0.0003649999999999487
+        },
+        {
+          "rep": 14,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00041591702029109,
+          "cpu": 0.00041599999999997195
+        },
+        {
+          "rep": 14,
+          "method": "forward",
+          "wall": 0.00031274999491870403,
+          "cpu": 0.0003130000000000077
+        }
+      ],
+      "median_forward_wall": 0.000589625007705763,
+      "median_forward_and_adjoint_wall": 0.0006524169875774533,
+      "median_paired_incremental_adjoint_cpu_estimate": 0.00010299999999996423,
+      "median_paired_incremental_adjoint_wall_estimate": 7.500001811422408e-05
+    },
+    {
+      "case_id": "m9-08",
+      "harmonics": 9,
+      "observations": [
+        {
+          "rep": 0,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.001472124975407496,
+          "cpu": 0.001462999999999992
+        },
+        {
+          "rep": 0,
+          "method": "forward",
+          "wall": 0.0009301669779233634,
+          "cpu": 0.0009109999999999951
+        },
+        {
+          "rep": 1,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0014220419980119914,
+          "cpu": 0.0012659999999999894
+        },
+        {
+          "rep": 1,
+          "method": "forward",
+          "wall": 0.0013380419986788183,
+          "cpu": 0.0013390000000000901
+        },
+        {
+          "rep": 2,
+          "method": "forward",
+          "wall": 0.0020315000147093087,
+          "cpu": 0.0015129999999999866
+        },
+        {
+          "rep": 2,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0014618750137742609,
+          "cpu": 0.0014319999999999888
+        },
+        {
+          "rep": 3,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0018894170061685145,
+          "cpu": 0.0018889999999999185
+        },
+        {
+          "rep": 3,
+          "method": "forward",
+          "wall": 0.0011522909917403013,
+          "cpu": 0.0011539999999999884
+        },
+        {
+          "rep": 4,
+          "method": "forward",
+          "wall": 0.001577707997057587,
+          "cpu": 0.0010689999999999866
+        },
+        {
+          "rep": 4,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0043622920056805015,
+          "cpu": 0.001375000000000015
+        },
+        {
+          "rep": 5,
+          "method": "forward",
+          "wall": 0.0008648330112919211,
+          "cpu": 0.0008639999999999759
+        },
+        {
+          "rep": 5,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0009908329811878502,
+          "cpu": 0.0009910000000000752
+        },
+        {
+          "rep": 6,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0009705419943202287,
+          "cpu": 0.0009720000000000839
+        },
+        {
+          "rep": 6,
+          "method": "forward",
+          "wall": 0.0007877079769968987,
+          "cpu": 0.0007880000000000109
+        },
+        {
+          "rep": 7,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0011740830086637288,
+          "cpu": 0.0010369999999999546
+        },
+        {
+          "rep": 7,
+          "method": "forward",
+          "wall": 0.0014650410157628357,
+          "cpu": 0.0013530000000000486
+        },
+        {
+          "rep": 8,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.001465666020521894,
+          "cpu": 0.0013540000000000774
+        },
+        {
+          "rep": 8,
+          "method": "forward",
+          "wall": 0.0008665419882163405,
+          "cpu": 0.0008659999999999224
+        },
+        {
+          "rep": 9,
+          "method": "forward",
+          "wall": 0.0008135419921018183,
+          "cpu": 0.0008139999999999814
+        },
+        {
+          "rep": 9,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0009713750041555613,
+          "cpu": 0.0009709999999999441
+        },
+        {
+          "rep": 10,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.004157166986260563,
+          "cpu": 0.0014319999999999888
+        },
+        {
+          "rep": 10,
+          "method": "forward",
+          "wall": 0.0011154169915243983,
+          "cpu": 0.0009000000000000119
+        },
+        {
+          "rep": 11,
+          "method": "forward",
+          "wall": 0.0008130829955916852,
+          "cpu": 0.0008130000000000637
+        },
+        {
+          "rep": 11,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.001401207991875708,
+          "cpu": 0.0012429999999999941
+        },
+        {
+          "rep": 12,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00201199998264201,
+          "cpu": 0.0013060000000000294
+        },
+        {
+          "rep": 12,
+          "method": "forward",
+          "wall": 0.0008134579984471202,
+          "cpu": 0.0008129999999999526
+        },
+        {
+          "rep": 13,
+          "method": "forward",
+          "wall": 0.0018863340083044022,
+          "cpu": 0.0016479999999999828
+        },
+        {
+          "rep": 13,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0014243329933378845,
+          "cpu": 0.0013650000000000606
+        },
+        {
+          "rep": 14,
+          "method": "forward",
+          "wall": 0.0015319169906433672,
+          "cpu": 0.0010919999999999819
+        },
+        {
+          "rep": 14,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.001367166987620294,
+          "cpu": 0.0013369999999999216
+        }
+      ],
+      "median_forward_wall": 0.0011154169915243983,
+      "median_forward_and_adjoint_wall": 0.0014243329933378845,
+      "median_paired_incremental_adjoint_cpu_estimate": 0.0002449999999999397,
+      "median_paired_incremental_adjoint_wall_estimate": 0.00018283401732333004
+    },
+    {
+      "case_id": "m15-05",
+      "harmonics": 15,
+      "observations": [
+        {
+          "rep": 0,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.003813499992247671,
+          "cpu": 0.003662999999999972
+        },
+        {
+          "rep": 0,
+          "method": "forward",
+          "wall": 0.005342999997083098,
+          "cpu": 0.00385000000000002
+        },
+        {
+          "rep": 1,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.004025958012789488,
+          "cpu": 0.003722999999999921
+        },
+        {
+          "rep": 1,
+          "method": "forward",
+          "wall": 0.0036124160105828196,
+          "cpu": 0.003414999999999946
+        },
+        {
+          "rep": 2,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.003936291002901271,
+          "cpu": 0.0038000000000000256
+        },
+        {
+          "rep": 2,
+          "method": "forward",
+          "wall": 0.004392292001284659,
+          "cpu": 0.004054000000000002
+        },
+        {
+          "rep": 3,
+          "method": "forward",
+          "wall": 0.006067333975806832,
+          "cpu": 0.004426999999999959
+        },
+        {
+          "rep": 3,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.00664124998729676,
+          "cpu": 0.00462499999999999
+        },
+        {
+          "rep": 4,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0038220419955905527,
+          "cpu": 0.003569999999999962
+        },
+        {
+          "rep": 4,
+          "method": "forward",
+          "wall": 0.0031617499771527946,
+          "cpu": 0.00284300000000004
+        },
+        {
+          "rep": 5,
+          "method": "forward",
+          "wall": 0.020650582999223843,
+          "cpu": 0.003502999999999923
+        },
+        {
+          "rep": 5,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.023387457971693948,
+          "cpu": 0.0044880000000000475
+        },
+        {
+          "rep": 6,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0151238749967888,
+          "cpu": 0.0043479999999999075
+        },
+        {
+          "rep": 6,
+          "method": "forward",
+          "wall": 0.01711683301255107,
+          "cpu": 0.003846999999999934
+        },
+        {
+          "rep": 7,
+          "method": "forward",
+          "wall": 0.006805915996665135,
+          "cpu": 0.003719000000000028
+        },
+        {
+          "rep": 7,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.006482249998953193,
+          "cpu": 0.003950000000000009
+        },
+        {
+          "rep": 8,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.005730332981329411,
+          "cpu": 0.004107000000000083
+        },
+        {
+          "rep": 8,
+          "method": "forward",
+          "wall": 0.005675374995917082,
+          "cpu": 0.003402000000000016
+        },
+        {
+          "rep": 9,
+          "method": "forward",
+          "wall": 0.005425500014098361,
+          "cpu": 0.003854000000000024
+        },
+        {
+          "rep": 9,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.012555875000543892,
+          "cpu": 0.004011000000000098
+        },
+        {
+          "rep": 10,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0063168750202748924,
+          "cpu": 0.004913000000000056
+        },
+        {
+          "rep": 10,
+          "method": "forward",
+          "wall": 0.004778458009241149,
+          "cpu": 0.0031689999999999774
+        },
+        {
+          "rep": 11,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.0030209159885998815,
+          "cpu": 0.0030209999999999404
+        },
+        {
+          "rep": 11,
+          "method": "forward",
+          "wall": 0.0025419589946977794,
+          "cpu": 0.0025010000000000865
+        },
+        {
+          "rep": 12,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.006862874986836687,
+          "cpu": 0.0034809999999999564
+        },
+        {
+          "rep": 12,
+          "method": "forward",
+          "wall": 0.004730708023998886,
+          "cpu": 0.003430999999999962
+        },
+        {
+          "rep": 13,
+          "method": "forward",
+          "wall": 0.006803292024414986,
+          "cpu": 0.004603000000000024
+        },
+        {
+          "rep": 13,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.004681249993154779,
+          "cpu": 0.0032929999999999904
+        },
+        {
+          "rep": 14,
+          "method": "forward_and_matrix_adjoint",
+          "wall": 0.004218832997139543,
+          "cpu": 0.003805999999999976
+        },
+        {
+          "rep": 14,
+          "method": "forward",
+          "wall": 0.0046822500007692724,
+          "cpu": 0.0036319999999999686
+        }
+      ],
+      "median_forward_wall": 0.005342999997083098,
+      "median_forward_and_adjoint_wall": 0.005730332981329411,
+      "median_paired_incremental_adjoint_cpu_estimate": 0.00023099999999998122,
+      "median_paired_incremental_adjoint_wall_estimate": 0.00041354200220666826
+    }
+  ]
+}

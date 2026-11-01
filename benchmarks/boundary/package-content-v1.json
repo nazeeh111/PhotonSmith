@@ -1,0 +1,9 @@
+{
+  "wheel_sha256": "6bab2294bbe2da4cc6eba0e4dadc20688e265782fe8891a59993ab1512751d6f",
+  "sdist_sha256": "48eb1d27a60d0ba6f0d07b28f561340721dd6cb486c0968886f158959f6c4468",
+  "pure_wheel_excludes_host_library": true,
+  "sdist_has_buildable_native_source": true,
+  "sdist_excludes_host_library": true,
+  "new_module_bytes_match": true,
+  "extracted_source": "/private/tmp/engineering-photon-recipient-source"
+}

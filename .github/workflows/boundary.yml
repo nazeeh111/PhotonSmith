@@ -1,0 +1,38 @@
+name: Native boundary solver
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      VECLIB_MAXIMUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Linux LAPACK
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libblas-dev liblapack-dev
+      - name: Install and explicitly build optional kernel
+        run: |
+          python -m pip install -e .
+          python scripts/build_native.py
+      - name: Numerical and workflow contracts
+        run: python -m unittest discover -s tests -v
+      - name: Guarded native memory checks
+        if: runner.os == 'Linux'
+        run: |
+          c++ -std=c++17 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined native/test_boundary.cpp -llapack -lblas -o /tmp/photonsmith-guarded
+          /tmp/photonsmith-guarded

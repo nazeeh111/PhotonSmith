@@ -1,0 +1,9 @@
+{
+  "python_reference_sha256": "8cb56b74d338e261b4880537be898bca6015fde0dc5a9e89e9bdbf3bfb114215",
+  "native_source_manifest": "native-reviewed-files.json",
+  "check": "independent transfer/Frechet comparison at repeated and zero modal eigenvalues",
+  "max_value_error": 2.220446049250313e-15,
+  "max_gradient_error": 1.3877787807814457e-16,
+  "max_balance_error": 2.220446049250313e-15,
+  "limits": "Review-authored finite matrix numerical checks; not external researcher validation, not a continuum proof. Degenerate matrix tests deliberately use general positive Hermitian operators, which need not be Toeplitz convolutions of physical epsilon."
+}

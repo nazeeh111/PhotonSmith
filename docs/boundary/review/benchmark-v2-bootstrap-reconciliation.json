@@ -1,0 +1,54 @@
+{
+  "legacy": {
+    "independent_sequential_rng_ci": [
+      11.089937149476562,
+      15.822123970718145
+    ],
+    "published_ci": [
+      11.089937149476562,
+      15.822123970718145
+    ],
+    "exact_match": true,
+    "case_wins": 48,
+    "case_losses": 0
+  },
+  "meent_torch": {
+    "independent_sequential_rng_ci": [
+      10.409064337793195,
+      15.091294991170312
+    ],
+    "published_ci": [
+      10.409064337793195,
+      15.091294991170312
+    ],
+    "exact_match": true,
+    "case_wins": 48,
+    "case_losses": 0
+  },
+  "meent_jax_jit": {
+    "independent_sequential_rng_ci": [
+      3.1261445684993183,
+      4.625527636244803
+    ],
+    "published_ci": [
+      3.1261445684993183,
+      4.625527636244803
+    ],
+    "exact_match": true,
+    "case_wins": 47,
+    "case_losses": 1
+  },
+  "grcwa_autograd": {
+    "independent_sequential_rng_ci": [
+      55.318932837518716,
+      76.33847595737193
+    ],
+    "published_ci": [
+      55.318932837518716,
+      76.33847595737193
+    ],
+    "exact_match": true,
+    "case_wins": 48,
+    "case_losses": 0
+  }
+}
