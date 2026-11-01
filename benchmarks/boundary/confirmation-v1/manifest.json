@@ -1,0 +1,213 @@
+{
+  "cases_sha256": "329ceecb28bed837bf9bdc4841b05e065a29d7e50db17abd35dc09eb75ff0cca",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+  "packages": {
+    "filelock": "4.2.4",
+    "setuptools": "84.2.1",
+    "optax": "0.2.8",
+    "torch": "2.14.1",
+    "networkx": "3.7",
+    "opt_einsum": "3.4.0",
+    "grcwa": "0.1.2",
+    "jax": "0.12.0.1",
+    "numpy": "2.3.5",
+    "sympy": "1.14.0",
+    "meent": "0.13.2",
+    "tqdm": "4.70.1",
+    "mpmath": "1.3.0",
+    "jaxlib": "0.12.0.1",
+    "fsspec": "2026.9.0",
+    "Jinja2": "3.1.6",
+    "threadpoolctl": "3.7.0",
+    "absl-py": "2.5.1",
+    "typing_extensions": "4.16.0",
+    "MarkupSafe": "3.0.4",
+    "ml_dtypes": "0.6.0",
+    "scipy": "1.18.1",
+    "autograd": "1.8.0"
+  },
+  "sources": {
+    "photonsmith/physics.py": "462b90fceea6ce3fe5b7c5104d5a032ec63f5252240b02952fa94bed3101a433",
+    "photonsmith/boundary.py": "8cb56b74d338e261b4880537be898bca6015fde0dc5a9e89e9bdbf3bfb114215",
+    "photonsmith/native.py": "fc5090ee3ebe0300bc2d8886c9816d3b8c6af5704eb360aa96fe49ad5a8e1f97",
+    "native/boundary.cpp": "37d697240a5b3becba4e83622b7484079b4a998af13805b71fa3a43319491547",
+    "scripts/benchmark_boundary.py": "2eefca824a28b3cbcadd7c3ff370ec41ae45950d9e669d02c01b0347d02c72fa"
+  },
+  "native_library": {
+    "command": [
+      "/usr/bin/clang++",
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-fPIC",
+      "-shared",
+      "SOURCE/native/boundary.cpp",
+      "-o",
+      "SOURCE/photonsmith/_boundary_native.dylib",
+      "-framework",
+      "Accelerate"
+    ],
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+    "source_sha256": "37d697240a5b3becba4e83622b7484079b4a998af13805b71fa3a43319491547",
+    "library_sha256": "98d1ae0c57cb4ddf9bb35fa8b3edc9e0c1c47dd0429b100803de09bd4d408090",
+    "platform": "macOS-27.2-arm64-arm-64bit"
+  },
+  "jax_devices": "[CpuDevice(id=0)]",
+  "requested_threads": 1,
+  "repeat_count": 7,
+  "warmup": [
+    {
+      "method": "meent_jax_jit",
+      "m": 3,
+      "seconds": 6.262762333004503,
+      "value": 0.39655618724919905,
+      "finite": true
+    },
+    {
+      "method": "meent_jax_jit",
+      "m": 5,
+      "seconds": 3.510205708007561,
+      "value": 0.3869824692590856,
+      "finite": true
+    },
+    {
+      "method": "meent_jax_jit",
+      "m": 9,
+      "seconds": 3.957384292007191,
+      "value": 0.3845655853300313,
+      "finite": true
+    },
+    {
+      "method": "meent_jax_jit",
+      "m": 15,
+      "seconds": 4.9636790420045145,
+      "value": 0.3841621827642834,
+      "finite": true
+    },
+    {
+      "method": "legacy",
+      "m": 3,
+      "seconds": 0.005974959000013769,
+      "value": 0.396556187249199,
+      "finite": true
+    },
+    {
+      "method": "native",
+      "m": 3,
+      "seconds": 0.005680875008692965,
+      "value": 0.39655618724919833,
+      "finite": true
+    },
+    {
+      "method": "meent_torch",
+      "m": 3,
+      "seconds": 0.11670637500355951,
+      "value": 0.3965561873109713,
+      "finite": true
+    },
+    {
+      "method": "grcwa_autograd",
+      "m": 3,
+      "seconds": 0.011888750013895333,
+      "value": 0.3965561872492001,
+      "finite": true
+    },
+    {
+      "method": "legacy",
+      "m": 5,
+      "seconds": 0.005091792001621798,
+      "value": 0.3869824692590864,
+      "finite": true
+    },
+    {
+      "method": "native",
+      "m": 5,
+      "seconds": 0.0005625000048894435,
+      "value": 0.3869824692590875,
+      "finite": true
+    },
+    {
+      "method": "meent_torch",
+      "m": 5,
+      "seconds": 0.005284749990096316,
+      "value": 0.3869824693319303,
+      "finite": true
+    },
+    {
+      "method": "grcwa_autograd",
+      "m": 5,
+      "seconds": 0.01612083299551159,
+      "value": 0.38698246925908114,
+      "finite": true
+    },
+    {
+      "method": "legacy",
+      "m": 9,
+      "seconds": 0.011727957986295223,
+      "value": 0.3845655853300256,
+      "finite": true
+    },
+    {
+      "method": "native",
+      "m": 9,
+      "seconds": 0.0015610000118613243,
+      "value": 0.3845655853300263,
+      "finite": true
+    },
+    {
+      "method": "meent_torch",
+      "m": 9,
+      "seconds": 0.008406917011598125,
+      "value": 0.38456558540432206,
+      "finite": true
+    },
+    {
+      "method": "grcwa_autograd",
+      "m": 9,
+      "seconds": 0.03894041699822992,
+      "value": 0.38456558533002777,
+      "finite": true
+    },
+    {
+      "method": "legacy",
+      "m": 15,
+      "seconds": 0.0379846669966355,
+      "value": 0.38416218276431363,
+      "finite": true
+    },
+    {
+      "method": "native",
+      "m": 15,
+      "seconds": 0.004359999991720542,
+      "value": 0.3841621827642804,
+      "finite": true
+    },
+    {
+      "method": "meent_torch",
+      "m": 15,
+      "seconds": 0.04839424998499453,
+      "value": 0.3841621828387919,
+      "finite": true
+    },
+    {
+      "method": "grcwa_autograd",
+      "m": 15,
+      "seconds": 0.1815047500131186,
+      "value": 0.38416218276428826,
+      "finite": true
+    }
+  ],
+  "threadpools": [
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libomp",
+      "filepath": "/private/tmp/engineering-photon-runtime/lib/python3.12/site-packages/torch/lib/libomp.dylib",
+      "version": null
+    }
+  ],
+  "original_local_manifest_sha256": "68efd8ef01e10daedfcf36fb4a28babf6e1678201c19c9f2689face4a05e919d",
+  "publication_transform": "Only local filesystem path prefixes normalized; measurements/source hashes unchanged. Original manifest SHA256 retained."
+}

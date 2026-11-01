@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "photonsmith"
-version = "0.1.0"
+version = "0.2.0rc3"
 description = "Local 2D photonic inverse-design laboratory with independently checked Maxwell physics"
 readme = "README.md"
 authors = [{name = "Nazeeh Abdul-Hadi"}]
@@ -16,6 +16,7 @@ classifiers = ["Development Status :: 3 - Alpha", "Intended Audience :: Science/
 
 [project.scripts]
 photonsmith = "photonsmith.__main__:main"
+photonsmith-boundary = "photonsmith.boundary_workflow:main"
 
 [project.urls]
 Repository = "https://github.com/nazeeh111/PhotonSmith"
@@ -28,6 +29,7 @@ dev = ["pytest==9.1.1", "matplotlib==3.11.2", "build>=1.2,<2", "ruff==0.14.10"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["photonsmith"]
+exclude = ["**/_boundary_native.*"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "web" = "photonsmith/assets/web"
@@ -42,8 +44,8 @@ packages = ["photonsmith"]
 "experiments/designs" = "photonsmith/assets/experiments/designs"
 
 [tool.hatch.build.targets.sdist]
-include = ["/photonsmith", "/web", "/experiments", "/tests", "/docs", "/optional", "/scripts", "/.github", "/README.md", "/LICENSE", "/CITATION.cff", "/CONTRIBUTING.md", "/CHANGELOG.md", "/PhotonSmith.command", "/run.py", "/requirements.lock", "/pyproject.toml"]
-exclude = ["**/__pycache__", "*.pyc", "**/*.log", "/experiments/benchmark-progress.json"]
+include = ["/benchmarks", "/photonsmith", "/native", "/requirements-boundary.lock", "/web", "/experiments", "/tests", "/docs", "/optional", "/scripts", "/.github", "/README.md", "/LICENSE", "/CITATION.cff", "/CONTRIBUTING.md", "/CHANGELOG.md", "/PhotonSmith.command", "/run.py", "/requirements.lock", "/pyproject.toml"]
+exclude = ["**/_boundary_native.*", "**/__pycache__", "*.pyc", "/experiments/benchmark-progress.json"]
 
 [tool.ruff]
 target-version = "py312"

@@ -1,0 +1,2348 @@
+{
+  "scope": "independent coding-agent raw/statistics/FD audit, not human external validation",
+  "input_sha256": "db8d5d5ff4abe5146af409474424ad65bd1573ef72ab91cc15e3d1c445e10bd6",
+  "seed_regeneration_exact": true,
+  "case_count": 48,
+  "raw_count": 1680,
+  "raw_failures": 0,
+  "exact_raw_id_cartesian_set": true,
+  "randomized_method_order_reproduced": true,
+  "source_hashes": {
+    "native/boundary.cpp": "dd55bc7113b2db50a5e5c4d1de14c8435c856b23377f917ffcb38e3fa6f00a65",
+    "photonsmith/physics.py": "462b90fceea6ce3fe5b7c5104d5a032ec63f5252240b02952fa94bed3101a433",
+    "photonsmith/boundary.py": "cb091d9cfbd33ddc86651517c2b81908278a1ed7e0a13aee40341a9f560a3aba",
+    "photonsmith/native.py": "fc5090ee3ebe0300bc2d8886c9816d3b8c6af5704eb360aa96fe49ad5a8e1f97",
+    "photonsmith/gradient_check.py": "e3656becfbfafe40074b7e4b10d62ac96f87c57e8971f94b640d899660a4bf7e",
+    "scripts/benchmark_boundary.py": "86557ecae0a1a1280c8c50a0f6079f383f8c6b45a2d0b28355709d2bb49ce767",
+    "scripts/summarize_boundary.py": "986499900809dbbc275ff931c828c4e4cd8dfddd5423cb6a78a717adeed2d627"
+  },
+  "native_library_sha256": "4895488b3ab5418051bbad7197454969184fc8448cab3e224611e99cfa9e7a9a",
+  "sources_and_library_match_frozen_plan": true,
+  "fd_case_step_records": 144,
+  "fd_coordinate_estimates": 864,
+  "forward_samples": 3456,
+  "stencil_counts": {
+    "central": 864
+  },
+  "max_fourth_order_worst_normalized_error": 4.233190331603964e-08,
+  "max_fourth_order_error_by_step": {
+    "0.0001": 7.466750547263906e-09,
+    "1e-05": 5.866158378498021e-09,
+    "1e-06": 4.233190331603964e-08
+  },
+  "max_retained_second_order_error": 5.4767060537835317e-05,
+  "max_binary64_vs_60_digit_weighted_reconstruction_difference": 4.163336342344337e-11,
+  "statistics": {
+    "legacy": {
+      "wall_geomean": 6.705363041406138,
+      "cpu_geomean": 6.658055147117739,
+      "interval": [
+        6.428812270541769,
+        6.995294161012465
+      ],
+      "native_case_wins": 48,
+      "by_harmonics": {
+        "3": 8.228159556851073,
+        "5": 6.718276833075376,
+        "9": 6.319842716809255,
+        "15": 5.786584711892257
+      }
+    },
+    "meent_torch": {
+      "wall_geomean": 6.472913155470696,
+      "cpu_geomean": 6.435578789029107,
+      "interval": [
+        5.492539199797799,
+        7.585713091925852
+      ],
+      "native_case_wins": 48,
+      "by_harmonics": {
+        "3": 12.917050032721734,
+        "5": 8.789930999785174,
+        "9": 5.240965186175418,
+        "15": 2.9501156309779106
+      }
+    },
+    "meent_jax_jit": {
+      "wall_geomean": 2.7779934635465935,
+      "cpu_geomean": 3.3605050203414137,
+      "interval": [
+        2.608202701995718,
+        2.9686421609844507
+      ],
+      "native_case_wins": 48,
+      "by_harmonics": {
+        "3": 3.922512295186269,
+        "5": 2.881167818585015,
+        "9": 2.2900140321964266,
+        "15": 2.301197353060285
+      }
+    },
+    "grcwa_autograd": {
+      "wall_geomean": 23.760042335477294,
+      "cpu_geomean": 23.417087935350555,
+      "interval": [
+        22.760554715939865,
+        24.90263472862851
+      ],
+      "native_case_wins": 48,
+      "by_harmonics": {
+        "3": 30.551651718412593,
+        "5": 22.67277848307451,
+        "9": 20.605251596376824,
+        "15": 22.329113400236558
+      }
+    }
+  },
+  "fastest_external": "meent_jax_jit",
+  "numerical_maxima": {
+    "power": 2.4091839634365897e-14,
+    "balance": 1.1546319456101628e-14,
+    "residual": 3.5441649841073217e-15
+  },
+  "max_external_gradient_errors": {
+    "legacy": 1.9925172622947684e-12,
+    "native": 0.0,
+    "meent_torch": 5.018819704272204e-08,
+    "meent_jax_jit": 2.0905499553691698e-13,
+    "grcwa_autograd": 1.3947731858365842e-12
+  },
+  "gates": {
+    "legacy_speed": true,
+    "external_speed": true,
+    "external_interval": true,
+    "power": true,
+    "balance": true,
+    "gradients": true,
+    "finite_difference": true
+  },
+  "all_seven_gates_pass": true,
+  "old_v3_gate_still_false": true,
+  "thread_observations": 50,
+  "total_threads_observed": [
+    73,
+    74
+  ],
+  "thread_limit": "total includes idle workers, not strict single-thread JAX",
+  "fresh_dense_spotcheck_count": 32,
+  "fresh_dense_spotcheck_max_error": 0.0,
+  "fd_records": [
+    {
+      "case": "v4-m9-02",
+      "step": 0.0001,
+      "analytic_normalized_error": 4.573696183182712e-11,
+      "fd_normalized_error": 4.573696182973524e-11,
+      "worst_normalized_error": 4.573696183182712e-11,
+      "second_order_diagnostic_error": 1.0775872596626132e-05
+    },
+    {
+      "case": "v4-m9-02",
+      "step": 1e-05,
+      "analytic_normalized_error": 5.636757727245367e-11,
+      "fd_normalized_error": 5.636757727245367e-11,
+      "worst_normalized_error": 5.636757727245367e-11,
+      "second_order_diagnostic_error": 1.0779144678963105e-07
+    },
+    {
+      "case": "v4-m9-02",
+      "step": 1e-06,
+      "analytic_normalized_error": 4.6335546510789527e-10,
+      "fd_normalized_error": 4.6335546510789527e-10,
+      "worst_normalized_error": 4.6335546510789527e-10,
+      "second_order_diagnostic_error": 1.3851785149368366e-09
+    },
+    {
+      "case": "v4-m5-00",
+      "step": 0.0001,
+      "analytic_normalized_error": 4.686625877193264e-11,
+      "fd_normalized_error": 4.686625876973619e-11,
+      "worst_normalized_error": 4.686625877193264e-11,
+      "second_order_diagnostic_error": 3.0580598665138584e-06
+    },
+    {
+      "case": "v4-m5-00",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.37813201047579e-11,
+      "fd_normalized_error": 1.3781320104567977e-11,
+      "worst_normalized_error": 1.37813201047579e-11,
+      "second_order_diagnostic_error": 3.0571934751071416e-08
+    },
+    {
+      "case": "v4-m5-00",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.157431538447497e-10,
+      "fd_normalized_error": 3.157431538447497e-10,
+      "worst_normalized_error": 3.157431538447497e-10,
+      "second_order_diagnostic_error": 3.1921260079670333e-10
+    },
+    {
+      "case": "v4-m9-11",
+      "step": 0.0001,
+      "analytic_normalized_error": 9.259385448667437e-12,
+      "fd_normalized_error": 9.259385448753173e-12,
+      "worst_normalized_error": 9.259385448753173e-12,
+      "second_order_diagnostic_error": 2.0159058160551524e-06
+    },
+    {
+      "case": "v4-m9-11",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.0744294343112415e-10,
+      "fd_normalized_error": 1.0744294343112415e-10,
+      "worst_normalized_error": 1.0744294343112415e-10,
+      "second_order_diagnostic_error": 2.00781463677302e-08
+    },
+    {
+      "case": "v4-m9-11",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.0457606447467072e-09,
+      "fd_normalized_error": 1.0457606447467072e-09,
+      "worst_normalized_error": 1.0457606447467072e-09,
+      "second_order_diagnostic_error": 7.994299111580006e-10
+    },
+    {
+      "case": "v4-m15-01",
+      "step": 0.0001,
+      "analytic_normalized_error": 1.67065028477964e-10,
+      "fd_normalized_error": 1.67065028477964e-10,
+      "worst_normalized_error": 1.67065028477964e-10,
+      "second_order_diagnostic_error": 5.303519613808483e-06
+    },
+    {
+      "case": "v4-m15-01",
+      "step": 1e-05,
+      "analytic_normalized_error": 5.866158378498021e-09,
+      "fd_normalized_error": 5.866158378498021e-09,
+      "worst_normalized_error": 5.866158378498021e-09,
+      "second_order_diagnostic_error": 5.599914015830265e-08
+    },
+    {
+      "case": "v4-m15-01",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.050766456651587e-08,
+      "fd_normalized_error": 2.050766456651587e-08,
+      "worst_normalized_error": 2.050766456651587e-08,
+      "second_order_diagnostic_error": 1.3735304116302416e-08
+    },
+    {
+      "case": "v4-m15-06",
+      "step": 0.0001,
+      "analytic_normalized_error": 3.962880024133142e-11,
+      "fd_normalized_error": 3.962880024133142e-11,
+      "worst_normalized_error": 3.962880024133142e-11,
+      "second_order_diagnostic_error": 2.316828373159932e-07
+    },
+    {
+      "case": "v4-m15-06",
+      "step": 1e-05,
+      "analytic_normalized_error": 9.321298177766835e-10,
+      "fd_normalized_error": 9.321298177766835e-10,
+      "worst_normalized_error": 9.321298177766835e-10,
+      "second_order_diagnostic_error": 2.1362833552123527e-09
+    },
+    {
+      "case": "v4-m15-06",
+      "step": 1e-06,
+      "analytic_normalized_error": 5.34927707684929e-09,
+      "fd_normalized_error": 5.34927707684929e-09,
+      "worst_normalized_error": 5.34927707684929e-09,
+      "second_order_diagnostic_error": 4.444570655959268e-09
+    },
+    {
+      "case": "v4-m15-07",
+      "step": 0.0001,
+      "analytic_normalized_error": 7.602618534718886e-11,
+      "fd_normalized_error": 7.602618534718886e-11,
+      "worst_normalized_error": 7.602618534718886e-11,
+      "second_order_diagnostic_error": 8.409355522899488e-07
+    },
+    {
+      "case": "v4-m15-07",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.1425927698714986e-09,
+      "fd_normalized_error": 2.1425927698714986e-09,
+      "worst_normalized_error": 2.1425927698714986e-09,
+      "second_order_diagnostic_error": 8.891967108680073e-09
+    },
+    {
+      "case": "v4-m15-07",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.1754086402143668e-08,
+      "fd_normalized_error": 1.1754086540302216e-08,
+      "worst_normalized_error": 1.1754086540302216e-08,
+      "second_order_diagnostic_error": 8.453612967003158e-09
+    },
+    {
+      "case": "v4-m15-04",
+      "step": 0.0001,
+      "analytic_normalized_error": 8.018635755391301e-11,
+      "fd_normalized_error": 8.018635755391301e-11,
+      "worst_normalized_error": 8.018635755391301e-11,
+      "second_order_diagnostic_error": 5.821519045712265e-07
+    },
+    {
+      "case": "v4-m15-04",
+      "step": 1e-05,
+      "analytic_normalized_error": 8.743279156231409e-10,
+      "fd_normalized_error": 8.743279156231409e-10,
+      "worst_normalized_error": 8.743279156231409e-10,
+      "second_order_diagnostic_error": 6.042188971377982e-09
+    },
+    {
+      "case": "v4-m15-04",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.1081237326208079e-08,
+      "fd_normalized_error": 1.108123720341426e-08,
+      "worst_normalized_error": 1.1081237326208079e-08,
+      "second_order_diagnostic_error": 8.766427630276496e-09
+    },
+    {
+      "case": "v4-m9-01",
+      "step": 0.0001,
+      "analytic_normalized_error": 3.704520477129523e-11,
+      "fd_normalized_error": 3.704520476992288e-11,
+      "worst_normalized_error": 3.704520477129523e-11,
+      "second_order_diagnostic_error": 2.996717582635015e-06
+    },
+    {
+      "case": "v4-m9-01",
+      "step": 1e-05,
+      "analytic_normalized_error": 4.334832492958185e-11,
+      "fd_normalized_error": 4.334832492958185e-11,
+      "worst_normalized_error": 4.334832492958185e-11,
+      "second_order_diagnostic_error": 2.997049285514907e-08
+    },
+    {
+      "case": "v4-m9-01",
+      "step": 1e-06,
+      "analytic_normalized_error": 8.119084571323043e-10,
+      "fd_normalized_error": 8.119084571323043e-10,
+      "worst_normalized_error": 8.119084571323043e-10,
+      "second_order_diagnostic_error": 5.716492557095165e-10
+    },
+    {
+      "case": "v4-m9-03",
+      "step": 0.0001,
+      "analytic_normalized_error": 6.775460272110399e-09,
+      "fd_normalized_error": 6.7754603180172616e-09,
+      "worst_normalized_error": 6.7754603180172616e-09,
+      "second_order_diagnostic_error": 4.104224132364702e-05
+    },
+    {
+      "case": "v4-m9-03",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.0658854783648905e-11,
+      "fd_normalized_error": 2.0658854783222116e-11,
+      "worst_normalized_error": 2.0658854783648905e-11,
+      "second_order_diagnostic_error": 4.1042358375713937e-07
+    },
+    {
+      "case": "v4-m9-03",
+      "step": 1e-06,
+      "analytic_normalized_error": 7.70904157222311e-10,
+      "fd_normalized_error": 7.709041578166043e-10,
+      "worst_normalized_error": 7.709041578166043e-10,
+      "second_order_diagnostic_error": 4.234089632418856e-09
+    },
+    {
+      "case": "v4-m15-09",
+      "step": 0.0001,
+      "analytic_normalized_error": 2.1497137403514444e-11,
+      "fd_normalized_error": 2.1497137403514444e-11,
+      "worst_normalized_error": 2.1497137403514444e-11,
+      "second_order_diagnostic_error": 7.929774648030019e-07
+    },
+    {
+      "case": "v4-m15-09",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.5495849048363652e-10,
+      "fd_normalized_error": 1.5495849048363652e-10,
+      "worst_normalized_error": 1.5495849048363652e-10,
+      "second_order_diagnostic_error": 7.868785290021663e-09
+    },
+    {
+      "case": "v4-m15-09",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.30951702206994e-09,
+      "fd_normalized_error": 2.30951702206994e-09,
+      "worst_normalized_error": 2.30951702206994e-09,
+      "second_order_diagnostic_error": 1.9087958991192977e-09
+    },
+    {
+      "case": "v4-m3-00",
+      "step": 0.0001,
+      "analytic_normalized_error": 2.6526896753318194e-10,
+      "fd_normalized_error": 2.6526896760354953e-10,
+      "worst_normalized_error": 2.6526896760354953e-10,
+      "second_order_diagnostic_error": 8.887804314227035e-06
+    },
+    {
+      "case": "v4-m3-00",
+      "step": 1e-05,
+      "analytic_normalized_error": 9.144873055507329e-11,
+      "fd_normalized_error": 9.144873056343616e-11,
+      "worst_normalized_error": 9.144873056343616e-11,
+      "second_order_diagnostic_error": 8.894923847631544e-08
+    },
+    {
+      "case": "v4-m3-00",
+      "step": 1e-06,
+      "analytic_normalized_error": 4.571894753465721e-10,
+      "fd_normalized_error": 4.571894755555943e-10,
+      "worst_normalized_error": 4.571894755555943e-10,
+      "second_order_diagnostic_error": 9.170809462691882e-10
+    },
+    {
+      "case": "v4-m3-01",
+      "step": 0.0001,
+      "analytic_normalized_error": 6.383116257779875e-12,
+      "fd_normalized_error": 6.383116257779875e-12,
+      "worst_normalized_error": 6.383116257779875e-12,
+      "second_order_diagnostic_error": 6.231094042963292e-07
+    },
+    {
+      "case": "v4-m3-01",
+      "step": 1e-05,
+      "analytic_normalized_error": 5.526135105071717e-11,
+      "fd_normalized_error": 5.526135105071717e-11,
+      "worst_normalized_error": 5.526135105071717e-11,
+      "second_order_diagnostic_error": 6.270255203943975e-09
+    },
+    {
+      "case": "v4-m3-01",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.0397888373112636e-10,
+      "fd_normalized_error": 3.0397888373112636e-10,
+      "worst_normalized_error": 3.0397888373112636e-10,
+      "second_order_diagnostic_error": 2.0485010909787604e-10
+    },
+    {
+      "case": "v4-m5-04",
+      "step": 0.0001,
+      "analytic_normalized_error": 9.473644091428923e-12,
+      "fd_normalized_error": 9.473644091428923e-12,
+      "worst_normalized_error": 9.473644091428923e-12,
+      "second_order_diagnostic_error": 1.3967801935077517e-06
+    },
+    {
+      "case": "v4-m5-04",
+      "step": 1e-05,
+      "analytic_normalized_error": 5.079403564423046e-11,
+      "fd_normalized_error": 5.079403564423046e-11,
+      "worst_normalized_error": 5.079403564423046e-11,
+      "second_order_diagnostic_error": 1.397077109555056e-08
+    },
+    {
+      "case": "v4-m5-04",
+      "step": 1e-06,
+      "analytic_normalized_error": 9.050792892928428e-10,
+      "fd_normalized_error": 9.050792892928428e-10,
+      "worst_normalized_error": 9.050792892928428e-10,
+      "second_order_diagnostic_error": 6.552791087521825e-10
+    },
+    {
+      "case": "v4-m3-09",
+      "step": 0.0001,
+      "analytic_normalized_error": 3.554490035639901e-12,
+      "fd_normalized_error": 3.554490035639901e-12,
+      "worst_normalized_error": 3.554490035639901e-12,
+      "second_order_diagnostic_error": 6.124777210958499e-07
+    },
+    {
+      "case": "v4-m3-09",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.0386803356586825e-11,
+      "fd_normalized_error": 2.0386803356586825e-11,
+      "worst_normalized_error": 2.0386803356586825e-11,
+      "second_order_diagnostic_error": 6.112207628916622e-09
+    },
+    {
+      "case": "v4-m3-09",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.0760882619740265e-10,
+      "fd_normalized_error": 2.0760882615430124e-10,
+      "worst_normalized_error": 2.0760882619740265e-10,
+      "second_order_diagnostic_error": 1.3893209264864735e-10
+    },
+    {
+      "case": "v4-m9-06",
+      "step": 0.0001,
+      "analytic_normalized_error": 1.4755752042542855e-10,
+      "fd_normalized_error": 1.4755752044720178e-10,
+      "worst_normalized_error": 1.4755752044720178e-10,
+      "second_order_diagnostic_error": 9.129806229408055e-06
+    },
+    {
+      "case": "v4-m9-06",
+      "step": 1e-05,
+      "analytic_normalized_error": 6.308165101387431e-11,
+      "fd_normalized_error": 6.308165101387431e-11,
+      "worst_normalized_error": 6.308165101387431e-11,
+      "second_order_diagnostic_error": 9.133708895947312e-08
+    },
+    {
+      "case": "v4-m9-06",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.3597247206529346e-10,
+      "fd_normalized_error": 3.3597247206529346e-10,
+      "worst_normalized_error": 3.3597247206529346e-10,
+      "second_order_diagnostic_error": 9.692910492811755e-10
+    },
+    {
+      "case": "v4-m3-04",
+      "step": 0.0001,
+      "analytic_normalized_error": 6.28358476362223e-11,
+      "fd_normalized_error": 6.28358476362223e-11,
+      "worst_normalized_error": 6.28358476362223e-11,
+      "second_order_diagnostic_error": 3.962472877816481e-06
+    },
+    {
+      "case": "v4-m3-04",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.4066636744303196e-11,
+      "fd_normalized_error": 1.4066636744303196e-11,
+      "worst_normalized_error": 1.4066636744303196e-11,
+      "second_order_diagnostic_error": 3.961261207940936e-08
+    },
+    {
+      "case": "v4-m3-04",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.343944400211683e-10,
+      "fd_normalized_error": 1.343944400211683e-10,
+      "worst_normalized_error": 1.343944400211683e-10,
+      "second_order_diagnostic_error": 4.4689274503184606e-10
+    },
+    {
+      "case": "v4-m5-01",
+      "step": 0.0001,
+      "analytic_normalized_error": 5.137479796314721e-12,
+      "fd_normalized_error": 5.137479796288327e-12,
+      "worst_normalized_error": 5.137479796314721e-12,
+      "second_order_diagnostic_error": 2.927903527405462e-07
+    },
+    {
+      "case": "v4-m5-01",
+      "step": 1e-05,
+      "analytic_normalized_error": 4.659561625430797e-11,
+      "fd_normalized_error": 4.659561625430797e-11,
+      "worst_normalized_error": 4.659561625430797e-11,
+      "second_order_diagnostic_error": 2.9249988264812288e-09
+    },
+    {
+      "case": "v4-m5-01",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.372524759459594e-10,
+      "fd_normalized_error": 3.372524759459594e-10,
+      "worst_normalized_error": 3.372524759459594e-10,
+      "second_order_diagnostic_error": 2.7480243081079436e-10
+    },
+    {
+      "case": "v4-m3-07",
+      "step": 0.0001,
+      "analytic_normalized_error": 4.226230476689352e-12,
+      "fd_normalized_error": 4.226230476689352e-12,
+      "worst_normalized_error": 4.226230476689352e-12,
+      "second_order_diagnostic_error": 9.469954875274134e-07
+    },
+    {
+      "case": "v4-m3-07",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.1561279711358452e-11,
+      "fd_normalized_error": 1.1561279711358452e-11,
+      "worst_normalized_error": 1.1561279711358452e-11,
+      "second_order_diagnostic_error": 9.468547779167835e-09
+    },
+    {
+      "case": "v4-m3-07",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.0898509872347972e-10,
+      "fd_normalized_error": 1.0898509872347972e-10,
+      "worst_normalized_error": 1.0898509872347972e-10,
+      "second_order_diagnostic_error": 5.674991032655896e-11
+    },
+    {
+      "case": "v4-m3-03",
+      "step": 0.0001,
+      "analytic_normalized_error": 5.849432049842562e-12,
+      "fd_normalized_error": 5.849432049842562e-12,
+      "worst_normalized_error": 5.849432049842562e-12,
+      "second_order_diagnostic_error": 5.87921477279707e-07
+    },
+    {
+      "case": "v4-m3-03",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.0777046749742567e-11,
+      "fd_normalized_error": 2.0777046749742567e-11,
+      "worst_normalized_error": 2.0777046749742567e-11,
+      "second_order_diagnostic_error": 5.894550736407211e-09
+    },
+    {
+      "case": "v4-m3-03",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.3438533619236637e-10,
+      "fd_normalized_error": 1.3438533619236637e-10,
+      "worst_normalized_error": 1.3438533619236637e-10,
+      "second_order_diagnostic_error": 9.188461103093459e-11
+    },
+    {
+      "case": "v4-m9-04",
+      "step": 0.0001,
+      "analytic_normalized_error": 5.1086786099225996e-11,
+      "fd_normalized_error": 5.108678609661614e-11,
+      "worst_normalized_error": 5.1086786099225996e-11,
+      "second_order_diagnostic_error": 1.4078118431015696e-06
+    },
+    {
+      "case": "v4-m9-04",
+      "step": 1e-05,
+      "analytic_normalized_error": 8.20838952364511e-11,
+      "fd_normalized_error": 8.20838952364511e-11,
+      "worst_normalized_error": 8.20838952364511e-11,
+      "second_order_diagnostic_error": 1.4063531894592529e-08
+    },
+    {
+      "case": "v4-m9-04",
+      "step": 1e-06,
+      "analytic_normalized_error": 5.291789229033839e-10,
+      "fd_normalized_error": 5.291789229033839e-10,
+      "worst_normalized_error": 5.291789229033839e-10,
+      "second_order_diagnostic_error": 3.973399387291465e-10
+    },
+    {
+      "case": "v4-m15-10",
+      "step": 0.0001,
+      "analytic_normalized_error": 2.1056184573708947e-11,
+      "fd_normalized_error": 2.1056184573708947e-11,
+      "worst_normalized_error": 2.1056184573708947e-11,
+      "second_order_diagnostic_error": 5.39692525669544e-07
+    },
+    {
+      "case": "v4-m15-10",
+      "step": 1e-05,
+      "analytic_normalized_error": 3.213478927399649e-10,
+      "fd_normalized_error": 3.213478927399649e-10,
+      "worst_normalized_error": 3.213478927399649e-10,
+      "second_order_diagnostic_error": 5.323448903915562e-09
+    },
+    {
+      "case": "v4-m15-10",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.6771110606116366e-09,
+      "fd_normalized_error": 2.6771110606116366e-09,
+      "worst_normalized_error": 2.6771110606116366e-09,
+      "second_order_diagnostic_error": 2.0855703553035454e-09
+    },
+    {
+      "case": "v4-m5-06",
+      "step": 0.0001,
+      "analytic_normalized_error": 4.428235556019899e-12,
+      "fd_normalized_error": 4.428235556019899e-12,
+      "worst_normalized_error": 4.428235556019899e-12,
+      "second_order_diagnostic_error": 1.2098614246558448e-07
+    },
+    {
+      "case": "v4-m5-06",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.6072754238649622e-11,
+      "fd_normalized_error": 1.6072754238649622e-11,
+      "worst_normalized_error": 1.6072754238649622e-11,
+      "second_order_diagnostic_error": 1.2109457325770734e-09
+    },
+    {
+      "case": "v4-m5-06",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.5600240543811594e-10,
+      "fd_normalized_error": 1.5600240543811594e-10,
+      "worst_normalized_error": 1.5600240543811594e-10,
+      "second_order_diagnostic_error": 1.1783848896662619e-10
+    },
+    {
+      "case": "v4-m5-09",
+      "step": 0.0001,
+      "analytic_normalized_error": 5.01538993713479e-11,
+      "fd_normalized_error": 5.015389937386332e-11,
+      "worst_normalized_error": 5.015389937386332e-11,
+      "second_order_diagnostic_error": 4.069029399048657e-06
+    },
+    {
+      "case": "v4-m5-09",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.6635112667983406e-11,
+      "fd_normalized_error": 2.663511266727398e-11,
+      "worst_normalized_error": 2.6635112667983406e-11,
+      "second_order_diagnostic_error": 4.069727324749579e-08
+    },
+    {
+      "case": "v4-m5-09",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.3005011485732714e-10,
+      "fd_normalized_error": 1.3005011484041411e-10,
+      "worst_normalized_error": 1.3005011485732714e-10,
+      "second_order_diagnostic_error": 3.980344175434077e-10
+    },
+    {
+      "case": "v4-m3-10",
+      "step": 0.0001,
+      "analytic_normalized_error": 5.0993653744058065e-11,
+      "fd_normalized_error": 5.0993653744058065e-11,
+      "worst_normalized_error": 5.0993653744058065e-11,
+      "second_order_diagnostic_error": 2.23247458247533e-06
+    },
+    {
+      "case": "v4-m3-10",
+      "step": 1e-05,
+      "analytic_normalized_error": 5.187852925025993e-11,
+      "fd_normalized_error": 5.187852925025993e-11,
+      "worst_normalized_error": 5.187852925025993e-11,
+      "second_order_diagnostic_error": 2.2330292615002634e-08
+    },
+    {
+      "case": "v4-m3-10",
+      "step": 1e-06,
+      "analytic_normalized_error": 5.430771943260027e-10,
+      "fd_normalized_error": 5.430771943260027e-10,
+      "worst_normalized_error": 5.430771943260027e-10,
+      "second_order_diagnostic_error": 3.374923673860053e-10
+    },
+    {
+      "case": "v4-m5-10",
+      "step": 0.0001,
+      "analytic_normalized_error": 7.466750547263906e-09,
+      "fd_normalized_error": 7.466750491511542e-09,
+      "worst_normalized_error": 7.466750547263906e-09,
+      "second_order_diagnostic_error": 5.4767060537835317e-05
+    },
+    {
+      "case": "v4-m5-10",
+      "step": 1e-05,
+      "analytic_normalized_error": 3.4501702488437205e-11,
+      "fd_normalized_error": 3.450170248962757e-11,
+      "worst_normalized_error": 3.450170248962757e-11,
+      "second_order_diagnostic_error": 5.476510038363492e-07
+    },
+    {
+      "case": "v4-m5-10",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.1827940283335465e-10,
+      "fd_normalized_error": 3.1827940283335465e-10,
+      "worst_normalized_error": 3.1827940283335465e-10,
+      "second_order_diagnostic_error": 5.4349103944984084e-09
+    },
+    {
+      "case": "v4-m15-00",
+      "step": 0.0001,
+      "analytic_normalized_error": 4.043462786817997e-11,
+      "fd_normalized_error": 4.043462786817997e-11,
+      "worst_normalized_error": 4.043462786817997e-11,
+      "second_order_diagnostic_error": 3.820799636261585e-07
+    },
+    {
+      "case": "v4-m15-00",
+      "step": 1e-05,
+      "analytic_normalized_error": 9.730125594131778e-10,
+      "fd_normalized_error": 9.730125594131778e-10,
+      "worst_normalized_error": 9.730125594131778e-10,
+      "second_order_diagnostic_error": 3.3845552610545226e-09
+    },
+    {
+      "case": "v4-m15-00",
+      "step": 1e-06,
+      "analytic_normalized_error": 6.747054817624054e-09,
+      "fd_normalized_error": 6.747054817624054e-09,
+      "worst_normalized_error": 6.747054817624054e-09,
+      "second_order_diagnostic_error": 4.9186562739444994e-09
+    },
+    {
+      "case": "v4-m3-11",
+      "step": 0.0001,
+      "analytic_normalized_error": 7.68307639731347e-12,
+      "fd_normalized_error": 7.68307639731347e-12,
+      "worst_normalized_error": 7.68307639731347e-12,
+      "second_order_diagnostic_error": 1.3115865356017054e-06
+    },
+    {
+      "case": "v4-m3-11",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.6043666395404443e-11,
+      "fd_normalized_error": 1.6043666395404443e-11,
+      "worst_normalized_error": 1.6043666395404443e-11,
+      "second_order_diagnostic_error": 1.3115066366253814e-08
+    },
+    {
+      "case": "v4-m3-11",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.9533411827209477e-10,
+      "fd_normalized_error": 2.9533411827209477e-10,
+      "worst_normalized_error": 2.9533411827209477e-10,
+      "second_order_diagnostic_error": 2.2594517923302249e-10
+    },
+    {
+      "case": "v4-m5-07",
+      "step": 0.0001,
+      "analytic_normalized_error": 1.3614600361692644e-10,
+      "fd_normalized_error": 1.3614600363546219e-10,
+      "worst_normalized_error": 1.3614600363546219e-10,
+      "second_order_diagnostic_error": 6.70471926580612e-06
+    },
+    {
+      "case": "v4-m5-07",
+      "step": 1e-05,
+      "analytic_normalized_error": 5.667827318589502e-11,
+      "fd_normalized_error": 5.667827318589502e-11,
+      "worst_normalized_error": 5.667827318589502e-11,
+      "second_order_diagnostic_error": 6.705379032205083e-08
+    },
+    {
+      "case": "v4-m5-07",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.1503681788115544e-10,
+      "fd_normalized_error": 3.1503681778190726e-10,
+      "worst_normalized_error": 3.1503681788115544e-10,
+      "second_order_diagnostic_error": 7.133768682581143e-10
+    },
+    {
+      "case": "v4-m9-10",
+      "step": 0.0001,
+      "analytic_normalized_error": 3.4799879991553873e-12,
+      "fd_normalized_error": 3.4799879991553873e-12,
+      "worst_normalized_error": 3.4799879991553873e-12,
+      "second_order_diagnostic_error": 7.25534605755529e-07
+    },
+    {
+      "case": "v4-m9-10",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.6673241740327036e-11,
+      "fd_normalized_error": 2.6673241740327036e-11,
+      "worst_normalized_error": 2.6673241740327036e-11,
+      "second_order_diagnostic_error": 7.256182876780315e-09
+    },
+    {
+      "case": "v4-m9-10",
+      "step": 1e-06,
+      "analytic_normalized_error": 5.296525778727967e-10,
+      "fd_normalized_error": 5.296525778727967e-10,
+      "worst_normalized_error": 5.296525778727967e-10,
+      "second_order_diagnostic_error": 4.213724091872706e-10
+    },
+    {
+      "case": "v4-m9-05",
+      "step": 0.0001,
+      "analytic_normalized_error": 8.190567214455961e-11,
+      "fd_normalized_error": 8.190567213785107e-11,
+      "worst_normalized_error": 8.190567214455961e-11,
+      "second_order_diagnostic_error": 1.8208358603162044e-06
+    },
+    {
+      "case": "v4-m9-05",
+      "step": 1e-05,
+      "analytic_normalized_error": 5.085920573577596e-11,
+      "fd_normalized_error": 5.085920573577596e-11,
+      "worst_normalized_error": 5.085920573577596e-11,
+      "second_order_diagnostic_error": 1.820996327199559e-08
+    },
+    {
+      "case": "v4-m9-05",
+      "step": 1e-06,
+      "analytic_normalized_error": 5.885542053718495e-10,
+      "fd_normalized_error": 5.885542053718495e-10,
+      "worst_normalized_error": 5.885542053718495e-10,
+      "second_order_diagnostic_error": 4.836034350752527e-10
+    },
+    {
+      "case": "v4-m3-05",
+      "step": 0.0001,
+      "analytic_normalized_error": 3.538502824085299e-12,
+      "fd_normalized_error": 3.538502824085299e-12,
+      "worst_normalized_error": 3.538502824085299e-12,
+      "second_order_diagnostic_error": 7.555905004105745e-07
+    },
+    {
+      "case": "v4-m3-05",
+      "step": 1e-05,
+      "analytic_normalized_error": 3.204070342377463e-11,
+      "fd_normalized_error": 3.204070342377463e-11,
+      "worst_normalized_error": 3.204070342377463e-11,
+      "second_order_diagnostic_error": 7.562194440091652e-09
+    },
+    {
+      "case": "v4-m3-05",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.9359625509290606e-10,
+      "fd_normalized_error": 1.9359625505542653e-10,
+      "worst_normalized_error": 1.9359625509290606e-10,
+      "second_order_diagnostic_error": 1.131028604106632e-10
+    },
+    {
+      "case": "v4-m5-05",
+      "step": 0.0001,
+      "analytic_normalized_error": 4.747702231355788e-12,
+      "fd_normalized_error": 4.747702231355788e-12,
+      "worst_normalized_error": 4.747702231355788e-12,
+      "second_order_diagnostic_error": 5.473338834383057e-07
+    },
+    {
+      "case": "v4-m5-05",
+      "step": 1e-05,
+      "analytic_normalized_error": 4.2705061709114034e-11,
+      "fd_normalized_error": 4.2705061709114034e-11,
+      "worst_normalized_error": 4.2705061709114034e-11,
+      "second_order_diagnostic_error": 5.4438783481103314e-09
+    },
+    {
+      "case": "v4-m5-05",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.856299463442624e-10,
+      "fd_normalized_error": 2.856299463442624e-10,
+      "worst_normalized_error": 2.856299463442624e-10,
+      "second_order_diagnostic_error": 2.4573130639679586e-10
+    },
+    {
+      "case": "v4-m3-08",
+      "step": 0.0001,
+      "analytic_normalized_error": 1.1231961638319418e-11,
+      "fd_normalized_error": 1.123196163819326e-11,
+      "worst_normalized_error": 1.1231961638319418e-11,
+      "second_order_diagnostic_error": 3.1642489714907218e-06
+    },
+    {
+      "case": "v4-m3-08",
+      "step": 1e-05,
+      "analytic_normalized_error": 4.908690121041559e-11,
+      "fd_normalized_error": 4.908690121041559e-11,
+      "worst_normalized_error": 4.908690121041559e-11,
+      "second_order_diagnostic_error": 3.165510954401815e-08
+    },
+    {
+      "case": "v4-m3-08",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.3199198118106779e-10,
+      "fd_normalized_error": 2.3199198118106779e-10,
+      "worst_normalized_error": 2.3199198118106779e-10,
+      "second_order_diagnostic_error": 3.486217552565537e-10
+    },
+    {
+      "case": "v4-m9-07",
+      "step": 0.0001,
+      "analytic_normalized_error": 1.1647865872330716e-10,
+      "fd_normalized_error": 1.1647865873687444e-10,
+      "worst_normalized_error": 1.1647865873687444e-10,
+      "second_order_diagnostic_error": 5.4589324804099856e-06
+    },
+    {
+      "case": "v4-m9-07",
+      "step": 1e-05,
+      "analytic_normalized_error": 3.424046551305359e-11,
+      "fd_normalized_error": 3.4240465514226e-11,
+      "worst_normalized_error": 3.4240465514226e-11,
+      "second_order_diagnostic_error": 5.4583539453955366e-08
+    },
+    {
+      "case": "v4-m9-07",
+      "step": 1e-06,
+      "analytic_normalized_error": 5.225340160563974e-10,
+      "fd_normalized_error": 5.225340160563974e-10,
+      "worst_normalized_error": 5.225340160563974e-10,
+      "second_order_diagnostic_error": 9.019911571693954e-10
+    },
+    {
+      "case": "v4-m15-05",
+      "step": 0.0001,
+      "analytic_normalized_error": 3.016596139548966e-10,
+      "fd_normalized_error": 3.016596139548966e-10,
+      "worst_normalized_error": 3.016596139548966e-10,
+      "second_order_diagnostic_error": 7.757366606575555e-06
+    },
+    {
+      "case": "v4-m15-05",
+      "step": 1e-05,
+      "analytic_normalized_error": 3.363326561700575e-10,
+      "fd_normalized_error": 3.363326561700575e-10,
+      "worst_normalized_error": 3.363326561700575e-10,
+      "second_order_diagnostic_error": 7.733807938503645e-08
+    },
+    {
+      "case": "v4-m15-05",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.3532087950185456e-09,
+      "fd_normalized_error": 1.3532087950185456e-09,
+      "worst_normalized_error": 1.3532087950185456e-09,
+      "second_order_diagnostic_error": 1.3604437298919692e-09
+    },
+    {
+      "case": "v4-m15-02",
+      "step": 0.0001,
+      "analytic_normalized_error": 6.352104128228048e-11,
+      "fd_normalized_error": 6.35210412863154e-11,
+      "worst_normalized_error": 6.35210412863154e-11,
+      "second_order_diagnostic_error": 3.4127131127255494e-06
+    },
+    {
+      "case": "v4-m15-02",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.164907392769976e-09,
+      "fd_normalized_error": 1.164907392769976e-09,
+      "worst_normalized_error": 1.164907392769976e-09,
+      "second_order_diagnostic_error": 3.401102535524201e-08
+    },
+    {
+      "case": "v4-m15-02",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.1485772992425591e-08,
+      "fd_normalized_error": 1.1485772992425591e-08,
+      "worst_normalized_error": 1.1485772992425591e-08,
+      "second_order_diagnostic_error": 7.221747068408835e-09
+    },
+    {
+      "case": "v4-m15-08",
+      "step": 0.0001,
+      "analytic_normalized_error": 5.176520323502132e-11,
+      "fd_normalized_error": 5.176520323502132e-11,
+      "worst_normalized_error": 5.176520323502132e-11,
+      "second_order_diagnostic_error": 4.0283760932569024e-07
+    },
+    {
+      "case": "v4-m15-08",
+      "step": 1e-05,
+      "analytic_normalized_error": 3.7647301942556055e-10,
+      "fd_normalized_error": 3.7647301942556055e-10,
+      "worst_normalized_error": 3.7647301942556055e-10,
+      "second_order_diagnostic_error": 4.074156567668297e-09
+    },
+    {
+      "case": "v4-m15-08",
+      "step": 1e-06,
+      "analytic_normalized_error": 8.961431041676349e-10,
+      "fd_normalized_error": 8.961431041676349e-10,
+      "worst_normalized_error": 8.961431041676349e-10,
+      "second_order_diagnostic_error": 9.160924241413682e-10
+    },
+    {
+      "case": "v4-m3-02",
+      "step": 0.0001,
+      "analytic_normalized_error": 7.366551812992839e-12,
+      "fd_normalized_error": 7.366551812992839e-12,
+      "worst_normalized_error": 7.366551812992839e-12,
+      "second_order_diagnostic_error": 6.400544851719057e-07
+    },
+    {
+      "case": "v4-m3-02",
+      "step": 1e-05,
+      "analytic_normalized_error": 5.579997575111406e-11,
+      "fd_normalized_error": 5.579997575111406e-11,
+      "worst_normalized_error": 5.579997575111406e-11,
+      "second_order_diagnostic_error": 6.414602349291698e-09
+    },
+    {
+      "case": "v4-m3-02",
+      "step": 1e-06,
+      "analytic_normalized_error": 4.540925413465402e-10,
+      "fd_normalized_error": 4.540925413465402e-10,
+      "worst_normalized_error": 4.540925413465402e-10,
+      "second_order_diagnostic_error": 3.9164249621137515e-10
+    },
+    {
+      "case": "v4-m9-09",
+      "step": 0.0001,
+      "analytic_normalized_error": 3.134381643121742e-12,
+      "fd_normalized_error": 3.134381643121742e-12,
+      "worst_normalized_error": 3.134381643121742e-12,
+      "second_order_diagnostic_error": 6.180606563210844e-07
+    },
+    {
+      "case": "v4-m9-09",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.8976514803981104e-11,
+      "fd_normalized_error": 1.8976514803981104e-11,
+      "worst_normalized_error": 1.8976514803981104e-11,
+      "second_order_diagnostic_error": 6.173760946914797e-09
+    },
+    {
+      "case": "v4-m9-09",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.420337346682345e-10,
+      "fd_normalized_error": 3.420337346682345e-10,
+      "worst_normalized_error": 3.420337346682345e-10,
+      "second_order_diagnostic_error": 2.0932744426716e-10
+    },
+    {
+      "case": "v4-m9-00",
+      "step": 0.0001,
+      "analytic_normalized_error": 1.841521379830624e-11,
+      "fd_normalized_error": 1.841521379830624e-11,
+      "worst_normalized_error": 1.841521379830624e-11,
+      "second_order_diagnostic_error": 1.868223483035831e-06
+    },
+    {
+      "case": "v4-m9-00",
+      "step": 1e-05,
+      "analytic_normalized_error": 9.803236000749393e-11,
+      "fd_normalized_error": 9.803236000749393e-11,
+      "worst_normalized_error": 9.803236000749393e-11,
+      "second_order_diagnostic_error": 1.8723556081162386e-08
+    },
+    {
+      "case": "v4-m9-00",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.481107624381252e-10,
+      "fd_normalized_error": 3.481107624381252e-10,
+      "worst_normalized_error": 3.481107624381252e-10,
+      "second_order_diagnostic_error": 2.3708845997560957e-10
+    },
+    {
+      "case": "v4-m5-08",
+      "step": 0.0001,
+      "analytic_normalized_error": 5.2919613136026555e-12,
+      "fd_normalized_error": 5.2919613136026555e-12,
+      "worst_normalized_error": 5.2919613136026555e-12,
+      "second_order_diagnostic_error": 8.746955702439854e-07
+    },
+    {
+      "case": "v4-m5-08",
+      "step": 1e-05,
+      "analytic_normalized_error": 7.483980102307441e-11,
+      "fd_normalized_error": 7.483980102307441e-11,
+      "worst_normalized_error": 7.483980102307441e-11,
+      "second_order_diagnostic_error": 8.764932360126574e-09
+    },
+    {
+      "case": "v4-m5-08",
+      "step": 1e-06,
+      "analytic_normalized_error": 4.122559793540148e-10,
+      "fd_normalized_error": 4.122559793540148e-10,
+      "worst_normalized_error": 4.122559793540148e-10,
+      "second_order_diagnostic_error": 3.4286704031494253e-10
+    },
+    {
+      "case": "v4-m5-03",
+      "step": 0.0001,
+      "analytic_normalized_error": 1.0647966972645443e-11,
+      "fd_normalized_error": 1.0647966972758824e-11,
+      "worst_normalized_error": 1.0647966972758824e-11,
+      "second_order_diagnostic_error": 1.547222354114726e-06
+    },
+    {
+      "case": "v4-m5-03",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.250873715907753e-11,
+      "fd_normalized_error": 2.2508737158570888e-11,
+      "worst_normalized_error": 2.250873715907753e-11,
+      "second_order_diagnostic_error": 1.547312611062395e-08
+    },
+    {
+      "case": "v4-m5-03",
+      "step": 1e-06,
+      "analytic_normalized_error": 1.904439939082181e-10,
+      "fd_normalized_error": 1.904439939082181e-10,
+      "worst_normalized_error": 1.904439939082181e-10,
+      "second_order_diagnostic_error": 1.805988438239423e-10
+    },
+    {
+      "case": "v4-m9-08",
+      "step": 0.0001,
+      "analytic_normalized_error": 6.257883100602157e-12,
+      "fd_normalized_error": 6.257883100602157e-12,
+      "worst_normalized_error": 6.257883100602157e-12,
+      "second_order_diagnostic_error": 6.389484469293549e-07
+    },
+    {
+      "case": "v4-m9-08",
+      "step": 1e-05,
+      "analytic_normalized_error": 4.5925874214702844e-11,
+      "fd_normalized_error": 4.5925874214702844e-11,
+      "worst_normalized_error": 4.5925874214702844e-11,
+      "second_order_diagnostic_error": 6.402625762902403e-09
+    },
+    {
+      "case": "v4-m9-08",
+      "step": 1e-06,
+      "analytic_normalized_error": 4.983310430972665e-10,
+      "fd_normalized_error": 4.983310430972665e-10,
+      "worst_normalized_error": 4.983310430972665e-10,
+      "second_order_diagnostic_error": 3.708288676129712e-10
+    },
+    {
+      "case": "v4-m15-03",
+      "step": 0.0001,
+      "analytic_normalized_error": 2.2221446904779896e-11,
+      "fd_normalized_error": 2.2221446904779896e-11,
+      "worst_normalized_error": 2.2221446904779896e-11,
+      "second_order_diagnostic_error": 2.70728908946527e-06
+    },
+    {
+      "case": "v4-m15-03",
+      "step": 1e-05,
+      "analytic_normalized_error": 1.8555512681928121e-10,
+      "fd_normalized_error": 1.8555512681928121e-10,
+      "worst_normalized_error": 1.8555512681928121e-10,
+      "second_order_diagnostic_error": 2.7216189746326336e-08
+    },
+    {
+      "case": "v4-m15-03",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.263106202438081e-09,
+      "fd_normalized_error": 2.263106202438081e-09,
+      "worst_normalized_error": 2.263106202438081e-09,
+      "second_order_diagnostic_error": 1.4670849673992237e-09
+    },
+    {
+      "case": "v4-m5-02",
+      "step": 0.0001,
+      "analytic_normalized_error": 9.122702593344911e-13,
+      "fd_normalized_error": 9.122702593344911e-13,
+      "worst_normalized_error": 9.122702593344911e-13,
+      "second_order_diagnostic_error": 2.1642494396623135e-07
+    },
+    {
+      "case": "v4-m5-02",
+      "step": 1e-05,
+      "analytic_normalized_error": 7.657409428762918e-12,
+      "fd_normalized_error": 7.657409428762918e-12,
+      "worst_normalized_error": 7.657409428762918e-12,
+      "second_order_diagnostic_error": 2.1631064717198e-09
+    },
+    {
+      "case": "v4-m5-02",
+      "step": 1e-06,
+      "analytic_normalized_error": 2.1331247879174953e-10,
+      "fd_normalized_error": 2.1331247879174953e-10,
+      "worst_normalized_error": 2.1331247879174953e-10,
+      "second_order_diagnostic_error": 1.7644957717166676e-10
+    },
+    {
+      "case": "v4-m15-11",
+      "step": 0.0001,
+      "analytic_normalized_error": 3.780825920006647e-09,
+      "fd_normalized_error": 3.780825905712002e-09,
+      "worst_normalized_error": 3.780825920006647e-09,
+      "second_order_diagnostic_error": 2.722762295864839e-05
+    },
+    {
+      "case": "v4-m15-11",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.8164076081707878e-09,
+      "fd_normalized_error": 2.8164076161029395e-09,
+      "worst_normalized_error": 2.8164076161029395e-09,
+      "second_order_diagnostic_error": 2.7135632296059557e-07
+    },
+    {
+      "case": "v4-m15-11",
+      "step": 1e-06,
+      "analytic_normalized_error": 4.233190331603964e-08,
+      "fd_normalized_error": 4.233190331603964e-08,
+      "worst_normalized_error": 4.233190331603964e-08,
+      "second_order_diagnostic_error": 3.544331639293574e-08
+    },
+    {
+      "case": "v4-m5-11",
+      "step": 0.0001,
+      "analytic_normalized_error": 6.733434836196708e-12,
+      "fd_normalized_error": 6.733434836242047e-12,
+      "worst_normalized_error": 6.733434836242047e-12,
+      "second_order_diagnostic_error": 1.0885884143432855e-06
+    },
+    {
+      "case": "v4-m5-11",
+      "step": 1e-05,
+      "analytic_normalized_error": 3.8446357208954396e-11,
+      "fd_normalized_error": 3.8446357208954396e-11,
+      "worst_normalized_error": 3.8446357208954396e-11,
+      "second_order_diagnostic_error": 1.0877407136947836e-08
+    },
+    {
+      "case": "v4-m5-11",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.994554294080912e-10,
+      "fd_normalized_error": 3.9945542924852657e-10,
+      "worst_normalized_error": 3.994554294080912e-10,
+      "second_order_diagnostic_error": 1.6682695370287095e-10
+    },
+    {
+      "case": "v4-m3-06",
+      "step": 0.0001,
+      "analytic_normalized_error": 6.345818315267593e-11,
+      "fd_normalized_error": 6.345818315267593e-11,
+      "worst_normalized_error": 6.345818315267593e-11,
+      "second_order_diagnostic_error": 4.490522417743836e-06
+    },
+    {
+      "case": "v4-m3-06",
+      "step": 1e-05,
+      "analytic_normalized_error": 2.0953461188355504e-11,
+      "fd_normalized_error": 2.0953461188355504e-11,
+      "worst_normalized_error": 2.0953461188355504e-11,
+      "second_order_diagnostic_error": 4.488904242760938e-08
+    },
+    {
+      "case": "v4-m3-06",
+      "step": 1e-06,
+      "analytic_normalized_error": 3.333700815399965e-10,
+      "fd_normalized_error": 3.333700815399965e-10,
+      "worst_normalized_error": 3.333700815399965e-10,
+      "second_order_diagnostic_error": 2.8219573899868067e-10
+    }
+  ],
+  "spotchecks": [
+    {
+      "case": "v4-m9-02",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.8223509698733585,
+        0.63555423959031,
+        0.25673513161395267,
+        0.10392981426688763,
+        0.9800284762670898,
+        0.013676642299438213
+      ],
+      "value": 0.22337834302918547,
+      "case_definition": {
+        "id": "v4-m9-02",
+        "harmonics": 9,
+        "params": [
+          0.8225509698733585,
+          0.63555423959031,
+          0.25673513161395267,
+          0.10392981426688763,
+          0.9800284762670898,
+          0.013676642299438213
+        ],
+        "wavelength": 1.7623860267722329,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.22337834302918547,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m9-02",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.8224509698733585,
+        0.63555423959031,
+        0.25673513161395267,
+        0.10392981426688763,
+        0.9800284762670898,
+        0.013676642299438213
+      ],
+      "value": 0.22350897246014684,
+      "case_definition": {
+        "id": "v4-m9-02",
+        "harmonics": 9,
+        "params": [
+          0.8225509698733585,
+          0.63555423959031,
+          0.25673513161395267,
+          0.10392981426688763,
+          0.9800284762670898,
+          0.013676642299438213
+        ],
+        "wavelength": 1.7623860267722329,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.22350897246014684,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m9-02",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.8226509698733585,
+        0.63555423959031,
+        0.25673513161395267,
+        0.10392981426688763,
+        0.9800284762670898,
+        0.013676642299438213
+      ],
+      "value": 0.2237695389725998,
+      "case_definition": {
+        "id": "v4-m9-02",
+        "harmonics": 9,
+        "params": [
+          0.8225509698733585,
+          0.63555423959031,
+          0.25673513161395267,
+          0.10392981426688763,
+          0.9800284762670898,
+          0.013676642299438213
+        ],
+        "wavelength": 1.7623860267722329,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.2237695389725998,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m9-02",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.8227509698733585,
+        0.63555423959031,
+        0.25673513161395267,
+        0.10392981426688763,
+        0.9800284762670898,
+        0.013676642299438213
+      ],
+      "value": 0.22389947588964237,
+      "case_definition": {
+        "id": "v4-m9-02",
+        "harmonics": 9,
+        "params": [
+          0.8225509698733585,
+          0.63555423959031,
+          0.25673513161395267,
+          0.10392981426688763,
+          0.9800284762670898,
+          0.013676642299438213
+        ],
+        "wavelength": 1.7623860267722329,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.22389947588964237,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m9-02",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.8225509698733585,
+        0.63555423959031,
+        0.25673513161395267,
+        0.10372981426688763,
+        0.9800284762670898,
+        0.013676642299438213
+      ],
+      "value": 0.22289435343032798,
+      "case_definition": {
+        "id": "v4-m9-02",
+        "harmonics": 9,
+        "params": [
+          0.8225509698733585,
+          0.63555423959031,
+          0.25673513161395267,
+          0.10392981426688763,
+          0.9800284762670898,
+          0.013676642299438213
+        ],
+        "wavelength": 1.7623860267722329,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.22289435343032798,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m9-02",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.8225509698733585,
+        0.63555423959031,
+        0.25673513161395267,
+        0.10382981426688763,
+        0.9800284762670898,
+        0.013676642299438213
+      ],
+      "value": 0.22326707622889774,
+      "case_definition": {
+        "id": "v4-m9-02",
+        "harmonics": 9,
+        "params": [
+          0.8225509698733585,
+          0.63555423959031,
+          0.25673513161395267,
+          0.10392981426688763,
+          0.9800284762670898,
+          0.013676642299438213
+        ],
+        "wavelength": 1.7623860267722329,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.22326707622889774,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m9-02",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.8225509698733585,
+        0.63555423959031,
+        0.25673513161395267,
+        0.10402981426688764,
+        0.9800284762670898,
+        0.013676642299438213
+      ],
+      "value": 0.2240112342696236,
+      "case_definition": {
+        "id": "v4-m9-02",
+        "harmonics": 9,
+        "params": [
+          0.8225509698733585,
+          0.63555423959031,
+          0.25673513161395267,
+          0.10392981426688763,
+          0.9800284762670898,
+          0.013676642299438213
+        ],
+        "wavelength": 1.7623860267722329,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.2240112342696236,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m9-02",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.8225509698733585,
+        0.63555423959031,
+        0.25673513161395267,
+        0.10412981426688764,
+        0.9800284762670898,
+        0.013676642299438213
+      ],
+      "value": 0.22438266176109534,
+      "case_definition": {
+        "id": "v4-m9-02",
+        "harmonics": 9,
+        "params": [
+          0.8225509698733585,
+          0.63555423959031,
+          0.25673513161395267,
+          0.10392981426688763,
+          0.9800284762670898,
+          0.013676642299438213
+        ],
+        "wavelength": 1.7623860267722329,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.22438266176109534,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-04",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.2620419233235419,
+        0.6373631716333487,
+        0.5943489549682287,
+        0.47984897811130345,
+        0.5440400361815169,
+        0.5368009858406211
+      ],
+      "value": 0.2871530825577584,
+      "case_definition": {
+        "id": "v4-m5-04",
+        "harmonics": 5,
+        "params": [
+          0.2622419233235419,
+          0.6373631716333487,
+          0.5943489549682287,
+          0.47984897811130345,
+          0.5440400361815169,
+          0.5368009858406211
+        ],
+        "wavelength": 1.6081957201555277,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.2871530825577584,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-04",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.2621419233235419,
+        0.6373631716333487,
+        0.5943489549682287,
+        0.47984897811130345,
+        0.5440400361815169,
+        0.5368009858406211
+      ],
+      "value": 0.2871054709809266,
+      "case_definition": {
+        "id": "v4-m5-04",
+        "harmonics": 5,
+        "params": [
+          0.2622419233235419,
+          0.6373631716333487,
+          0.5943489549682287,
+          0.47984897811130345,
+          0.5440400361815169,
+          0.5368009858406211
+        ],
+        "wavelength": 1.6081957201555277,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.2871054709809266,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-04",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.2623419233235419,
+        0.6373631716333487,
+        0.5943489549682287,
+        0.47984897811130345,
+        0.5440400361815169,
+        0.5368009858406211
+      ],
+      "value": 0.28700995072972374,
+      "case_definition": {
+        "id": "v4-m5-04",
+        "harmonics": 5,
+        "params": [
+          0.2622419233235419,
+          0.6373631716333487,
+          0.5943489549682287,
+          0.47984897811130345,
+          0.5440400361815169,
+          0.5368009858406211
+        ],
+        "wavelength": 1.6081957201555277,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.28700995072972374,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-04",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.2624419233235419,
+        0.6373631716333487,
+        0.5943489549682287,
+        0.47984897811130345,
+        0.5440400361815169,
+        0.5368009858406211
+      ],
+      "value": 0.28696204207759346,
+      "case_definition": {
+        "id": "v4-m5-04",
+        "harmonics": 5,
+        "params": [
+          0.2622419233235419,
+          0.6373631716333487,
+          0.5943489549682287,
+          0.47984897811130345,
+          0.5440400361815169,
+          0.5368009858406211
+        ],
+        "wavelength": 1.6081957201555277,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.28696204207759346,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-04",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.2622419233235419,
+        0.6373631716333487,
+        0.5943489549682287,
+        0.47964897811130347,
+        0.5440400361815169,
+        0.5368009858406211
+      ],
+      "value": 0.28654292754497235,
+      "case_definition": {
+        "id": "v4-m5-04",
+        "harmonics": 5,
+        "params": [
+          0.2622419233235419,
+          0.6373631716333487,
+          0.5943489549682287,
+          0.47984897811130345,
+          0.5440400361815169,
+          0.5368009858406211
+        ],
+        "wavelength": 1.6081957201555277,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.28654292754497235,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-04",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.2622419233235419,
+        0.6373631716333487,
+        0.5943489549682287,
+        0.47974897811130346,
+        0.5440400361815169,
+        0.5368009858406211
+      ],
+      "value": 0.2868004283531694,
+      "case_definition": {
+        "id": "v4-m5-04",
+        "harmonics": 5,
+        "params": [
+          0.2622419233235419,
+          0.6373631716333487,
+          0.5943489549682287,
+          0.47984897811130345,
+          0.5440400361815169,
+          0.5368009858406211
+        ],
+        "wavelength": 1.6081957201555277,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.2868004283531694,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-04",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.2622419233235419,
+        0.6373631716333487,
+        0.5943489549682287,
+        0.47994897811130344,
+        0.5440400361815169,
+        0.5368009858406211
+      ],
+      "value": 0.28731492305581097,
+      "case_definition": {
+        "id": "v4-m5-04",
+        "harmonics": 5,
+        "params": [
+          0.2622419233235419,
+          0.6373631716333487,
+          0.5943489549682287,
+          0.47984897811130345,
+          0.5440400361815169,
+          0.5368009858406211
+        ],
+        "wavelength": 1.6081957201555277,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.28731492305581097,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-04",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.2622419233235419,
+        0.6373631716333487,
+        0.5943489549682287,
+        0.4800489781113034,
+        0.5440400361815169,
+        0.5368009858406211
+      ],
+      "value": 0.28757191588724995,
+      "case_definition": {
+        "id": "v4-m5-04",
+        "harmonics": 5,
+        "params": [
+          0.2622419233235419,
+          0.6373631716333487,
+          0.5943489549682287,
+          0.47984897811130345,
+          0.5440400361815169,
+          0.5368009858406211
+        ],
+        "wavelength": 1.6081957201555277,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.28757191588724995,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-10",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.16683327733609504,
+        0.1561837879648683,
+        0.7538933867319585,
+        0.2401803320289283,
+        0.15153055783778513,
+        0.1748038131756633
+      ],
+      "value": 0.06998462656045783,
+      "case_definition": {
+        "id": "v4-m5-10",
+        "harmonics": 5,
+        "params": [
+          0.16703327733609505,
+          0.1561837879648683,
+          0.7538933867319585,
+          0.2401803320289283,
+          0.15153055783778513,
+          0.1748038131756633
+        ],
+        "wavelength": 1.7028935886270467,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.06998462656045783,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-10",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.16693327733609506,
+        0.1561837879648683,
+        0.7538933867319585,
+        0.2401803320289283,
+        0.15153055783778513,
+        0.1748038131756633
+      ],
+      "value": 0.07000688132213062,
+      "case_definition": {
+        "id": "v4-m5-10",
+        "harmonics": 5,
+        "params": [
+          0.16703327733609505,
+          0.1561837879648683,
+          0.7538933867319585,
+          0.2401803320289283,
+          0.15153055783778513,
+          0.1748038131756633
+        ],
+        "wavelength": 1.7028935886270467,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.07000688132213062,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-10",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.16713327733609504,
+        0.1561837879648683,
+        0.7538933867319585,
+        0.2401803320289283,
+        0.15153055783778513,
+        0.1748038131756633
+      ],
+      "value": 0.07005144222071777,
+      "case_definition": {
+        "id": "v4-m5-10",
+        "harmonics": 5,
+        "params": [
+          0.16703327733609505,
+          0.1561837879648683,
+          0.7538933867319585,
+          0.2401803320289283,
+          0.15153055783778513,
+          0.1748038131756633
+        ],
+        "wavelength": 1.7028935886270467,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.07005144222071777,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-10",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.16723327733609505,
+        0.1561837879648683,
+        0.7538933867319585,
+        0.2401803320289283,
+        0.15153055783778513,
+        0.1748038131756633
+      ],
+      "value": 0.07007374855357008,
+      "case_definition": {
+        "id": "v4-m5-10",
+        "harmonics": 5,
+        "params": [
+          0.16703327733609505,
+          0.1561837879648683,
+          0.7538933867319585,
+          0.2401803320289283,
+          0.15153055783778513,
+          0.1748038131756633
+        ],
+        "wavelength": 1.7028935886270467,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.07007374855357008,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-10",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.16703327733609505,
+        0.1561837879648683,
+        0.7538933867319585,
+        0.2399803320289283,
+        0.15153055783778513,
+        0.1748038131756633
+      ],
+      "value": 0.06991911998277743,
+      "case_definition": {
+        "id": "v4-m5-10",
+        "harmonics": 5,
+        "params": [
+          0.16703327733609505,
+          0.1561837879648683,
+          0.7538933867319585,
+          0.2401803320289283,
+          0.15153055783778513,
+          0.1748038131756633
+        ],
+        "wavelength": 1.7028935886270467,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.06991911998277743,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-10",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.16703327733609505,
+        0.1561837879648683,
+        0.7538933867319585,
+        0.2400803320289283,
+        0.15153055783778513,
+        0.1748038131756633
+      ],
+      "value": 0.06997415218044233,
+      "case_definition": {
+        "id": "v4-m5-10",
+        "harmonics": 5,
+        "params": [
+          0.16703327733609505,
+          0.1561837879648683,
+          0.7538933867319585,
+          0.2401803320289283,
+          0.15153055783778513,
+          0.1748038131756633
+        ],
+        "wavelength": 1.7028935886270467,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.06997415218044233,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-10",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.16703327733609505,
+        0.1561837879648683,
+        0.7538933867319585,
+        0.2402803320289283,
+        0.15153055783778513,
+        0.1748038131756633
+      ],
+      "value": 0.07008412267216324,
+      "case_definition": {
+        "id": "v4-m5-10",
+        "harmonics": 5,
+        "params": [
+          0.16703327733609505,
+          0.1561837879648683,
+          0.7538933867319585,
+          0.2401803320289283,
+          0.15153055783778513,
+          0.1748038131756633
+        ],
+        "wavelength": 1.7028935886270467,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.07008412267216324,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m5-10",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.16703327733609505,
+        0.1561837879648683,
+        0.7538933867319585,
+        0.2403803320289283,
+        0.15153055783778513,
+        0.1748038131756633
+      ],
+      "value": 0.07013906037050462,
+      "case_definition": {
+        "id": "v4-m5-10",
+        "harmonics": 5,
+        "params": [
+          0.16703327733609505,
+          0.1561837879648683,
+          0.7538933867319585,
+          0.2401803320289283,
+          0.15153055783778513,
+          0.1748038131756633
+        ],
+        "wavelength": 1.7028935886270467,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.07013906037050462,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m15-08",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.47950997497883163,
+        0.39249200693188646,
+        0.65094421524569,
+        0.3509902065622582,
+        0.8449290768700077,
+        0.38549334960877735
+      ],
+      "value": 0.02805266237754598,
+      "case_definition": {
+        "id": "v4-m15-08",
+        "harmonics": 15,
+        "params": [
+          0.4797099749788316,
+          0.39249200693188646,
+          0.65094421524569,
+          0.3509902065622582,
+          0.8449290768700077,
+          0.38549334960877735
+        ],
+        "wavelength": 1.628637900502765,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.02805266237754598,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m15-08",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.4796099749788316,
+        0.39249200693188646,
+        0.65094421524569,
+        0.3509902065622582,
+        0.8449290768700077,
+        0.38549334960877735
+      ],
+      "value": 0.02800458315342574,
+      "case_definition": {
+        "id": "v4-m15-08",
+        "harmonics": 15,
+        "params": [
+          0.4797099749788316,
+          0.39249200693188646,
+          0.65094421524569,
+          0.3509902065622582,
+          0.8449290768700077,
+          0.38549334960877735
+        ],
+        "wavelength": 1.628637900502765,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.02800458315342574,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m15-08",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.4798099749788316,
+        0.39249200693188646,
+        0.65094421524569,
+        0.3509902065622582,
+        0.8449290768700077,
+        0.38549334960877735
+      ],
+      "value": 0.027908494050572736,
+      "case_definition": {
+        "id": "v4-m15-08",
+        "harmonics": 15,
+        "params": [
+          0.4797099749788316,
+          0.39249200693188646,
+          0.65094421524569,
+          0.3509902065622582,
+          0.8449290768700077,
+          0.38549334960877735
+        ],
+        "wavelength": 1.628637900502765,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.027908494050572736,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m15-08",
+      "component": 0,
+      "step": 0.0001,
+      "point": [
+        0.4799099749788316,
+        0.39249200693188646,
+        0.65094421524569,
+        0.3509902065622582,
+        0.8449290768700077,
+        0.38549334960877735
+      ],
+      "value": 0.027860484655231506,
+      "case_definition": {
+        "id": "v4-m15-08",
+        "harmonics": 15,
+        "params": [
+          0.4797099749788316,
+          0.39249200693188646,
+          0.65094421524569,
+          0.3509902065622582,
+          0.8449290768700077,
+          0.38549334960877735
+        ],
+        "wavelength": 1.628637900502765,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.027860484655231506,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m15-08",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.4797099749788316,
+        0.39249200693188646,
+        0.65094421524569,
+        0.35079020656225823,
+        0.8449290768700077,
+        0.38549334960877735
+      ],
+      "value": 0.028004876394533192,
+      "case_definition": {
+        "id": "v4-m15-08",
+        "harmonics": 15,
+        "params": [
+          0.4797099749788316,
+          0.39249200693188646,
+          0.65094421524569,
+          0.3509902065622582,
+          0.8449290768700077,
+          0.38549334960877735
+        ],
+        "wavelength": 1.628637900502765,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.028004876394533192,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m15-08",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.4797099749788316,
+        0.39249200693188646,
+        0.65094421524569,
+        0.3508902065622582,
+        0.8449290768700077,
+        0.38549334960877735
+      ],
+      "value": 0.02798068480370593,
+      "case_definition": {
+        "id": "v4-m15-08",
+        "harmonics": 15,
+        "params": [
+          0.4797099749788316,
+          0.39249200693188646,
+          0.65094421524569,
+          0.3509902065622582,
+          0.8449290768700077,
+          0.38549334960877735
+        ],
+        "wavelength": 1.628637900502765,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.02798068480370593,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m15-08",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.4797099749788316,
+        0.39249200693188646,
+        0.65094421524569,
+        0.3510902065622582,
+        0.8449290768700077,
+        0.38549334960877735
+      ],
+      "value": 0.027932402901316336,
+      "case_definition": {
+        "id": "v4-m15-08",
+        "harmonics": 15,
+        "params": [
+          0.4797099749788316,
+          0.39249200693188646,
+          0.65094421524569,
+          0.3509902065622582,
+          0.8449290768700077,
+          0.38549334960877735
+        ],
+        "wavelength": 1.628637900502765,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.027932402901316336,
+      "absolute_error": 0.0
+    },
+    {
+      "case": "v4-m15-08",
+      "component": 3,
+      "step": 0.0001,
+      "point": [
+        0.4797099749788316,
+        0.39249200693188646,
+        0.65094421524569,
+        0.3511902065622582,
+        0.8449290768700077,
+        0.38549334960877735
+      ],
+      "value": 0.027908312642718088,
+      "case_definition": {
+        "id": "v4-m15-08",
+        "harmonics": 15,
+        "params": [
+          0.4797099749788316,
+          0.39249200693188646,
+          0.65094421524569,
+          0.3509902065622582,
+          0.8449290768700077,
+          0.38549334960877735
+        ],
+        "wavelength": 1.628637900502765,
+        "period": 2.4,
+        "layer_height": 0.3,
+        "material_index": 2.0,
+        "target_order": 1
+      },
+      "fresh_dense_value": 0.027908312642718088,
+      "absolute_error": 0.0
+    }
+  ],
+  "routing_failure": {
+    "scope": "parent transcription of observed tool output, not an original process logfile",
+    "path": "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/evidence/confirmation-v4-summary-routing-failure.json",
+    "sha256": "ef6ebf4b80f12b3fc9e1b94097e65a976e3cea65b9b27e4915d5e7feef43a68d",
+    "effect": "direct script import failed; supported module invocation succeeded without source/input/threshold changes"
+  },
+  "native_value_and_gradient_identical_across_all_seven_repeats": true
+}

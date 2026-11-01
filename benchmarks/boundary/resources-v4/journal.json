@@ -1,0 +1,82 @@
+[
+  {
+    "method": "native",
+    "command": [
+      "/private/tmp/engineering-photon-runtime/bin/python",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/scripts/boundary_resources.py",
+      "--method",
+      "native",
+      "--cases",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/confirmation-v4/inputs.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/resources-v4/native.json"
+    ],
+    "returncode": 0,
+    "elapsed_for_budget_only": 0.9579628749634139,
+    "scope": "fresh process resource probe; shared host while Meep runs, no performance claim"
+  },
+  {
+    "method": "legacy",
+    "command": [
+      "/private/tmp/engineering-photon-runtime/bin/python",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/scripts/boundary_resources.py",
+      "--method",
+      "legacy",
+      "--cases",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/confirmation-v4/inputs.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/resources-v4/legacy.json"
+    ],
+    "returncode": 0,
+    "elapsed_for_budget_only": 0.7637360420194454,
+    "scope": "fresh process resource probe; shared host while Meep runs, no performance claim"
+  },
+  {
+    "method": "meent_torch",
+    "command": [
+      "/private/tmp/engineering-photon-runtime/bin/python",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/scripts/boundary_resources.py",
+      "--method",
+      "meent_torch",
+      "--cases",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/confirmation-v4/inputs.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/resources-v4/meent_torch.json"
+    ],
+    "returncode": 0,
+    "elapsed_for_budget_only": 5.556993707956281,
+    "scope": "fresh process resource probe; shared host while Meep runs, no performance claim"
+  },
+  {
+    "method": "meent_jax_jit",
+    "command": [
+      "/private/tmp/engineering-photon-runtime/bin/python",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/scripts/boundary_resources.py",
+      "--method",
+      "meent_jax_jit",
+      "--cases",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/confirmation-v4/inputs.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/resources-v4/meent_jax_jit.json"
+    ],
+    "returncode": 0,
+    "elapsed_for_budget_only": 4.440278916968964,
+    "scope": "fresh process resource probe; shared host while Meep runs, no performance claim"
+  },
+  {
+    "method": "grcwa_autograd",
+    "command": [
+      "/private/tmp/engineering-photon-runtime/bin/python",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/scripts/boundary_resources.py",
+      "--method",
+      "grcwa_autograd",
+      "--cases",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/confirmation-v4/inputs.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith/benchmarks/boundary/resources-v4/grcwa_autograd.json"
+    ],
+    "returncode": 0,
+    "elapsed_for_budget_only": 1.5978489160188474,
+    "scope": "fresh process resource probe; shared host while Meep runs, no performance claim"
+  }
+]

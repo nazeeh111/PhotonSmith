@@ -1,0 +1,18 @@
+{
+  "wavelength": 1.73,
+  "material_index": 2.15,
+  "params": [
+    0.21405269925207832,
+    0.3483642058624362,
+    0.15,
+    0.7645370577906339,
+    0.7473479769205718,
+    0.10620109076448102
+  ],
+  "period": 2.4,
+  "layer_height": 0.3,
+  "name": "PhotonSmith changed-material reverse-order design",
+  "target_order": -1,
+  "polarization": "TE",
+  "provenance": "Actual corrected-source20iteration optimization, retained in evidence/corrected-end-to-end-v1.json; computational device, not fabricated"
+}

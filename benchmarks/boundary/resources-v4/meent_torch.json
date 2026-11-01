@@ -1,0 +1,42 @@
+{
+  "method": "meent_torch",
+  "harmonics": 15,
+  "case_id": "v4-m15-01",
+  "params": [
+    0.7474700643944064,
+    0.6258239926674195,
+    0.4821748746230919,
+    0.19130833821959914,
+    0.877005130994254,
+    0.9110477599891401
+  ],
+  "wavelength": 1.2846050477557238,
+  "input_manifest_sha256": "db8d5d5ff4abe5146af409474424ad65bd1573ef72ab91cc15e3d1c445e10bd6",
+  "runs": 10,
+  "finite": true,
+  "max_rss_bytes": 293371904,
+  "preimport_max_rss_bytes": 21463040,
+  "scope": "fresh process; imports and JIT included; process high-water mark, not allocation attributable solely to solver",
+  "threads_before": {
+    "status": "observed",
+    "total_process_threads": 1,
+    "running_process_threads": 1,
+    "scope": "this process only, includes idle runtime workers"
+  },
+  "threads_after": {
+    "status": "observed",
+    "total_process_threads": 3,
+    "running_process_threads": 1,
+    "scope": "this process only, includes idle runtime workers"
+  },
+  "threadpools": [
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libomp",
+      "filepath": "/private/tmp/engineering-photon-runtime/lib/python3.12/site-packages/torch/lib/libomp.dylib",
+      "version": null
+    }
+  ]
+}

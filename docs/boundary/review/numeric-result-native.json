@@ -1,0 +1,347 @@
+{
+  "python_reference_sha256": "8cb56b74d338e261b4880537be898bca6015fde0dc5a9e89e9bdbf3bfb114215",
+  "native_source_manifest": "native-reviewed-files.json",
+  "check": "independent transfer/Frechet comparison at repeated and zero modal eigenvalues",
+  "records": [
+    {
+      "family": "triple_degenerate",
+      "case": 0,
+      "target": -1,
+      "value_error": 2.5478751053409354e-18,
+      "gradient_error": 2.710505431213761e-18,
+      "fd_errors": [
+        8.494929911416482e-12,
+        3.5730966796432284e-13,
+        1.0972777591058969e-12
+      ],
+      "balance_error": 1.7763568394002505e-15,
+      "residual": 4.914117262007523e-16
+    },
+    {
+      "family": "triple_degenerate",
+      "case": 1,
+      "target": 0,
+      "value_error": 2.220446049250313e-15,
+      "gradient_error": 1.3877787807814457e-16,
+      "fd_errors": [
+        1.9168333587060715e-11,
+        2.514988217683367e-12,
+        7.51915529839664e-10
+      ],
+      "balance_error": 6.661338147750939e-16,
+      "residual": 4.3846282715353926e-16
+    },
+    {
+      "family": "triple_degenerate",
+      "case": 2,
+      "target": 1,
+      "value_error": 2.0328790734103208e-19,
+      "gradient_error": 7.101524229780054e-18,
+      "fd_errors": [
+        1.4779080086471663e-11,
+        2.342739717497988e-13,
+        1.9090588485037863e-13
+      ],
+      "balance_error": 2.220446049250313e-15,
+      "residual": 3.6601276812341967e-16
+    },
+    {
+      "family": "triple_degenerate",
+      "case": 3,
+      "target": -1,
+      "value_error": 4.7704895589362195e-18,
+      "gradient_error": 5.421010862427522e-18,
+      "fd_errors": [
+        5.45606897335571e-12,
+        3.050244518770784e-13,
+        5.0617763019261686e-12
+      ],
+      "balance_error": 1.9984014443252818e-15,
+      "residual": 3.940642021448348e-16
+    },
+    {
+      "family": "triple_degenerate",
+      "case": 4,
+      "target": 0,
+      "value_error": 5.551115123125783e-16,
+      "gradient_error": 1.3530843112619095e-16,
+      "fd_errors": [
+        8.947334730752265e-10,
+        9.608165825458759e-12,
+        8.39499877600125e-10
+      ],
+      "balance_error": 8.881784197001252e-16,
+      "residual": 7.463618195292936e-16
+    },
+    {
+      "family": "triple_zero",
+      "case": 0,
+      "target": -1,
+      "value_error": 7.724940478959219e-18,
+      "gradient_error": 1.0299920638612292e-17,
+      "fd_errors": [
+        1.5890012287737842e-11,
+        7.597492513583548e-14,
+        7.615084235933212e-12
+      ],
+      "balance_error": 8.881784197001252e-16,
+      "residual": 3.243923089073086e-16
+    },
+    {
+      "family": "triple_zero",
+      "case": 1,
+      "target": 0,
+      "value_error": 3.885780586188048e-16,
+      "gradient_error": 6.938893903907228e-17,
+      "fd_errors": [
+        5.157721472137666e-12,
+        5.428509725069475e-11,
+        1.9829064779042227e-10
+      ],
+      "balance_error": 1.1102230246251565e-16,
+      "residual": 2.722859516589718e-16
+    },
+    {
+      "family": "triple_zero",
+      "case": 2,
+      "target": 1,
+      "value_error": 6.667843360785852e-18,
+      "gradient_error": 7.589415207398531e-18,
+      "fd_errors": [
+        1.2209749921179847e-11,
+        8.240630400280224e-14,
+        1.6382366383599356e-12
+      ],
+      "balance_error": 1.1102230246251565e-15,
+      "residual": 4.453045729057272e-16
+    },
+    {
+      "family": "triple_zero",
+      "case": 3,
+      "target": -1,
+      "value_error": 1.1167282376600696e-17,
+      "gradient_error": 1.8431436932253575e-17,
+      "fd_errors": [
+        8.709513145410686e-13,
+        2.0262654401581592e-14,
+        7.796834792378471e-12
+      ],
+      "balance_error": 1.3322676295501878e-15,
+      "residual": 4.713353167584265e-16
+    },
+    {
+      "family": "triple_zero",
+      "case": 4,
+      "target": 0,
+      "value_error": 1.4988010832439613e-15,
+      "gradient_error": 5.204170427930421e-18,
+      "fd_errors": [
+        3.284758576249658e-11,
+        2.8715640976173518e-12,
+        3.165095685542241e-10
+      ],
+      "balance_error": 2.220446049250313e-15,
+      "residual": 6.637824880103737e-16
+    },
+    {
+      "family": "mixed_near_degenerate",
+      "case": 0,
+      "target": -1,
+      "value_error": 5.041540102057596e-18,
+      "gradient_error": 1.0950441942103595e-17,
+      "fd_errors": [
+        1.038841278624969e-11,
+        1.5308446784517704e-14,
+        1.993977465780672e-12
+      ],
+      "balance_error": 8.881784197001252e-16,
+      "residual": 4.771964970735814e-16
+    },
+    {
+      "family": "mixed_near_degenerate",
+      "case": 1,
+      "target": 0,
+      "value_error": 1.1657341758564144e-15,
+      "gradient_error": 8.673617379884035e-17,
+      "fd_errors": [
+        2.0647422313557762e-10,
+        4.798988637033652e-11,
+        5.432038742425593e-10
+      ],
+      "balance_error": 2.220446049250313e-16,
+      "residual": 5.589672618795747e-16
+    },
+    {
+      "family": "mixed_near_degenerate",
+      "case": 2,
+      "target": 1,
+      "value_error": 4.743384504624082e-20,
+      "gradient_error": 7.453889935837843e-19,
+      "fd_errors": [
+        5.267575709389655e-12,
+        6.770820883128525e-14,
+        4.1035718659904186e-13
+      ],
+      "balance_error": 4.440892098500626e-16,
+      "residual": 3.1535045302554875e-16
+    },
+    {
+      "family": "mixed_near_degenerate",
+      "case": 3,
+      "target": -1,
+      "value_error": 5.8817967857338616e-18,
+      "gradient_error": 1.5937771935536915e-17,
+      "fd_errors": [
+        2.5724704484642036e-12,
+        1.6604447851398252e-14,
+        1.4938297994426808e-12
+      ],
+      "balance_error": 6.661338147750939e-16,
+      "residual": 4.0775481727444523e-16
+    },
+    {
+      "family": "mixed_near_degenerate",
+      "case": 4,
+      "target": 0,
+      "value_error": 1.27675647831893e-15,
+      "gradient_error": 1.0863705768304754e-16,
+      "fd_errors": [
+        1.560013038887087e-10,
+        4.886478201238109e-11,
+        8.565520324271825e-10
+      ],
+      "balance_error": 8.881784197001252e-16,
+      "residual": 5.756333283608927e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 0,
+      "target": -1,
+      "value_error": 1.9081958235744878e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 0,
+      "target": 0,
+      "value_error": 8.881784197001252e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 0,
+      "target": 1,
+      "value_error": 1.3877787807814457e-17,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 1,
+      "target": -1,
+      "value_error": 1.9081958235744878e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 1,
+      "target": 0,
+      "value_error": 8.881784197001252e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 1,
+      "target": 1,
+      "value_error": 1.3877787807814457e-17,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 2,
+      "target": -1,
+      "value_error": 1.9081958235744878e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 2,
+      "target": 0,
+      "value_error": 8.881784197001252e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 2,
+      "target": 1,
+      "value_error": 1.3877787807814457e-17,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 3,
+      "target": -1,
+      "value_error": 1.9081958235744878e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 3,
+      "target": 0,
+      "value_error": 8.881784197001252e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 3,
+      "target": 1,
+      "value_error": 1.3877787807814457e-17,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 4,
+      "target": -1,
+      "value_error": 1.9081958235744878e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 4,
+      "target": 0,
+      "value_error": 8.881784197001252e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 4,
+      "target": 1,
+      "value_error": 1.3877787807814457e-17,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 5,
+      "target": -1,
+      "value_error": 1.9081958235744878e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 5,
+      "target": 0,
+      "value_error": 8.881784197001252e-16,
+      "balance_error": 4.440892098500626e-16
+    },
+    {
+      "family": "unequal_exteriors",
+      "case": 5,
+      "target": 1,
+      "value_error": 1.3877787807814457e-17,
+      "balance_error": 4.440892098500626e-16
+    }
+  ],
+  "max_value_error": 2.220446049250313e-15,
+  "max_gradient_error": 1.3877787807814457e-16,
+  "max_balance_error": 2.220446049250313e-15,
+  "limits": "Review-authored finite matrix numerical checks; not external researcher validation, not a continuum proof. Degenerate matrix tests deliberately use general positive Hermitian operators, which need not be Toeplitz convolutions of physical epsilon."
+}

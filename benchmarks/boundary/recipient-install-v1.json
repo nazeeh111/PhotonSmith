@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "module_path": "/private/tmp/engineering-photon-recipient/lib/python3.12/site-packages/photonsmith/__init__.py",
+  "fresh_pure_wheel_install": true,
+  "explicit_native_build_from_sdist": true,
+  "cwd": "/private/tmp",
+  "changed_params": [
+    0.24,
+    0.63,
+    0.51,
+    0.18,
+    0.53,
+    0.79
+  ],
+  "changed_wavelength": 1.73,
+  "material_index": 2.15,
+  "target_order": -1,
+  "initial_efficiency": 0.026839331178447036,
+  "final_efficiency": 0.4913121694134803,
+  "expected_final_efficiency": 0.4913121694134803,
+  "all_gradients_finite": true,
+  "overwrite_refused_and_bytes_preserved": true,
+  "numerical_kernel_source_sha256": "37d697240a5b3becba4e83622b7484079b4a998af13805b71fa3a43319491547"
+}

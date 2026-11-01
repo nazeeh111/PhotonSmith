@@ -1,0 +1,482 @@
+[
+  {
+    "case": "m5-03",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 9.787369514079412,
+      "meent_torch": 15.319709589041095,
+      "meent_jax_jit": 4.616089129596012,
+      "grcwa_autograd": 55.045933246244644
+    }
+  },
+  {
+    "case": "m15-08",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 8.267872381464205,
+      "meent_torch": 3.333279392652452,
+      "meent_jax_jit": 1.7068876535327295,
+      "grcwa_autograd": 20.562281470795593
+    }
+  },
+  {
+    "case": "m15-09",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 8.742745157951639,
+      "meent_torch": 2.8127452206901005,
+      "meent_jax_jit": 1.5491109016712072,
+      "grcwa_autograd": 19.29580667357144
+    }
+  },
+  {
+    "case": "m9-09",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 7.498532654689286,
+      "meent_torch": 5.785470761295374,
+      "meent_jax_jit": 2.425380605588439,
+      "grcwa_autograd": 23.22054243024853
+    }
+  },
+  {
+    "case": "m3-00",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 10.830877340975594,
+      "meent_torch": 14.407700242353839,
+      "meent_jax_jit": 8.871004157514653,
+      "grcwa_autograd": 40.187694530723356
+    }
+  },
+  {
+    "case": "m9-08",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 5.345063594997593,
+      "meent_torch": 7.08383305847432,
+      "meent_jax_jit": 1.82818516686153,
+      "grcwa_autograd": 20.39418449501807
+    }
+  },
+  {
+    "case": "m3-05",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 11.274275229357796,
+      "meent_torch": 22.27011761727287,
+      "meent_jax_jit": 7.904295185932546,
+      "grcwa_autograd": 61.65802570589648
+    }
+  },
+  {
+    "case": "m5-09",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 7.885487392424193,
+      "meent_torch": 8.707130631479735,
+      "meent_jax_jit": 3.9643335619815225,
+      "grcwa_autograd": 26.092554194156456
+    }
+  },
+  {
+    "case": "m9-11",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 8.804852681777048,
+      "meent_torch": 5.4707985460644535,
+      "meent_jax_jit": 3.0110533580205354,
+      "grcwa_autograd": 28.889213552649373
+    }
+  },
+  {
+    "case": "m15-06",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 5.9425049331964965,
+      "meent_torch": 2.927963207603457,
+      "meent_jax_jit": 2.870982552942407,
+      "grcwa_autograd": 24.069957495537675
+    }
+  },
+  {
+    "case": "m9-06",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 6.632212581344902,
+      "meent_torch": 5.065037175569755,
+      "meent_jax_jit": 2.966449894447514,
+      "grcwa_autograd": 19.220456824512535
+    }
+  },
+  {
+    "case": "m5-08",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 7.128516249707738,
+      "meent_torch": 11.764165536591069,
+      "meent_jax_jit": 4.467847769028872,
+      "grcwa_autograd": 29.375186345569322
+    }
+  },
+  {
+    "case": "m15-02",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 6.85502096677068,
+      "meent_torch": 3.6433093556686926,
+      "meent_jax_jit": 1.8793636837716436,
+      "grcwa_autograd": 19.680040583212204
+    }
+  },
+  {
+    "case": "m15-04",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 6.01680548129879,
+      "meent_torch": 3.4418659950269017,
+      "meent_jax_jit": 1.9580583703226697,
+      "grcwa_autograd": 21.424846637020483
+    }
+  },
+  {
+    "case": "m9-02",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 7.275094797860567,
+      "meent_torch": 5.255584770652,
+      "meent_jax_jit": 2.2112476133699053,
+      "grcwa_autograd": 18.079766791748135
+    }
+  },
+  {
+    "case": "m9-01",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 6.560680788250055,
+      "meent_torch": 7.285234920324567,
+      "meent_jax_jit": 2.186104277605477,
+      "grcwa_autograd": 18.3191330095383
+    }
+  },
+  {
+    "case": "m3-09",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 12.088386461957926,
+      "meent_torch": 17.359800799367346,
+      "meent_jax_jit": 5.504955401387513,
+      "grcwa_autograd": 40.59429025324736
+    }
+  },
+  {
+    "case": "m9-05",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 6.3323631095772495,
+      "meent_torch": 7.382878177761513,
+      "meent_jax_jit": 2.2625592373082384,
+      "grcwa_autograd": 21.613417887103655
+    }
+  },
+  {
+    "case": "m3-01",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 7.847228606320393,
+      "meent_torch": 17.838753183031116,
+      "meent_jax_jit": 4.235191688654704,
+      "grcwa_autograd": 30.078622775500655
+    }
+  },
+  {
+    "case": "m9-00",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 6.863631997132445,
+      "meent_torch": 6.5823627467521515,
+      "meent_jax_jit": 2.8723894854733514,
+      "grcwa_autograd": 23.654378268938757
+    }
+  },
+  {
+    "case": "m5-00",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 8.964789541968436,
+      "meent_torch": 13.619461792848481,
+      "meent_jax_jit": 2.6634389571276795,
+      "grcwa_autograd": 27.21396369001142
+    }
+  },
+  {
+    "case": "m15-07",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 6.56578526799284,
+      "meent_torch": 3.4348857654938216,
+      "meent_jax_jit": 2.2467299495639668,
+      "grcwa_autograd": 23.65123486389378
+    }
+  },
+  {
+    "case": "m9-10",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 8.197301638766962,
+      "meent_torch": 6.202242530755712,
+      "meent_jax_jit": 2.2009943087637325,
+      "grcwa_autograd": 25.13593737018693
+    }
+  },
+  {
+    "case": "m3-03",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 7.641686834402596,
+      "meent_torch": 15.786215084416533,
+      "meent_jax_jit": 3.9066188273062035,
+      "grcwa_autograd": 30.193399595959594
+    }
+  },
+  {
+    "case": "m5-02",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 6.8341061308603805,
+      "meent_torch": 9.910675242418598,
+      "meent_jax_jit": 3.5028051549718593,
+      "grcwa_autograd": 25.37960121446243
+    }
+  },
+  {
+    "case": "m3-02",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 11.052706008589949,
+      "meent_torch": 15.471558070615368,
+      "meent_jax_jit": 3.9709557119072545,
+      "grcwa_autograd": 45.99568714085364
+    }
+  },
+  {
+    "case": "m5-06",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 6.968665186281766,
+      "meent_torch": 9.772079124492155,
+      "meent_jax_jit": 3.3219658746640675,
+      "grcwa_autograd": 32.557283987169995
+    }
+  },
+  {
+    "case": "m9-07",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 8.013955311642492,
+      "meent_torch": 6.584218389142822,
+      "meent_jax_jit": 3.074448976830119,
+      "grcwa_autograd": 22.481292158223454
+    }
+  },
+  {
+    "case": "m15-11",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 5.391387555832554,
+      "meent_torch": 2.8141609614765537,
+      "meent_jax_jit": 2.0140486792806813,
+      "grcwa_autograd": 20.942522765832205
+    }
+  },
+  {
+    "case": "m5-07",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 8.425971181029269,
+      "meent_torch": 13.345646806829967,
+      "meent_jax_jit": 3.5634781293386135,
+      "grcwa_autograd": 21.90159403332145
+    }
+  },
+  {
+    "case": "m5-04",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 9.586056059109733,
+      "meent_torch": 15.552325765701033,
+      "meent_jax_jit": 6.294803483011781,
+      "grcwa_autograd": 34.656117019901444
+    }
+  },
+  {
+    "case": "m3-04",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 7.190895662368113,
+      "meent_torch": 18.11769315226813,
+      "meent_jax_jit": 5.261004859437037,
+      "grcwa_autograd": 44.89566236811254
+    }
+  },
+  {
+    "case": "m15-05",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 6.179478431661388,
+      "meent_torch": 4.574214627679162,
+      "meent_jax_jit": 1.9082923130462546,
+      "grcwa_autograd": 21.978512482483
+    }
+  },
+  {
+    "case": "m15-01",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 6.740367339238148,
+      "meent_torch": 4.626952508736651,
+      "meent_jax_jit": 1.9034083453291135,
+      "grcwa_autograd": 25.50396493516355
+    }
+  },
+  {
+    "case": "m9-04",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 9.028085110561689,
+      "meent_torch": 10.377549230404588,
+      "meent_jax_jit": 2.540443188483333,
+      "grcwa_autograd": 24.301573960880194
+    }
+  },
+  {
+    "case": "m15-00",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 11.061858407240576,
+      "meent_torch": 3.9889314766641157,
+      "meent_jax_jit": 3.150503106968487,
+      "grcwa_autograd": 26.596137626819587
+    }
+  },
+  {
+    "case": "m3-08",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 11.49919271980038,
+      "meent_torch": 26.10713337670787,
+      "meent_jax_jit": 5.22175572519084,
+      "grcwa_autograd": 46.24478473282443
+    }
+  },
+  {
+    "case": "m15-10",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 6.234660734085428,
+      "meent_torch": 4.563053988995873,
+      "meent_jax_jit": 2.065490190386029,
+      "grcwa_autograd": 23.570043863346246
+    }
+  },
+  {
+    "case": "m5-11",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 7.167630451669173,
+      "meent_torch": 12.303845933572077,
+      "meent_jax_jit": 3.500629147947434,
+      "grcwa_autograd": 32.41798923974087
+    }
+  },
+  {
+    "case": "m5-05",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 10.631659667625307,
+      "meent_torch": 16.227769893162307,
+      "meent_jax_jit": 3.8328762992757626,
+      "grcwa_autograd": 43.91246017188844
+    }
+  },
+  {
+    "case": "m5-10",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 6.729075047629961,
+      "meent_torch": 11.478990292560175,
+      "meent_jax_jit": 2.916485316328243,
+      "grcwa_autograd": 25.647983889914414
+    }
+  },
+  {
+    "case": "m3-06",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 8.73248010607464,
+      "meent_torch": 12.619414523252514,
+      "meent_jax_jit": 5.989826873263527,
+      "grcwa_autograd": 28.28953112721558
+    }
+  },
+  {
+    "case": "m9-03",
+    "harmonics": 9,
+    "paired_medians": {
+      "legacy": 5.989780636067306,
+      "meent_torch": 7.729497570981323,
+      "meent_jax_jit": 2.8491199235547064,
+      "grcwa_autograd": 21.962275203057814
+    }
+  },
+  {
+    "case": "m15-03",
+    "harmonics": 15,
+    "paired_medians": {
+      "legacy": 7.378191344398753,
+      "meent_torch": 3.552306457392675,
+      "meent_jax_jit": 1.880952916057984,
+      "grcwa_autograd": 28.23315252053109
+    }
+  },
+  {
+    "case": "m3-11",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 8.541468918529741,
+      "meent_torch": 23.696775812319657,
+      "meent_jax_jit": 8.140437078101973,
+      "grcwa_autograd": 48.593032514271535
+    }
+  },
+  {
+    "case": "m5-01",
+    "harmonics": 5,
+    "paired_medians": {
+      "legacy": 6.37542668057383,
+      "meent_torch": 15.974245945148924,
+      "meent_jax_jit": 9.376078160775334,
+      "grcwa_autograd": 33.03892657033323
+    }
+  },
+  {
+    "case": "m3-07",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 7.640046595557637,
+      "meent_torch": 18.766331226295826,
+      "meent_jax_jit": 7.931723355206755,
+      "grcwa_autograd": 68.51975848995457
+    }
+  },
+  {
+    "case": "m3-10",
+    "harmonics": 3,
+    "paired_medians": {
+      "legacy": 10.877160129796446,
+      "meent_torch": 16.9524554904092,
+      "meent_jax_jit": 6.367312201816145,
+      "grcwa_autograd": 62.52537024179542
+    }
+  }
+]

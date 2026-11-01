@@ -1,0 +1,98 @@
+{
+  "records": [
+    {
+      "kind": "bar_high_order",
+      "m": 3,
+      "power_error": 2.609024107869118e-15,
+      "amplitude_error": 5.640326337488471e-15,
+      "gradient_error": 7.427534130313531e-16,
+      "state_error": 5.367834321677877e-15
+    },
+    {
+      "kind": "bar_high_order",
+      "m": 15,
+      "power_error": 8.590350653037149e-15,
+      "amplitude_error": 1.8531830621803686e-14,
+      "gradient_error": 1.6346692443434e-15,
+      "state_error": 1.6327787968944498e-14
+    },
+    {
+      "kind": "bar_high_order",
+      "m": 31,
+      "power_error": 3.0905833448002795e-14,
+      "amplitude_error": 7.55727801640461e-14,
+      "gradient_error": 3.976419887807836e-15,
+      "state_error": 7.55727801640461e-14
+    },
+    {
+      "kind": "thick_slab",
+      "h": 0.2,
+      "power_error": 2.220446049250313e-16,
+      "gradient_error": 2.7755575615628914e-17
+    },
+    {
+      "kind": "thick_slab",
+      "h": 100.0,
+      "power_error": 1.0408340855860843e-17,
+      "gradient_error": 1.7763568394002505e-15
+    },
+    {
+      "kind": "thick_slab",
+      "h": 10000.0,
+      "power_error": 2.7755575615628914e-16,
+      "gradient_error": 5.684341886080802e-14
+    },
+    {
+      "kind": "thick_slab",
+      "h": 1000000.0,
+      "power_error": 4.440892098500626e-16,
+      "gradient_error": 2.9103830456733704e-11
+    }
+  ],
+  "refusals": [
+    {
+      "case": "even_order",
+      "refused": true,
+      "exception": "ValueError",
+      "message": "Retain an odd number of Fourier orders."
+    },
+    {
+      "case": "lossy_operator",
+      "refused": true,
+      "exception": "ValueError",
+      "message": "Finite Hermitian permittivity required"
+    },
+    {
+      "case": "indefinite_operator",
+      "refused": true,
+      "exception": "ValueError",
+      "message": "Positive definite permittivity required"
+    },
+    {
+      "case": "nonfinite_operator",
+      "refused": true,
+      "exception": "ValueError",
+      "message": "Finite Hermitian permittivity required"
+    },
+    {
+      "case": "oversized_phase",
+      "refused": true,
+      "exception": "ValueError",
+      "message": "Optical thickness exceeds supported floating-point phase range"
+    },
+    {
+      "case": "unsupported_target",
+      "refused": true,
+      "exception": "ValueError",
+      "message": "target_order must be an integer in [-1, 1]."
+    },
+    {
+      "case": "mismatched_shape",
+      "refused": true,
+      "exception": "ValueError",
+      "message": "Layer matrix dimensions differ."
+    }
+  ],
+  "source_manifest": "native-reviewed-files.json",
+  "limits": "Numerical equivalence of native source/library to Python v3, not external-human validation or a speed measurement."
+}

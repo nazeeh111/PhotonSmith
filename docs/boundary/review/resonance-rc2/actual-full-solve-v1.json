@@ -1,0 +1,13 @@
+{
+  "native_source_sha256": "dd55bc7113b2db50a5e5c4d1de14c8435c856b23377f917ffcb38e3fa6f00a65",
+  "python_file": "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/correction-v2/PhotonSmith/photonsmith/boundary.py",
+  "native_library_sha256": "18a1408861db342188784350c5caecea8154c9ee32075b9f9dc2318e8ff32139",
+  "native_gradient": 62489.26096936218,
+  "python_gradient": 62489.26091686183,
+  "mp_transfer_gradient": 62489.260987607515,
+  "native_relative_error": 2.919755577857921e-10,
+  "python_relative_error": 1.132125497142735e-09,
+  "native_value": 0.3684593553123043,
+  "python_value": 0.3684593553123044,
+  "mp_transfer_value": 0.3684593554501192
+}

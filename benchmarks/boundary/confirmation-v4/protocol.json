@@ -1,0 +1,79 @@
+{
+  "status": "declared before scoring held-out inputs",
+  "seed": 20261101380,
+  "cases": 48,
+  "harmonics": {
+    "3": 12,
+    "5": 12,
+    "9": 12,
+    "15": 12
+  },
+  "input_sha256": "db8d5d5ff4abe5146af409474424ad65bd1573ef72ab91cc15e3d1c445e10bd6",
+  "timing": {
+    "repetitions": 7,
+    "randomized_method_order_per_case_repeat": true,
+    "paired_case_ratios": "median of per-repeat baseline/native ratios",
+    "summary": "geometric mean over all48cases; stratified reporting byharmonics",
+    "interval": "10000pairedcasebootstrapresamples,seed37833",
+    "threads": "Requested BLAS/Torch=1. Actual own-process thread counts sampled after warmup, before every case and after all cases; total includes idle runtime workers, not strict single-thread JAX.",
+    "warmup": "onepermethodandshape, compilationexcludedbutrecordedseparately;changingwavelengthisanactualruntimeargumentinJAX",
+    "includes": "geometryFourierassembly,solver,objectiveandallsixparametergradients;Python-nativeFFIfornative;compiledJAXtransferandsynchronization;nonfiniteorfailedcallsretained",
+    "excludes": "imports/builds,warmupJIT,reportserialization,independentverification;reportedseparately",
+    "host_limit": "sharedworkstationwalltimingisconditional;processCPUandthreadpoolmetadataaresecondarydiagnostics"
+  },
+  "methods": [
+    "unmodified-public-PhotonSmith",
+    "native-analytic-scattering",
+    "meent-0.13.2-Torch-specialized-1D-TE",
+    "meent-0.13.2-JAX-JIT-specialized-1D-TE",
+    "grcwa-0.1.2-autograd-vector-RCWA-same-1D-orders"
+  ],
+  "fairness": "complex128,samephysicalcoefficientsandretainedorders;meentcoefficientsconjugatedfortimeconvention;grcwasupplies2polarizationsinternallyandisnotassumedthefastestspecializedbaseline",
+  "correctness": {
+    "max_power_absolute_error": 1e-07,
+    "gradient_direction_error": 2e-05,
+    "well_conditioned_power_balance": 1e-08,
+    "external_derivatives": "all6againstactualmeentJAXandTorchplusgrcwaifadapterworks",
+    "finite_differences": {
+      "cases": "all48, no selection",
+      "components": "all6",
+      "steps": [
+        0.0001,
+        1e-05,
+        1e-06
+      ],
+      "oracle": "unchanged dense photonsmith.physics.solve, forward-only; never native or adjoint-derived",
+      "scheme": "fourth-order central[-2,-1,1,2] or deterministic fourth-order one-sided[0..4] near bounds",
+      "bounds": "widths[.15,.85],shifts[0,1]; no clipping, wrapping, adaptive steps or observed-value selection",
+      "limit": 2e-05,
+      "normalization": "require BOTH max(1,abs analytic gradient) and max(1,abs independent FD) normalized errors <=same2e-5 limit on EVERY component/case/step",
+      "retained": "every coordinate,offset,weight,forwardvalue; secondary second-order estimates fromsamepoints remain diagnostic",
+      "reason": "independent dense/native analytic agreement2.90e-14; secondorderh\u00b2bias reproduces in denseforward; fourthorder viewed diagnostic andanalytic boundarycontrols accepted beforefreshcases"
+    }
+  },
+  "performance_gates": {
+    "legacy_geomean_min": 5,
+    "fastest_tested_external_geomean_min": 2,
+    "external_95pct_lower_min": 1
+  },
+  "no_postselection": "No droppingcasesbecauseofperformanceorcorrectness. Ifeditsfollowviewedoutcomes,retainthisasdevelopmentandcreatenewconfirmation. Noglobalfastestclaimfromfinitecomparators.",
+  "reason_for_successor": "Resolve diagnosed second-order finite-difference truncation with a stronger independent fourth-order oracle. No production solver change or acceptance-limit relaxation. Historical v3 gate remains false.",
+  "memory": "Prior version RSS probes retained as historical; not attributed to this revised kernel.",
+  "declared_at_utc": "2026-11-01T15:00:40.089966+00:00",
+  "distribution": {
+    "width_fraction": "independent uniform[.15,.85)",
+    "shift_fraction": "independent uniform[0,1)",
+    "wavelength_um": "independent uniform[1.25,1.9)",
+    "shuffle": "same seeded NumPy generator after case generation"
+  },
+  "sources": {
+    "native/boundary.cpp": "dd55bc7113b2db50a5e5c4d1de14c8435c856b23377f917ffcb38e3fa6f00a65",
+    "photonsmith/physics.py": "462b90fceea6ce3fe5b7c5104d5a032ec63f5252240b02952fa94bed3101a433",
+    "photonsmith/boundary.py": "cb091d9cfbd33ddc86651517c2b81908278a1ed7e0a13aee40341a9f560a3aba",
+    "photonsmith/native.py": "fc5090ee3ebe0300bc2d8886c9816d3b8c6af5704eb360aa96fe49ad5a8e1f97",
+    "photonsmith/gradient_check.py": "e3656becfbfafe40074b7e4b10d62ac96f87c57e8971f94b640d899660a4bf7e",
+    "scripts/benchmark_boundary.py": "86557ecae0a1a1280c8c50a0f6079f383f8c6b45a2d0b28355709d2bb49ce767",
+    "scripts/summarize_boundary.py": "986499900809dbbc275ff931c828c4e4cd8dfddd5423cb6a78a717adeed2d627"
+  },
+  "production_kernel_unchanged": true
+}

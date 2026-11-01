@@ -1,0 +1,982 @@
+{
+  "cases": 48,
+  "raw_rows": 1680,
+  "failed_attempts": 0,
+  "summary": {
+    "legacy": {
+      "geometric_mean_wall_speedup": 11.285590317532884,
+      "paired_case_bootstrap_95pct": [
+        9.894938612295501,
+        12.897553714443958
+      ],
+      "geometric_mean_cpu_speedup": 7.391863418741832,
+      "by_harmonics": {
+        "3": 12.021711072967044,
+        "5": 9.704802201137735,
+        "9": 9.797888481000063,
+        "15": 14.190956103111413
+      }
+    },
+    "meent_torch": {
+      "geometric_mean_wall_speedup": 14.022587387805208,
+      "paired_case_bootstrap_95pct": [
+        10.908578795184209,
+        18.084098134035543
+      ],
+      "geometric_mean_cpu_speedup": 8.30106804153098,
+      "by_harmonics": {
+        "3": 31.41656819232257,
+        "5": 16.71574051515584,
+        "9": 12.282789034290841,
+        "15": 5.99420048471455
+      }
+    },
+    "meent_jax_jit": {
+      "geometric_mean_wall_speedup": 3.186610450268416,
+      "paired_case_bootstrap_95pct": [
+        2.570220932296385,
+        3.899379649489491
+      ],
+      "geometric_mean_cpu_speedup": 3.3666314205805943,
+      "by_harmonics": {
+        "3": 6.882012373708536,
+        "5": 3.8087479803765527,
+        "9": 2.801166683797892,
+        "15": 1.4043626343756057
+      }
+    },
+    "grcwa_autograd": {
+      "geometric_mean_wall_speedup": 82.85957301325169,
+      "paired_case_bootstrap_95pct": [
+        69.18648766817132,
+        99.36615430446383
+      ],
+      "geometric_mean_cpu_speedup": 25.438079769335776,
+      "by_harmonics": {
+        "3": 118.42704603549045,
+        "5": 102.58186956228063,
+        "9": 70.93056753341762,
+        "15": 54.70358927216592
+      }
+    }
+  },
+  "fastest_tested_external_aggregate": "meent_jax_jit",
+  "max_power_error": 1.3489209749195652e-14,
+  "max_balance_error": 9.325873406851315e-15,
+  "max_residual": 2.489092936096979e-15,
+  "max_normalized_gradient_error_by_method": {
+    "legacy": 1.0882129950073317e-12,
+    "native": 0.0,
+    "meent_torch": 8.167502107963518e-08,
+    "meent_jax_jit": 1.1093903573566877e-13,
+    "grcwa_autograd": 6.804556917927584e-13
+  },
+  "max_value_error_by_method": {
+    "legacy": 3.927413949611491e-14,
+    "native": 0.0,
+    "meent_torch": 5.639905764631692e-10,
+    "meent_jax_jit": 1.2212453270876722e-14,
+    "grcwa_autograd": 3.852473895449293e-14
+  },
+  "finite_differences": [
+    {
+      "case": "v3-m15-07",
+      "step": 0.0001,
+      "max_normalized_error": 4.362397437185602e-06
+    },
+    {
+      "case": "v3-m15-07",
+      "step": 1e-05,
+      "max_normalized_error": 4.3782477753155383e-08
+    },
+    {
+      "case": "v3-m15-07",
+      "step": 1e-06,
+      "max_normalized_error": 1.042517043415607e-09
+    },
+    {
+      "case": "v3-m9-06",
+      "step": 0.0001,
+      "max_normalized_error": 5.080532372581104e-07
+    },
+    {
+      "case": "v3-m9-06",
+      "step": 1e-05,
+      "max_normalized_error": 5.1774405873672436e-09
+    },
+    {
+      "case": "v3-m9-06",
+      "step": 1e-06,
+      "max_normalized_error": 5.735145691687649e-10
+    },
+    {
+      "case": "v3-m3-06",
+      "step": 0.0001,
+      "max_normalized_error": 1.719222625540251e-06
+    },
+    {
+      "case": "v3-m3-06",
+      "step": 1e-05,
+      "max_normalized_error": 1.7183005240895e-08
+    },
+    {
+      "case": "v3-m3-06",
+      "step": 1e-06,
+      "max_normalized_error": 4.033719469553887e-10
+    },
+    {
+      "case": "v3-m5-08",
+      "step": 0.0001,
+      "max_normalized_error": 1.03425394459844e-05
+    },
+    {
+      "case": "v3-m5-08",
+      "step": 1e-05,
+      "max_normalized_error": 1.0341805500857504e-07
+    },
+    {
+      "case": "v3-m5-08",
+      "step": 1e-06,
+      "max_normalized_error": 9.194897065967211e-10
+    },
+    {
+      "case": "v3-m5-11",
+      "step": 0.0001,
+      "max_normalized_error": 1.4905162846166842e-06
+    },
+    {
+      "case": "v3-m5-11",
+      "step": 1e-05,
+      "max_normalized_error": 1.4885136392876788e-08
+    },
+    {
+      "case": "v3-m5-11",
+      "step": 1e-06,
+      "max_normalized_error": 5.642939289327044e-10
+    },
+    {
+      "case": "v3-m9-02",
+      "step": 0.0001,
+      "max_normalized_error": 4.785740558843621e-07
+    },
+    {
+      "case": "v3-m9-02",
+      "step": 1e-05,
+      "max_normalized_error": 4.841891221296635e-09
+    },
+    {
+      "case": "v3-m9-02",
+      "step": 1e-06,
+      "max_normalized_error": 1.4558488303784145e-09
+    },
+    {
+      "case": "v3-m9-09",
+      "step": 0.0001,
+      "max_normalized_error": 8.551194526451589e-05
+    },
+    {
+      "case": "v3-m9-09",
+      "step": 1e-05,
+      "max_normalized_error": 8.550904049275942e-07
+    },
+    {
+      "case": "v3-m9-09",
+      "step": 1e-06,
+      "max_normalized_error": 9.772145093123186e-09
+    },
+    {
+      "case": "v3-m9-04",
+      "step": 0.0001,
+      "max_normalized_error": 2.6060597159606514e-06
+    },
+    {
+      "case": "v3-m9-04",
+      "step": 1e-05,
+      "max_normalized_error": 2.605215837799128e-08
+    },
+    {
+      "case": "v3-m9-04",
+      "step": 1e-06,
+      "max_normalized_error": 6.066420699113451e-10
+    }
+  ],
+  "case_ratios": [
+    {
+      "case": "v3-m15-07",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 20.94692351987541,
+        "meent_torch": 6.783666976960671,
+        "meent_jax_jit": 1.1478042023840154,
+        "grcwa_autograd": 48.84245226842559
+      },
+      "cpu_speedup": {
+        "legacy": 7.803015797032072,
+        "meent_torch": 3.563710255797275,
+        "meent_jax_jit": 2.2900088417329796,
+        "grcwa_autograd": 20.82359980852082
+      }
+    },
+    {
+      "case": "v3-m9-06",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 6.480076531514674,
+        "meent_torch": 12.199760658649524,
+        "meent_jax_jit": 2.388889074785882,
+        "grcwa_autograd": 74.98493235523596
+      },
+      "cpu_speedup": {
+        "legacy": 6.617074388417374,
+        "meent_torch": 7.197448359659782,
+        "meent_jax_jit": 3.0048375950241883,
+        "grcwa_autograd": 22.298708590679393
+      }
+    },
+    {
+      "case": "v3-m3-06",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 9.314886164623468,
+        "meent_torch": 56.961375743317824,
+        "meent_jax_jit": 8.888060453648189,
+        "grcwa_autograd": 138.58913216173738
+      },
+      "cpu_speedup": {
+        "legacy": 9.501457725947523,
+        "meent_torch": 21.943396226415096,
+        "meent_jax_jit": 7.049618320610686,
+        "grcwa_autograd": 43.68221574344023
+      }
+    },
+    {
+      "case": "v3-m5-08",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 8.13840414507772,
+        "meent_torch": 9.537334426805694,
+        "meent_jax_jit": 3.8107003454231436,
+        "grcwa_autograd": 96.24291191709845
+      },
+      "cpu_speedup": {
+        "legacy": 7.401913875598087,
+        "meent_torch": 10.271260997067449,
+        "meent_jax_jit": 3.9139896373056993,
+        "grcwa_autograd": 30.105436573311366
+      }
+    },
+    {
+      "case": "v3-m5-11",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 8.60119145802651,
+        "meent_torch": 13.890338494974191,
+        "meent_jax_jit": 3.338565022421524,
+        "grcwa_autograd": 152.71830741804496
+      },
+      "cpu_speedup": {
+        "legacy": 8.927469135802468,
+        "meent_torch": 13.104347826086958,
+        "meent_jax_jit": 3.8888888888888884,
+        "grcwa_autograd": 25.00925925925926
+      }
+    },
+    {
+      "case": "v3-m9-02",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 21.697641602561287,
+        "meent_torch": 22.254965350310027,
+        "meent_jax_jit": 2.4677616543959684,
+        "grcwa_autograd": 86.98194132501253
+      },
+      "cpu_speedup": {
+        "legacy": 8.461333333333334,
+        "meent_torch": 8.177758318739054,
+        "meent_jax_jit": 2.819626814098134,
+        "grcwa_autograd": 24.253940455341507
+      }
+    },
+    {
+      "case": "v3-m9-09",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 19.4801454212873,
+        "meent_torch": 14.638028123928203,
+        "meent_jax_jit": 2.7552683205670516,
+        "grcwa_autograd": 108.79722556305019
+      },
+      "cpu_speedup": {
+        "legacy": 6.360655737704919,
+        "meent_torch": 6.028704939919894,
+        "meent_jax_jit": 2.698672911787666,
+        "grcwa_autograd": 21.450429352068696
+      }
+    },
+    {
+      "case": "v3-m9-04",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 9.822716807367613,
+        "meent_torch": 22.33782824330419,
+        "meent_jax_jit": 3.7677574827321565,
+        "grcwa_autograd": 107.70983702456859
+      },
+      "cpu_speedup": {
+        "legacy": 8.497119341563787,
+        "meent_torch": 6.375255623721882,
+        "meent_jax_jit": 3.4861509073543457,
+        "grcwa_autograd": 27.578796561604587
+      }
+    },
+    {
+      "case": "v3-m9-08",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 5.446839887205323,
+        "meent_torch": 9.978836941286405,
+        "meent_jax_jit": 1.540834847499303,
+        "grcwa_autograd": 44.70288197604234
+      },
+      "cpu_speedup": {
+        "legacy": 6.583838383838383,
+        "meent_torch": 6.510773130544994,
+        "meent_jax_jit": 2.483889202939514,
+        "grcwa_autograd": 20.003168567807354
+      }
+    },
+    {
+      "case": "v3-m5-04",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 20.371512300437214,
+        "meent_torch": 23.9393645129705,
+        "meent_jax_jit": 4.262190611943003,
+        "grcwa_autograd": 134.8563740593248
+      },
+      "cpu_speedup": {
+        "legacy": 7.4488188976377945,
+        "meent_torch": 13.043396226415094,
+        "meent_jax_jit": 4.003773584905661,
+        "grcwa_autograd": 24.662828947368418
+      }
+    },
+    {
+      "case": "v3-m15-01",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 21.472187440310705,
+        "meent_torch": 12.874884101954626,
+        "meent_jax_jit": 2.85785741388611,
+        "grcwa_autograd": 71.99173717608608
+      },
+      "cpu_speedup": {
+        "legacy": 6.169209431345354,
+        "meent_torch": 3.5245030050855295,
+        "meent_jax_jit": 2.2100165367351763,
+        "grcwa_autograd": 19.744163424124512
+      }
+    },
+    {
+      "case": "v3-m3-05",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 13.139442623152483,
+        "meent_torch": 21.598068842243524,
+        "meent_jax_jit": 4.718578084555651,
+        "grcwa_autograd": 42.38770658678951
+      },
+      "cpu_speedup": {
+        "legacy": 8.786301369863015,
+        "meent_torch": 14.526315789473685,
+        "meent_jax_jit": 4.556164383561644,
+        "grcwa_autograd": 32.229007633587784
+      }
+    },
+    {
+      "case": "v3-m5-03",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 7.647758014978989,
+        "meent_torch": 10.206761006289309,
+        "meent_jax_jit": 8.798822179460892,
+        "grcwa_autograd": 155.51017214044566
+      },
+      "cpu_speedup": {
+        "legacy": 7.245696400625977,
+        "meent_torch": 10.039653035935563,
+        "meent_jax_jit": 3.8414634146341466,
+        "grcwa_autograd": 27.5962441314554
+      }
+    },
+    {
+      "case": "v3-m15-00",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 13.303402310445044,
+        "meent_torch": 2.990558902970398,
+        "meent_jax_jit": 0.867183124129197,
+        "grcwa_autograd": 37.458478468983486
+      },
+      "cpu_speedup": {
+        "legacy": 6.336959336959337,
+        "meent_torch": 3.5696999031945786,
+        "meent_jax_jit": 2.3037822211515295,
+        "grcwa_autograd": 20.204092204092202
+      }
+    },
+    {
+      "case": "v3-m9-07",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 7.448028340799343,
+        "meent_torch": 17.356272434956953,
+        "meent_jax_jit": 2.6650144593035097,
+        "grcwa_autograd": 82.28011571641505
+      },
+      "cpu_speedup": {
+        "legacy": 6.568239795918368,
+        "meent_torch": 6.1371391076115485,
+        "meent_jax_jit": 2.7380216383307574,
+        "grcwa_autograd": 21.6253280839895
+      }
+    },
+    {
+      "case": "v3-m15-06",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 16.755452730637263,
+        "meent_torch": 3.158621814080306,
+        "meent_jax_jit": 0.4910728409690362,
+        "grcwa_autograd": 85.20607487887412
+      },
+      "cpu_speedup": {
+        "legacy": 7.000539665407446,
+        "meent_torch": 3.5513615529792397,
+        "meent_jax_jit": 2.4321919654893502,
+        "grcwa_autograd": 20.905828386400433
+      }
+    },
+    {
+      "case": "v3-m5-07",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 8.554331007535584,
+        "meent_torch": 17.949416070896163,
+        "meent_jax_jit": 6.713403616304015,
+        "grcwa_autograd": 181.47441585263746
+      },
+      "cpu_speedup": {
+        "legacy": 6.978813559322035,
+        "meent_torch": 12.04389574759945,
+        "meent_jax_jit": 3.5060080106809077,
+        "grcwa_autograd": 28.349794238683128
+      }
+    },
+    {
+      "case": "v3-m15-03",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 8.14383266651818,
+        "meent_torch": 7.901825243175193,
+        "meent_jax_jit": 0.9442872394456711,
+        "grcwa_autograd": 26.768658946085235
+      },
+      "cpu_speedup": {
+        "legacy": 7.671228304405875,
+        "meent_torch": 3.82024523871641,
+        "meent_jax_jit": 2.28019827811114,
+        "grcwa_autograd": 24.23097463284379
+      }
+    },
+    {
+      "case": "v3-m3-04",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 6.434263580538498,
+        "meent_torch": 1.7000074661119717,
+        "meent_jax_jit": 4.251177704289265,
+        "grcwa_autograd": 18.314341160220994
+      },
+      "cpu_speedup": {
+        "legacy": 6.781575037147103,
+        "meent_torch": 12.729797979797981,
+        "meent_jax_jit": 5.404682274247492,
+        "grcwa_autograd": 23.588679245283018
+      }
+    },
+    {
+      "case": "v3-m9-11",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 9.810641792141022,
+        "meent_torch": 8.452803284069155,
+        "meent_jax_jit": 2.7106109875482933,
+        "grcwa_autograd": 44.80071000122414
+      },
+      "cpu_speedup": {
+        "legacy": 6.734200743494424,
+        "meent_torch": 6.67398119122257,
+        "meent_jax_jit": 2.9617453676031085,
+        "grcwa_autograd": 21.7339635381499
+      }
+    },
+    {
+      "case": "v3-m3-01",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 11.641318606627017,
+        "meent_torch": 66.06528122344945,
+        "meent_jax_jit": 8.053890504552786,
+        "grcwa_autograd": 126.37181506080964
+      },
+      "cpu_speedup": {
+        "legacy": 8.464037122969838,
+        "meent_torch": 15.68445475638051,
+        "meent_jax_jit": 4.661290322580645,
+        "grcwa_autograd": 30.839907192575406
+      }
+    },
+    {
+      "case": "v3-m9-05",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 9.089657940967264,
+        "meent_torch": 12.450589202141323,
+        "meent_jax_jit": 2.0260683327828546,
+        "grcwa_autograd": 84.73783327510115
+      },
+      "cpu_speedup": {
+        "legacy": 6.991766941101963,
+        "meent_torch": 7.018366054464851,
+        "meent_jax_jit": 2.476375764313507,
+        "grcwa_autograd": 21.202659911336287
+      }
+    },
+    {
+      "case": "v3-m5-01",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 18.022176109663253,
+        "meent_torch": 34.738651795603374,
+        "meent_jax_jit": 2.460045889421461,
+        "grcwa_autograd": 44.19232095332671
+      },
+      "cpu_speedup": {
+        "legacy": 7.739705882352941,
+        "meent_torch": 13.504761904761905,
+        "meent_jax_jit": 3.6011904761904763,
+        "grcwa_autograd": 25.6015873015873
+      }
+    },
+    {
+      "case": "v3-m3-10",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 10.758114739629303,
+        "meent_torch": 83.03379521777906,
+        "meent_jax_jit": 12.684206298448714,
+        "grcwa_autograd": 328.2148491443733
+      },
+      "cpu_speedup": {
+        "legacy": 8.432098765432098,
+        "meent_torch": 16.079617834394902,
+        "meent_jax_jit": 5.848591549295774,
+        "grcwa_autograd": 42.517605633802816
+      }
+    },
+    {
+      "case": "v3-m15-11",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 15.70602012464683,
+        "meent_torch": 12.3947942749747,
+        "meent_jax_jit": 3.7546227600515607,
+        "grcwa_autograd": 80.76869600015584
+      },
+      "cpu_speedup": {
+        "legacy": 6.265060240963855,
+        "meent_torch": 3.6589848308051343,
+        "meent_jax_jit": 2.6225204200700114,
+        "grcwa_autograd": 20.828456683878372
+      }
+    },
+    {
+      "case": "v3-m5-02",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 6.954353408996768,
+        "meent_torch": 14.412795282234434,
+        "meent_jax_jit": 2.013064524611918,
+        "grcwa_autograd": 53.18949072931543
+      },
+      "cpu_speedup": {
+        "legacy": 8.214564369310793,
+        "meent_torch": 13.157608695652176,
+        "meent_jax_jit": 3.5533230293663056,
+        "grcwa_autograd": 25.244635193133046
+      }
+    },
+    {
+      "case": "v3-m5-06",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 7.800095165686563,
+        "meent_torch": 23.746494727265496,
+        "meent_jax_jit": 4.030639838507434,
+        "grcwa_autograd": 96.90789761540144
+      },
+      "cpu_speedup": {
+        "legacy": 6.89644513137558,
+        "meent_torch": 13.689393939393938,
+        "meent_jax_jit": 3.6707882534775886,
+        "grcwa_autograd": 27.37377049180328
+      }
+    },
+    {
+      "case": "v3-m3-11",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 5.627555492755785,
+        "meent_torch": 14.82236692746834,
+        "meent_jax_jit": 6.110153389914906,
+        "grcwa_autograd": 206.66215211880714
+      },
+      "cpu_speedup": {
+        "legacy": 7.178260869565217,
+        "meent_torch": 13.573070607553369,
+        "meent_jax_jit": 4.945169712793734,
+        "grcwa_autograd": 30.43864229765013
+      }
+    },
+    {
+      "case": "v3-m15-05",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 6.533337258200168,
+        "meent_torch": 5.929472468124075,
+        "meent_jax_jit": 0.5060594704174199,
+        "grcwa_autograd": 43.70277583566237
+      },
+      "cpu_speedup": {
+        "legacy": 5.973190348525469,
+        "meent_torch": 4.198142414860682,
+        "meent_jax_jit": 2.4892307692307694,
+        "grcwa_autograd": 19.96396853590459
+      }
+    },
+    {
+      "case": "v3-m15-10",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 27.774150483343583,
+        "meent_torch": 11.170754531365812,
+        "meent_jax_jit": 2.142842517417043,
+        "grcwa_autograd": 84.41275478021531
+      },
+      "cpu_speedup": {
+        "legacy": 6.372362624623232,
+        "meent_torch": 2.899706457925636,
+        "meent_jax_jit": 2.357847055688782,
+        "grcwa_autograd": 20.57558708414873
+      }
+    },
+    {
+      "case": "v3-m15-08",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 15.978597621311922,
+        "meent_torch": 7.402898740585728,
+        "meent_jax_jit": 2.1623787031797015,
+        "grcwa_autograd": 73.71239882427527
+      },
+      "cpu_speedup": {
+        "legacy": 6.797823129251701,
+        "meent_torch": 3.6949248653246385,
+        "meent_jax_jit": 2.3412977278051064,
+        "grcwa_autograd": 20.750990229733297
+      }
+    },
+    {
+      "case": "v3-m5-00",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 6.89439269722628,
+        "meent_torch": 12.310703666997028,
+        "meent_jax_jit": 4.656376226197346,
+        "grcwa_autograd": 185.43446658523166
+      },
+      "cpu_speedup": {
+        "legacy": 6.861216730038023,
+        "meent_torch": 11.369028006589785,
+        "meent_jax_jit": 4.032921810699588,
+        "grcwa_autograd": 28.43621399176955
+      }
+    },
+    {
+      "case": "v3-m5-10",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 5.511198277866415,
+        "meent_torch": 33.87975903614458,
+        "meent_jax_jit": 3.1681850858379783,
+        "grcwa_autograd": 41.14285287563699
+      },
+      "cpu_speedup": {
+        "legacy": 7.114901256732496,
+        "meent_torch": 11.79,
+        "meent_jax_jit": 2.8719008264462813,
+        "grcwa_autograd": 24.6427289048474
+      }
+    },
+    {
+      "case": "v3-m9-10",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 6.122763964465072,
+        "meent_torch": 3.4007546756682787,
+        "meent_jax_jit": 7.691483879878667,
+        "grcwa_autograd": 27.65641933402786
+      },
+      "cpu_speedup": {
+        "legacy": 6.504746835443038,
+        "meent_torch": 5.97494631352899,
+        "meent_jax_jit": 2.7266763848396502,
+        "grcwa_autograd": 19.818829113924053
+      }
+    },
+    {
+      "case": "v3-m9-00",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 12.009332750890618,
+        "meent_torch": 11.474748111923622,
+        "meent_jax_jit": 1.8980641139064507,
+        "grcwa_autograd": 77.47593519180367
+      },
+      "cpu_speedup": {
+        "legacy": 8.140635126377186,
+        "meent_torch": 7.2475000000000005,
+        "meent_jax_jit": 2.870223978919631,
+        "grcwa_autograd": 23.818333333333335
+      }
+    },
+    {
+      "case": "v3-m3-03",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 12.3668356302521,
+        "meent_torch": 36.70778618421052,
+        "meent_jax_jit": 7.4359957761351625,
+        "grcwa_autograd": 157.01376870724863
+      },
+      "cpu_speedup": {
+        "legacy": 9.062937062937063,
+        "meent_torch": 19.835087719298247,
+        "meent_jax_jit": 6.865131578947367,
+        "grcwa_autograd": 43.50877192982456
+      }
+    },
+    {
+      "case": "v3-m15-02",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 14.873566276139853,
+        "meent_torch": 6.716736201283772,
+        "meent_jax_jit": 1.9773742527121794,
+        "grcwa_autograd": 71.67783490956445
+      },
+      "cpu_speedup": {
+        "legacy": 6.873634071168395,
+        "meent_torch": 3.445222751471,
+        "meent_jax_jit": 2.356755360371997,
+        "grcwa_autograd": 21.60010333247223
+      }
+    },
+    {
+      "case": "v3-m5-05",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 8.36989654957899,
+        "meent_torch": 18.01106718196054,
+        "meent_jax_jit": 3.357029895950654,
+        "grcwa_autograd": 74.35081027639144
+      },
+      "cpu_speedup": {
+        "legacy": 8.062397372742202,
+        "meent_torch": 11.049418604651162,
+        "meent_jax_jit": 3.599564744287269,
+        "grcwa_autograd": 25.66058394160584
+      }
+    },
+    {
+      "case": "v3-m3-09",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 28.507064239361604,
+        "meent_torch": 39.530698022036574,
+        "meent_jax_jit": 3.7474797554123285,
+        "grcwa_autograd": 50.21899826975514
+      },
+      "cpu_speedup": {
+        "legacy": 9.400646203554121,
+        "meent_torch": 15.6019656019656,
+        "meent_jax_jit": 4.342062193126023,
+        "grcwa_autograd": 28.453686200378073
+      }
+    },
+    {
+      "case": "v3-m3-07",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 14.823419751178426,
+        "meent_torch": 61.30259162762565,
+        "meent_jax_jit": 8.475450111182841,
+        "grcwa_autograd": 104.3966741641851
+      },
+      "cpu_speedup": {
+        "legacy": 8.117048346055979,
+        "meent_torch": 19.266288951841357,
+        "meent_jax_jit": 5.129770992366412,
+        "grcwa_autograd": 37.45325779036827
+      }
+    },
+    {
+      "case": "v3-m15-09",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 18.116847254365663,
+        "meent_torch": 4.198340204593878,
+        "meent_jax_jit": 1.8588796301606136,
+        "grcwa_autograd": 60.07164665911665
+      },
+      "cpu_speedup": {
+        "legacy": 5.930608578486413,
+        "meent_torch": 3.0783888084901108,
+        "meent_jax_jit": 2.1836963844599144,
+        "grcwa_autograd": 19.000231160425336
+      }
+    },
+    {
+      "case": "v3-m3-00",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 21.68886643350126,
+        "meent_torch": 27.969085144616514,
+        "meent_jax_jit": 11.096879776365537,
+        "grcwa_autograd": 200.2784520553455
+      },
+      "cpu_speedup": {
+        "legacy": 8.844155844155845,
+        "meent_torch": 19.799511002444984,
+        "meent_jax_jit": 4.690954773869346,
+        "grcwa_autograd": 35.50934579439252
+      }
+    },
+    {
+      "case": "v3-m9-03",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 8.133317890738411,
+        "meent_torch": 9.32052582417156,
+        "meent_jax_jit": 4.090211825028632,
+        "grcwa_autograd": 95.52718258948093
+      },
+      "cpu_speedup": {
+        "legacy": 6.6190476190476195,
+        "meent_torch": 6.892566782810685,
+        "meent_jax_jit": 2.9555966697502316,
+        "grcwa_autograd": 20.406976744186046
+      }
+    },
+    {
+      "case": "v3-m5-09",
+      "harmonics": 5,
+      "speedup": {
+        "legacy": 24.064281592099665,
+        "meent_torch": 9.170508028878174,
+        "meent_jax_jit": 2.943291819291819,
+        "grcwa_autograd": 187.86219444356726
+      },
+      "cpu_speedup": {
+        "legacy": 6.569408740359897,
+        "meent_torch": 7.9550128534704365,
+        "meent_jax_jit": 3.5538971807628523,
+        "grcwa_autograd": 27.93238993710692
+      }
+    },
+    {
+      "case": "v3-m3-08",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 15.41564299464492,
+        "meent_torch": 51.37538048130885,
+        "meent_jax_jit": 5.391645451516161,
+        "grcwa_autograd": 304.9642751798751
+      },
+      "cpu_speedup": {
+        "legacy": 10.02145922746781,
+        "meent_torch": 20.71306818181818,
+        "meent_jax_jit": 5.370919881305638,
+        "grcwa_autograd": 39.26420454545455
+      }
+    },
+    {
+      "case": "v3-m3-02",
+      "harmonics": 3,
+      "speedup": {
+        "legacy": 9.395631351128209,
+        "meent_torch": 42.531248762719244,
+        "meent_jax_jit": 7.177504030919169,
+        "grcwa_autograd": 164.1365606612203
+      },
+      "cpu_speedup": {
+        "legacy": 9.357142857142858,
+        "meent_torch": 22.551020408163264,
+        "meent_jax_jit": 5.656765676567657,
+        "grcwa_autograd": 35.554455445544555
+      }
+    },
+    {
+      "case": "v3-m9-01",
+      "harmonics": 9,
+      "speedup": {
+        "legacy": 13.446473129092128,
+        "meent_torch": 20.034394625007558,
+        "meent_jax_jit": 2.8318981871739615,
+        "grcwa_autograd": 74.2407774648098
+      },
+      "cpu_speedup": {
+        "legacy": 6.968810916179337,
+        "meent_torch": 5.863481228668943,
+        "meent_jax_jit": 2.6552901023890785,
+        "grcwa_autograd": 21.63583815028902
+      }
+    },
+    {
+      "case": "v3-m15-04",
+      "harmonics": 15,
+      "speedup": {
+        "legacy": 6.657592395244461,
+        "meent_torch": 1.925813811099098,
+        "meent_jax_jit": 1.3786434073862597,
+        "grcwa_autograd": 25.275940467681803
+      },
+      "cpu_speedup": {
+        "legacy": 6.5565936999466095,
+        "meent_torch": 3.582777616700493,
+        "meent_jax_jit": 2.3677047893221665,
+        "grcwa_autograd": 18.128616442280148
+      }
+    }
+  ],
+  "local_gates": {
+    "legacy_speed": true,
+    "external_speed": true,
+    "external_interval": true,
+    "power": true,
+    "balance": true,
+    "gradients": true,
+    "finite_difference": false
+  }
+}

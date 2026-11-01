@@ -1,0 +1,6 @@
+{
+  "scope": "review-only monkeypatch of reference Loewner; native implementation unchanged",
+  "gradient": 62489.26091686185,
+  "oracle": 62489.260987607515,
+  "relative_error": 1.1321251478367502e-09
+}

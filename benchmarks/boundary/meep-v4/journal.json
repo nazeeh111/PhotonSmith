@@ -1,0 +1,257 @@
+[
+  {
+    "name": "vacuum",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/vacuum/attempt-001/result.json",
+      "--resolution",
+      "160",
+      "--case",
+      "vacuum"
+    ],
+    "started_utc": "2026-11-01T15:04:43.135055+00:00",
+    "output": "runs/vacuum/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 57920,
+    "elapsed_seconds": 406.8816391659784,
+    "child_maxrss_bytes": 153927680,
+    "sha256": {
+      "runs/vacuum/attempt-001/stderr.log": "cace1071573ef725e762e8856427937617c8c67e5d0784c45c0e854e56a803a8",
+      "runs/vacuum/attempt-001/result.json": "97fa26b3a4d05189d7073c8d7dc932802b55b334cad0e7842729239eb6ae30bc",
+      "runs/vacuum/attempt-001/result.npz": "d0201eabec41fd896e47f061403d4ce896d2a20ee31478369a491e67528086f4",
+      "runs/vacuum/attempt-001/stdout.log": "ef3656e2b0e062a50ae399c7dd1d088213298bbbe0dcb398b8c1f26b75b613fb"
+    }
+  },
+  {
+    "name": "slab",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/slab/attempt-001/result.json",
+      "--resolution",
+      "160",
+      "--case",
+      "slab"
+    ],
+    "started_utc": "2026-11-01T15:11:30.116846+00:00",
+    "output": "runs/slab/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 60087,
+    "elapsed_seconds": 412.91858399997,
+    "child_maxrss_bytes": 153927680,
+    "sha256": {
+      "runs/slab/attempt-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runs/slab/attempt-001/result.json": "c4b06fa4b6cddb6b117cc785d71abd59d071336170548ac58f4ab1b57f65deb7",
+      "runs/slab/attempt-001/result.npz": "9ac706134b7d7956c151a2db79232ceb391b3aa07dde8c6d8e453face1310042",
+      "runs/slab/attempt-001/stdout.log": "d3bf7eb77895df3d3e62c5f729f8654e0eb911a790a4a736e4c46a41b877ee1e"
+    }
+  },
+  {
+    "name": "coarse",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/coarse/attempt-001/result.json",
+      "--resolution",
+      "40"
+    ],
+    "started_utc": "2026-11-01T15:18:23.116297+00:00",
+    "output": "runs/coarse/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 62876,
+    "elapsed_seconds": 7.95804095902713,
+    "child_maxrss_bytes": 153927680,
+    "sha256": {
+      "runs/coarse/attempt-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runs/coarse/attempt-001/result.json": "bcd2b9e59ceca303414890f03a96e9a380b4378056024980740d5e96c9a5bcdb",
+      "runs/coarse/attempt-001/result.npz": "a72dfc5f55875c4ca42c0e2314b5f2a9c409635a0509c39d4304dd7bfdf17197",
+      "runs/coarse/attempt-001/stdout.log": "cbf524c2ca0570474606d16da84512a9b32ef863c8348bdca18f02e0a61aae63"
+    }
+  },
+  {
+    "name": "medium",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/medium/attempt-001/result.json",
+      "--resolution",
+      "80"
+    ],
+    "started_utc": "2026-11-01T15:18:31.082476+00:00",
+    "output": "runs/medium/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 62894,
+    "elapsed_seconds": 48.426647582964506,
+    "child_maxrss_bytes": 153927680,
+    "sha256": {
+      "runs/medium/attempt-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runs/medium/attempt-001/result.json": "2f43a7b6814285e0d1973146a26d510e334b8e23ce67f3049f0669ad87aa1ee0",
+      "runs/medium/attempt-001/result.npz": "83727b741b15efc1f2aab780eb99122bec6f73b984843e4bf128a89399867428",
+      "runs/medium/attempt-001/stdout.log": "7e688d3dd3b64711a618ae410b0016ac5a86f7ef13ae0a4b4453a448b61c074b"
+    }
+  },
+  {
+    "name": "fine",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/fine/attempt-001/result.json",
+      "--resolution",
+      "160"
+    ],
+    "started_utc": "2026-11-01T15:19:19.534368+00:00",
+    "output": "runs/fine/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 63143,
+    "elapsed_seconds": 512.5236052499968,
+    "child_maxrss_bytes": 159350784,
+    "sha256": {
+      "runs/fine/attempt-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runs/fine/attempt-001/result.json": "315319945c196d8dfeb6906e6b26188b49f0daa19bcefa12d803ccdd112d2de8",
+      "runs/fine/attempt-001/result.npz": "a9a56e0906638cabae82e819b05d031291ed8a97024abdca5b6e84e7fbad5f86",
+      "runs/fine/attempt-001/stdout.log": "abb6e70c4de93261ca25030bdeea817655582bd2c3238cc580f5ee57bc80cdc0"
+    }
+  },
+  {
+    "name": "long-time",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/long-time/attempt-001/result.json",
+      "--resolution",
+      "80",
+      "--after-sources",
+      "500"
+    ],
+    "started_utc": "2026-11-01T15:27:52.153742+00:00",
+    "output": "runs/long-time/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 64851,
+    "elapsed_seconds": 108.48622179200174,
+    "child_maxrss_bytes": 159350784,
+    "sha256": {
+      "runs/long-time/attempt-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runs/long-time/attempt-001/result.json": "9ba008e1f9ec734511bd82dd496cffc9cb09d90d678e3a5dc770d3e20803d895",
+      "runs/long-time/attempt-001/result.npz": "db9b212326adc9355ad62132b2c5b6e2982eb6ccee814d9f7086ad3fde297ea5",
+      "runs/long-time/attempt-001/stdout.log": "d206925acfc3c36c14550813906a41cd1a4f60d164ce2abfddab6e5ab4201e98"
+    }
+  },
+  {
+    "name": "thick-pml",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/thick-pml/attempt-001/result.json",
+      "--resolution",
+      "80",
+      "--pml",
+      "2"
+    ],
+    "started_utc": "2026-11-01T15:29:40.695001+00:00",
+    "output": "runs/thick-pml/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 65195,
+    "elapsed_seconds": 138.2960043749772,
+    "child_maxrss_bytes": 159350784,
+    "sha256": {
+      "runs/thick-pml/attempt-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runs/thick-pml/attempt-001/result.json": "ce36341ec2d31ae76c416fa5e5cb83869b3cfc8f469adf9a8dadb6956af87b3c",
+      "runs/thick-pml/attempt-001/result.npz": "df4a8489734047e983735cdbc1f98fd67cda4cc731cced361b16ecf6379abbf6",
+      "runs/thick-pml/attempt-001/stdout.log": "9049269dc51400bbe8202c0f1defe91abba31c35400ccec8d60b4076708555f4"
+    }
+  },
+  {
+    "name": "wide-air",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/wide-air/attempt-001/result.json",
+      "--resolution",
+      "80",
+      "--air",
+      "3"
+    ],
+    "started_utc": "2026-11-01T15:31:59.029620+00:00",
+    "output": "runs/wide-air/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 69540,
+    "elapsed_seconds": 211.50985879200744,
+    "child_maxrss_bytes": 159350784,
+    "sha256": {
+      "runs/wide-air/attempt-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runs/wide-air/attempt-001/result.json": "1c9853210d9af16ef574f67fe87edf63b84d0e832701634336418153aa20c2c2",
+      "runs/wide-air/attempt-001/result.npz": "17b02c05fb55a6f467c4c1bc663a5c5062fdb461dd0a71d4f65ec3d536b0a435",
+      "runs/wide-air/attempt-001/stdout.log": "85be7f52aa0bf98dbbe65c7ea863c1179bab9b65fbd8110d676549eee59a0aa4"
+    }
+  },
+  {
+    "name": "translated",
+    "attempt": 1,
+    "command": [
+      "/Users/nazeeh/.local/share/codex-tools/meep-1.35.0-cpython3.12.16/bin/python",
+      "-I",
+      "-B",
+      "/Users/nazeeh/.codex/skills/meep-local/scripts/meep_grating.py",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/input.json",
+      "--output",
+      "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/meep/run-40-80-160/runs/translated/attempt-001/result.json",
+      "--resolution",
+      "80",
+      "--translation",
+      ".137"
+    ],
+    "started_utc": "2026-11-01T15:35:30.600741+00:00",
+    "output": "runs/translated/attempt-001/result.json",
+    "returncode": 0,
+    "pid": 74432,
+    "elapsed_seconds": 96.52946512500057,
+    "child_maxrss_bytes": 159350784,
+    "sha256": {
+      "runs/translated/attempt-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runs/translated/attempt-001/result.json": "954dfe2a637475da867e29ab2452f1238672be8a5131ed7f44e300066e15ffbc",
+      "runs/translated/attempt-001/result.npz": "e880e017153a04f72c5252e40d4a57b131972ac9481a86e0a8b91b6dfc2db3c0",
+      "runs/translated/attempt-001/stdout.log": "4082b01a06adfa61ad24994d8f89a1fb3bb5dd362a11b6c595d567588ced9ea4"
+    }
+  }
+]

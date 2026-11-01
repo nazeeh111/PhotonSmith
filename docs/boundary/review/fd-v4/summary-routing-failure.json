@@ -1,0 +1,10 @@
+{
+  "evidence_kind": "Parent transcription of actual session tool output; not an original redirected process logfile",
+  "command": "/private/tmp/engineering-photon-runtime/bin/python scripts/summarize_boundary.py benchmarks/boundary/confirmation-v4 --output benchmarks/boundary/confirmation-v4/summary.json",
+  "cwd": "/Users/nazeeh/Documents/ChatGPT/Continue/engineering-accomplishment-2026-10-29/validation-v4/PhotonSmith",
+  "exit_code": 1,
+  "observed_error": "ModuleNotFoundError: No module named photonsmith at from photonsmith.gradient_check import SCHEME,STEPS",
+  "cause": "Benchmark runtime has no installed PhotonSmith distribution; running a script makes scripts the import root. This is not a numerical or data failure.",
+  "successful_followup": "python -m scripts.summarize_boundary from source root, with no source changes or altered inputs/thresholds",
+  "source_unchanged": true
+}

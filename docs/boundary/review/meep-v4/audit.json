@@ -1,0 +1,3037 @@
+{
+  "status": "pass",
+  "reviewed_utc": "2026-11-01T15:38:40.208263+00:00",
+  "journal_sha256": "8eb7ec5119e8c279c4aa41a1d151f3ba539340f2ca52a61985aef689daecb02a",
+  "plan_sha256": "13add60984a53c8e9b5cc545b39bffcebdeaaff0d1c4f397897162ed34df0f45",
+  "completed": [
+    "vacuum",
+    "slab",
+    "coarse",
+    "medium",
+    "fine",
+    "long-time",
+    "thick-pml",
+    "wide-air",
+    "translated"
+  ],
+  "missing": [],
+  "checks_count": 535,
+  "failed": [],
+  "run_metrics": {
+    "vacuum": {
+      "T": [
+        2.229773238475061e-33,
+        0.9999999015181147,
+        3.3104241057004016e-33
+      ],
+      "R": [
+        -0.0,
+        -0.0,
+        -0.0
+      ],
+      "balance": 0.9999999015181147,
+      "flux_error": 2.679156896334689e-11,
+      "empty_flux_ratio": 0.9999999015449063,
+      "elapsed_seconds": 406.8816391659784
+    },
+    "slab": {
+      "T": [
+        3.426135150805484e-33,
+        0.7540803418956804,
+        3.656466928106609e-33
+      ],
+      "R": [
+        4.015655482498189e-33,
+        0.2459198096009464,
+        1.6192927628836886e-32
+      ],
+      "balance": 1.0000001514966268,
+      "flux_error": 2.4152790878417818e-11,
+      "empty_flux_ratio": 0.9999999015449063,
+      "elapsed_seconds": 412.91858399997
+    },
+    "coarse": {
+      "T": [
+        0.4917609878804095,
+        0.12679899090600105,
+        0.14697084448561765
+      ],
+      "R": [
+        0.09947879083314343,
+        0.1202894769756638,
+        0.01470176126443857
+      ],
+      "balance": 1.000000852345274,
+      "flux_error": 0.0006844640715687467,
+      "empty_flux_ratio": 0.9999999990768343,
+      "elapsed_seconds": 7.95804095902713
+    },
+    "medium": {
+      "T": [
+        0.4912673497368891,
+        0.1266155142175739,
+        0.14842473698616182
+      ],
+      "R": [
+        0.09843293208396336,
+        0.12029562778876353,
+        0.014963924626812803
+      ],
+      "balance": 1.0000000854401645,
+      "flux_error": 0.00017129134133986312,
+      "empty_flux_ratio": 1.0000000294282334,
+      "elapsed_seconds": 48.426647582964506
+    },
+    "fine": {
+      "T": [
+        0.49100561054002745,
+        0.12657437337591115,
+        0.14835686916725427
+      ],
+      "R": [
+        0.09852779768641862,
+        0.12057713373773352,
+        0.014958247889234583
+      ],
+      "balance": 1.0000000323965796,
+      "flux_error": 4.2795283507701676e-05,
+      "empty_flux_ratio": 0.9999999015449063,
+      "elapsed_seconds": 512.5236052499968
+    },
+    "long-time": {
+      "T": [
+        0.49126734973700875,
+        0.126615514217602,
+        0.14842473698616734
+      ],
+      "R": [
+        0.09843293208409844,
+        0.12029562778868964,
+        0.014963924626845239
+      ],
+      "balance": 1.0000000854404114,
+      "flux_error": 0.00017129134152071845,
+      "empty_flux_ratio": 1.00000002942793,
+      "elapsed_seconds": 108.48622179200174
+    },
+    "thick-pml": {
+      "T": [
+        0.4912671995590199,
+        0.12661664122773125,
+        0.1484250951454559
+      ],
+      "R": [
+        0.09843277583155308,
+        0.1202951569596229,
+        0.014963222822195506
+      ],
+      "balance": 1.0000000915455785,
+      "flux_error": 0.00017129203691956807,
+      "empty_flux_ratio": 1.0000000294317952,
+      "elapsed_seconds": 138.2960043749772
+    },
+    "wide-air": {
+      "T": [
+        0.49127133337552215,
+        0.1266129973191785,
+        0.14842537873323047
+      ],
+      "R": [
+        0.09843265933762585,
+        0.12029372072186317,
+        0.014963853711030805
+      ],
+      "balance": 0.999999943198451,
+      "flux_error": 0.00017129322051112617,
+      "empty_flux_ratio": 1.0000000201635086,
+      "elapsed_seconds": 211.50985879200744
+    },
+    "translated": {
+      "T": [
+        0.49124308095234337,
+        0.12652927608988337,
+        0.14815540618993686
+      ],
+      "R": [
+        0.09864214148177272,
+        0.12048940218745788,
+        0.014940778525412228
+      ],
+      "balance": 1.0000000854268065,
+      "flux_error": 0.00017121272220232964,
+      "empty_flux_ratio": 1.0000000294282334,
+      "elapsed_seconds": 96.52946512500057
+    }
+  },
+  "checks": [
+    {
+      "name": "frozen_config_sha256",
+      "pass_": true,
+      "observed": "47dfa0e59ffed543779f72c21fc0271a15e35be1ad98e619812c433aba7ef52c",
+      "expected": "47dfa0e59ffed543779f72c21fc0271a15e35be1ad98e619812c433aba7ef52c"
+    },
+    {
+      "name": "frozen_native_sha256",
+      "pass_": true,
+      "observed": "2b81118b0de631313b86899518fd95195da07d2eb2ccb3631f491a5334c676fe",
+      "expected": "2b81118b0de631313b86899518fd95195da07d2eb2ccb3631f491a5334c676fe"
+    },
+    {
+      "name": "frozen_helper_sha256",
+      "pass_": true,
+      "observed": "d21ad23075362b0392139ea4016026e7961ce21c8e33c66f49d6350ca1a1b352",
+      "expected": "d21ad23075362b0392139ea4016026e7961ce21c8e33c66f49d6350ca1a1b352"
+    },
+    {
+      "name": "frozen_validator_sha256",
+      "pass_": true,
+      "observed": "322b301e35839982146a0c57bdb1ffb3bd39ffa0353a92d8bf6b3d7576eca059",
+      "expected": "322b301e35839982146a0c57bdb1ffb3bd39ffa0353a92d8bf6b3d7576eca059"
+    },
+    {
+      "name": "frozen_protocol",
+      "pass_": true
+    },
+    {
+      "name": "all_frozen_limits_match_requested_protocol",
+      "pass_": true
+    },
+    {
+      "name": "runtime_manifest_self_consistency",
+      "pass_": true
+    },
+    {
+      "name": "unchanged_public_source_native/boundary.cpp",
+      "pass_": true,
+      "sha256": "dd55bc7113b2db50a5e5c4d1de14c8435c856b23377f917ffcb38e3fa6f00a65"
+    },
+    {
+      "name": "unchanged_public_source_photonsmith/native.py",
+      "pass_": true,
+      "sha256": "fc5090ee3ebe0300bc2d8886c9816d3b8c6af5704eb360aa96fe49ad5a8e1f97"
+    },
+    {
+      "name": "unchanged_public_source_photonsmith/physics.py",
+      "pass_": true,
+      "sha256": "462b90fceea6ce3fe5b7c5104d5a032ec63f5252240b02952fa94bed3101a433"
+    },
+    {
+      "name": "unchanged_public_source_photonsmith/boundary.py",
+      "pass_": true,
+      "sha256": "cb091d9cfbd33ddc86651517c2b81908278a1ed7e0a13aee40341a9f560a3aba"
+    },
+    {
+      "name": "native_configuration",
+      "pass_": true
+    },
+    {
+      "name": "actual_optimized_device_provenance",
+      "pass_": true,
+      "source_sha256": "1eed159bfd00392c72e06c20b99eef8c2fb8755cde9908b406d3c7ea8f6ac1bb"
+    },
+    {
+      "name": "native_source_receipt",
+      "pass_": true,
+      "observed": "dd55bc7113b2db50a5e5c4d1de14c8435c856b23377f917ffcb38e3fa6f00a65"
+    },
+    {
+      "name": "native_library_receipt",
+      "pass_": true,
+      "observed": "4895488b3ab5418051bbad7197454969184fc8448cab3e224611e99cfa9e7a9a"
+    },
+    {
+      "name": "native_convergence_orders",
+      "pass_": true
+    },
+    {
+      "name": "native_stored_convergence_metric",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "native_fourier_limit",
+      "pass_": true,
+      "error": 3.1245272094637677e-06
+    },
+    {
+      "name": "native_final_matches_M61_orders",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "native_final_matches_M61_T",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "native_final_matches_M61_R",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "native_final_matches_M61_amplitudes_t",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "native_power_amplitude_consistency",
+      "pass_": true,
+      "error": 5.551115123125783e-17,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_identity",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_waveform",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_re_projected",
+      "pass_": true,
+      "error": 1.897149936107019e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_rh_projected",
+      "pass_": true,
+      "error": 3.1401849173675502e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_te_projected",
+      "pass_": true,
+      "error": 5.3475422218306674e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_th_projected",
+      "pass_": true,
+      "error": 4.440892098500626e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_re_projected",
+      "pass_": true,
+      "error": 1.897149936107019e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_rh_projected",
+      "pass_": true,
+      "error": 3.1401849173675502e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_te_projected",
+      "pass_": true,
+      "error": 5.3475422218306674e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_th_projected",
+      "pass_": true,
+      "error": 4.440892098500626e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "vacuum_incident_power",
+      "pass_": true,
+      "error": 1.2434497875801753e-14,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reconstructed_T",
+      "pass_": true,
+      "error": 1.6653345369377348e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reconstructed_R",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reconstructed_transmission",
+      "pass_": true,
+      "error": 1.6653345369377348e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reconstructed_reflection",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_reconstructed_balance",
+      "pass_": true,
+      "error": 1.6653345369377348e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_deembedded_t",
+      "pass_": true,
+      "error": 1.2670655869532562e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_deembedded_r",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_deembedded_incident",
+      "pass_": true,
+      "error": 1.7342238036525468e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "vacuum_projection_flux_gate",
+      "pass_": true,
+      "error": 2.679156896334689e-11
+    },
+    {
+      "name": "vacuum_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.999999901518113,
+      "raw_R": -0.0
+    },
+    {
+      "name": "vacuum_analytic_control",
+      "pass_": true,
+      "power_error": 9.848188531336177e-08,
+      "phase_errors": [
+        0.00011421036047530083
+      ],
+      "analytic_t": [
+        -0.9919315753851342,
+        -0.12677440496395886
+      ],
+      "analytic_r": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "vacuum_spurious_order_gate",
+      "pass_": true,
+      "error": 3.3104241057004016e-33
+    },
+    {
+      "name": "slab_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "slab_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "slab_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "slab_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "slab_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "slab_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "slab_identity",
+      "pass_": true
+    },
+    {
+      "name": "slab_waveform",
+      "pass_": true
+    },
+    {
+      "name": "slab_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "slab_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "slab_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_re_projected",
+      "pass_": true,
+      "error": 1.897149936107019e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "slab_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_rh_projected",
+      "pass_": true,
+      "error": 3.1401849173675502e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "slab_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_te_projected",
+      "pass_": true,
+      "error": 5.3475422218306674e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "slab_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_th_projected",
+      "pass_": true,
+      "error": 4.440892098500626e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "slab_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_re_projected",
+      "pass_": true,
+      "error": 5.178925639311149e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "slab_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_rh_projected",
+      "pass_": true,
+      "error": 1.6653345369377348e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "slab_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_te_projected",
+      "pass_": true,
+      "error": 2.3603665272841412e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "slab_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_th_projected",
+      "pass_": true,
+      "error": 3.1401849173675502e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "slab_incident_power",
+      "pass_": true,
+      "error": 1.2434497875801753e-14,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reconstructed_T",
+      "pass_": true,
+      "error": 1.1102230246251565e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reconstructed_R",
+      "pass_": true,
+      "error": 1.1102230246251565e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reconstructed_transmission",
+      "pass_": true,
+      "error": 1.1102230246251565e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reconstructed_reflection",
+      "pass_": true,
+      "error": 1.1102230246251565e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_reconstructed_balance",
+      "pass_": true,
+      "error": 2.220446049250313e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_deembedded_t",
+      "pass_": true,
+      "error": 3.3306690738754696e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_deembedded_r",
+      "pass_": true,
+      "error": 2.7086939133349145e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_deembedded_incident",
+      "pass_": true,
+      "error": 1.7342238036525468e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "slab_projection_flux_gate",
+      "pass_": true,
+      "error": 2.4152790878417818e-11
+    },
+    {
+      "name": "slab_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.7540803418956815,
+      "raw_R": 0.24591980960094753
+    },
+    {
+      "name": "slab_analytic_control",
+      "pass_": true,
+      "power_error": 0.00013102378579935015,
+      "phase_errors": [
+        0.0006382509846590431,
+        0.0006383385744089649
+      ],
+      "analytic_t": [
+        0.5546470523948858,
+        0.6682648138683629
+      ],
+      "analytic_r": [
+        -0.38148997881177754,
+        0.3166294077961435
+      ]
+    },
+    {
+      "name": "slab_spurious_order_gate",
+      "pass_": true,
+      "error": 1.6192927628836886e-32
+    },
+    {
+      "name": "coarse_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "coarse_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "coarse_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "coarse_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "coarse_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "coarse_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "coarse_identity",
+      "pass_": true
+    },
+    {
+      "name": "coarse_waveform",
+      "pass_": true
+    },
+    {
+      "name": "coarse_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "coarse_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "coarse_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_re_projected",
+      "pass_": true,
+      "error": 1.831026719408895e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "coarse_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_rh_projected",
+      "pass_": true,
+      "error": 6.280369834735101e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "coarse_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_te_projected",
+      "pass_": true,
+      "error": 1.3322676295501878e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "coarse_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_th_projected",
+      "pass_": true,
+      "error": 8.881784197001252e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "coarse_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_re_projected",
+      "pass_": true,
+      "error": 4.440892098500626e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "coarse_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_rh_projected",
+      "pass_": true,
+      "error": 4.440892098500626e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "coarse_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_te_projected",
+      "pass_": true,
+      "error": 2.220446049250313e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "coarse_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_th_projected",
+      "pass_": true,
+      "error": 3.510833468576701e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "coarse_incident_power",
+      "pass_": true,
+      "error": 5.329070518200751e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reconstructed_T",
+      "pass_": true,
+      "error": 2.220446049250313e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reconstructed_R",
+      "pass_": true,
+      "error": 2.3592239273284576e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reconstructed_transmission",
+      "pass_": true,
+      "error": 4.440892098500626e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reconstructed_reflection",
+      "pass_": true,
+      "error": 2.7755575615628914e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_reconstructed_balance",
+      "pass_": true,
+      "error": 6.661338147750939e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_deembedded_t",
+      "pass_": true,
+      "error": 7.327682229021408e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_deembedded_r",
+      "pass_": true,
+      "error": 9.761916494637743e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_deembedded_incident",
+      "pass_": true,
+      "error": 1.9984014443252818e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "coarse_projection_flux_gate",
+      "pass_": true,
+      "error": 0.0006844640715687467
+    },
+    {
+      "name": "coarse_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.7655308238680333,
+      "raw_R": 0.23447002934663796
+    },
+    {
+      "name": "medium_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "medium_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "medium_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "medium_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "medium_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "medium_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "medium_identity",
+      "pass_": true
+    },
+    {
+      "name": "medium_waveform",
+      "pass_": true
+    },
+    {
+      "name": "medium_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "medium_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "medium_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_re_projected",
+      "pass_": true,
+      "error": 1.6011864169946886e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "medium_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_rh_projected",
+      "pass_": true,
+      "error": 8.881784197001252e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "medium_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_te_projected",
+      "pass_": true,
+      "error": 1.7772239894833365e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "medium_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_th_projected",
+      "pass_": true,
+      "error": 2.237726045655905e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "medium_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_re_projected",
+      "pass_": true,
+      "error": 8.881784197001252e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "medium_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_rh_projected",
+      "pass_": true,
+      "error": 4.965068306494546e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "medium_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_te_projected",
+      "pass_": true,
+      "error": 4.965068306494546e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "medium_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_th_projected",
+      "pass_": true,
+      "error": 2.482534153247273e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "medium_incident_power",
+      "pass_": true,
+      "error": 1.7763568394002505e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reconstructed_T",
+      "pass_": true,
+      "error": 2.220446049250313e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reconstructed_R",
+      "pass_": true,
+      "error": 3.469446951953614e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reconstructed_transmission",
+      "pass_": true,
+      "error": 3.3306690738754696e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reconstructed_reflection",
+      "pass_": true,
+      "error": 4.163336342344337e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_reconstructed_balance",
+      "pass_": true,
+      "error": 6.661338147750939e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_deembedded_t",
+      "pass_": true,
+      "error": 6.667118051786499e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_deembedded_r",
+      "pass_": true,
+      "error": 9.777686967753793e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_deembedded_incident",
+      "pass_": true,
+      "error": 1.831026719408895e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "medium_projection_flux_gate",
+      "pass_": true,
+      "error": 0.00017129134133986312
+    },
+    {
+      "name": "medium_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.7663076015833904,
+      "raw_R": 0.2336924848525492
+    },
+    {
+      "name": "fine_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "fine_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "fine_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "fine_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "fine_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "fine_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "fine_identity",
+      "pass_": true
+    },
+    {
+      "name": "fine_waveform",
+      "pass_": true
+    },
+    {
+      "name": "fine_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "fine_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "fine_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_re_projected",
+      "pass_": true,
+      "error": 1.897149936107019e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "fine_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_rh_projected",
+      "pass_": true,
+      "error": 3.1401849173675502e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "fine_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_te_projected",
+      "pass_": true,
+      "error": 5.3475422218306674e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "fine_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_th_projected",
+      "pass_": true,
+      "error": 4.440892098500626e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "fine_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_re_projected",
+      "pass_": true,
+      "error": 8.881784197001252e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "fine_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_rh_projected",
+      "pass_": true,
+      "error": 2.0206364052201328e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "fine_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_te_projected",
+      "pass_": true,
+      "error": 4.965068306494546e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "fine_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_th_projected",
+      "pass_": true,
+      "error": 5.661048867003677e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "fine_incident_power",
+      "pass_": true,
+      "error": 1.2434497875801753e-14,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reconstructed_T",
+      "pass_": true,
+      "error": 7.216449660063518e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reconstructed_R",
+      "pass_": true,
+      "error": 1.8041124150158794e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reconstructed_transmission",
+      "pass_": true,
+      "error": 1.1102230246251565e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reconstructed_reflection",
+      "pass_": true,
+      "error": 3.608224830031759e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_reconstructed_balance",
+      "pass_": true,
+      "error": 1.5543122344752192e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_deembedded_t",
+      "pass_": true,
+      "error": 3.376611507232129e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_deembedded_r",
+      "pass_": true,
+      "error": 1.1240151438116956e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_deembedded_incident",
+      "pass_": true,
+      "error": 1.7342238036525468e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "fine_projection_flux_gate",
+      "pass_": true,
+      "error": 4.2795283507701676e-05
+    },
+    {
+      "name": "fine_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.7659368536505002,
+      "raw_R": 0.23406317966390974
+    },
+    {
+      "name": "long-time_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "long-time_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "long-time_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "long-time_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "long-time_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "long-time_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "long-time_identity",
+      "pass_": true
+    },
+    {
+      "name": "long-time_waveform",
+      "pass_": true
+    },
+    {
+      "name": "long-time_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "long-time_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "long-time_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_re_projected",
+      "pass_": true,
+      "error": 1.7763568394002505e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "long-time_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_rh_projected",
+      "pass_": true,
+      "error": 9.930136612989092e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "long-time_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_te_projected",
+      "pass_": true,
+      "error": 1.7763568394002505e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "long-time_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_th_projected",
+      "pass_": true,
+      "error": 4.440892098500626e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "long-time_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_re_projected",
+      "pass_": true,
+      "error": 8.881784197001252e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "long-time_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_rh_projected",
+      "pass_": true,
+      "error": 3.1401849173675503e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "long-time_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_te_projected",
+      "pass_": true,
+      "error": 4.440892098500626e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "long-time_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_th_projected",
+      "pass_": true,
+      "error": 1.1102230246251565e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "long-time_incident_power",
+      "pass_": true,
+      "error": 5.329070518200751e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reconstructed_T",
+      "pass_": true,
+      "error": 2.220446049250313e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reconstructed_R",
+      "pass_": true,
+      "error": 2.636779683484747e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reconstructed_transmission",
+      "pass_": true,
+      "error": 4.440892098500626e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reconstructed_reflection",
+      "pass_": true,
+      "error": 3.3306690738754696e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_reconstructed_balance",
+      "pass_": true,
+      "error": 6.661338147750939e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_deembedded_t",
+      "pass_": true,
+      "error": 3.3422138886441676e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_deembedded_r",
+      "pass_": true,
+      "error": 1.083889877282842e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_deembedded_incident",
+      "pass_": true,
+      "error": 1.4043333874306805e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "long-time_projection_flux_gate",
+      "pass_": true,
+      "error": 0.00017129134152071845
+    },
+    {
+      "name": "long-time_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.7663076015835397,
+      "raw_R": 0.233692484852644
+    },
+    {
+      "name": "thick-pml_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_identity",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_waveform",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_re_projected",
+      "pass_": true,
+      "error": 1.6011864169946886e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_rh_projected",
+      "pass_": true,
+      "error": 9.930136612989092e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_te_projected",
+      "pass_": true,
+      "error": 1.3426356273935429e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_th_projected",
+      "pass_": true,
+      "error": 1.7979101253009106e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_re_projected",
+      "pass_": true,
+      "error": 1.3322676295501878e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_rh_projected",
+      "pass_": true,
+      "error": 2.1183523716375092e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_te_projected",
+      "pass_": true,
+      "error": 4.0029660424867215e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_th_projected",
+      "pass_": true,
+      "error": 3.510833468576701e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "thick-pml_incident_power",
+      "pass_": true,
+      "error": 1.7763568394002505e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reconstructed_T",
+      "pass_": true,
+      "error": 5.551115123125783e-17,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reconstructed_R",
+      "pass_": true,
+      "error": 3.469446951953614e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reconstructed_transmission",
+      "pass_": true,
+      "error": 1.1102230246251565e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reconstructed_reflection",
+      "pass_": true,
+      "error": 3.608224830031759e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_reconstructed_balance",
+      "pass_": true,
+      "error": 4.440892098500626e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_deembedded_t",
+      "pass_": true,
+      "error": 4.0412728104402656e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_deembedded_r",
+      "pass_": true,
+      "error": 1.1188630228279524e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_deembedded_incident",
+      "pass_": true,
+      "error": 1.831026719408895e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "thick-pml_projection_flux_gate",
+      "pass_": true,
+      "error": 0.00017129203691956807
+    },
+    {
+      "name": "thick-pml_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.7663089359364639,
+      "raw_R": 0.23369115563744086
+    },
+    {
+      "name": "wide-air_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_identity",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_waveform",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_re_projected",
+      "pass_": true,
+      "error": 2.220446049250313e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_rh_projected",
+      "pass_": true,
+      "error": 1.4043333874306805e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_te_projected",
+      "pass_": true,
+      "error": 2.318213734067276e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_th_projected",
+      "pass_": true,
+      "error": 1.2560739669470201e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_re_projected",
+      "pass_": true,
+      "error": 2.220446049250313e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_rh_projected",
+      "pass_": true,
+      "error": 3.554447978966673e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_te_projected",
+      "pass_": true,
+      "error": 5.551115123125783e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_th_projected",
+      "pass_": true,
+      "error": 1.1102230246251565e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "wide-air_incident_power",
+      "pass_": true,
+      "error": 3.552713678800501e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reconstructed_T",
+      "pass_": true,
+      "error": 5.551115123125783e-17,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reconstructed_R",
+      "pass_": true,
+      "error": 3.608224830031759e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reconstructed_transmission",
+      "pass_": true,
+      "error": 1.1102230246251565e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reconstructed_reflection",
+      "pass_": true,
+      "error": 3.885780586188048e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_reconstructed_balance",
+      "pass_": true,
+      "error": 3.3306690738754696e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_deembedded_t",
+      "pass_": true,
+      "error": 6.938893903907228e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_deembedded_r",
+      "pass_": true,
+      "error": 4.775249788392736e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_deembedded_incident",
+      "pass_": true,
+      "error": 2.220446049250313e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "wide-air_projection_flux_gate",
+      "pass_": true,
+      "error": 0.00017129322051112617
+    },
+    {
+      "name": "wide-air_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.7663097094280832,
+      "raw_R": 0.2336902337699842
+    },
+    {
+      "name": "translated_hash_stderr.log",
+      "pass_": true
+    },
+    {
+      "name": "translated_hash_result.json",
+      "pass_": true
+    },
+    {
+      "name": "translated_hash_result.npz",
+      "pass_": true
+    },
+    {
+      "name": "translated_hash_stdout.log",
+      "pass_": true
+    },
+    {
+      "name": "translated_required_artifact_hashes",
+      "pass_": true
+    },
+    {
+      "name": "translated_journal_command",
+      "pass_": true
+    },
+    {
+      "name": "translated_identity",
+      "pass_": true
+    },
+    {
+      "name": "translated_waveform",
+      "pass_": true
+    },
+    {
+      "name": "translated_actual_geometry",
+      "pass_": true
+    },
+    {
+      "name": "translated_physical_planes",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "translated_reference_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_re_projected",
+      "pass_": true,
+      "error": 1.6011864169946886e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "translated_reference_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_rh_projected",
+      "pass_": true,
+      "error": 8.881784197001252e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "translated_reference_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_te_projected",
+      "pass_": true,
+      "error": 1.7772239894833365e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "translated_reference_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_th_projected",
+      "pass_": true,
+      "error": 2.237726045655905e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reference_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_re_layout",
+      "pass_": true
+    },
+    {
+      "name": "translated_device_re_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_re_projected",
+      "pass_": true,
+      "error": 8.881784197001252e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_rh_layout",
+      "pass_": true
+    },
+    {
+      "name": "translated_device_rh_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_rh_projected",
+      "pass_": true,
+      "error": 4.965068306494546e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_te_layout",
+      "pass_": true
+    },
+    {
+      "name": "translated_device_te_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_te_projected",
+      "pass_": true,
+      "error": 1.3368855554576669e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_th_layout",
+      "pass_": true
+    },
+    {
+      "name": "translated_device_th_weight_sum",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_th_projected",
+      "pass_": true,
+      "error": 1.5700924586837752e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_re_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_re_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_te_common_EH_coordinates",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_device_te_common_EH_weights",
+      "pass_": true,
+      "error": 0.0,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_positive_incident",
+      "pass_": true
+    },
+    {
+      "name": "translated_incident_power",
+      "pass_": true,
+      "error": 1.7763568394002505e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reconstructed_T",
+      "pass_": true,
+      "error": 1.1102230246251565e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reconstructed_R",
+      "pass_": true,
+      "error": 2.498001805406602e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reconstructed_transmission",
+      "pass_": true,
+      "error": 2.220446049250313e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reconstructed_reflection",
+      "pass_": true,
+      "error": 3.3306690738754696e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_reconstructed_balance",
+      "pass_": true,
+      "error": 2.220446049250313e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_deembedded_t",
+      "pass_": true,
+      "error": 2.8305244335018383e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_deembedded_r",
+      "pass_": true,
+      "error": 5.33167196845001e-16,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_deembedded_incident",
+      "pass_": true,
+      "error": 1.831026719408895e-15,
+      "tolerance": 1e-11
+    },
+    {
+      "name": "translated_projection_flux_gate",
+      "pass_": true,
+      "error": 0.00017121272220232964
+    },
+    {
+      "name": "translated_realspace_flux_gate",
+      "pass_": true,
+      "raw_T": 0.7659277638762084,
+      "raw_R": 0.23407232254876856
+    },
+    {
+      "name": "resolution_gate",
+      "pass_": true,
+      "error": 0.00028150594896998726,
+      "limit": 0.0025
+    },
+    {
+      "name": "time_gate",
+      "pass_": true,
+      "error": 1.350725087334581e-13,
+      "limit": 0.002
+    },
+    {
+      "name": "pml_gate",
+      "pass_": true,
+      "error": 1.1270101573646052e-06,
+      "limit": 0.002
+    },
+    {
+      "name": "air_gate",
+      "pass_": true,
+      "error": 3.9836386330205364e-06,
+      "limit": 0.003
+    },
+    {
+      "name": "fine_energy_balance",
+      "pass_": true,
+      "error": 3.2396579641158496e-08
+    },
+    {
+      "name": "native_power_gate",
+      "pass_": true,
+      "error": 0.00010200865789372626,
+      "limit": 0.005
+    },
+    {
+      "name": "native_complex_transmission_-1",
+      "pass_": true,
+      "phase_error": 0.00013613866836498296,
+      "amplitude_error": 0.0001275778944968427
+    },
+    {
+      "name": "native_complex_transmission_0",
+      "pass_": true,
+      "phase_error": 0.0003141378836301302,
+      "amplitude_error": 0.00011205487155921225
+    },
+    {
+      "name": "native_complex_transmission_1",
+      "pass_": true,
+      "phase_error": 0.00018000930171196457,
+      "amplitude_error": 0.00017415727502166143
+    },
+    {
+      "name": "translation_power_gate",
+      "pass_": true,
+      "error": 0.00026933079622495915
+    },
+    {
+      "name": "translation_phase_0_-1",
+      "pass_": true,
+      "error": 0.00023743397025137618
+    },
+    {
+      "name": "translation_phase_0_0",
+      "pass_": true,
+      "error": 2.51049405991525e-05
+    },
+    {
+      "name": "translation_phase_0_1",
+      "pass_": true,
+      "error": 0.0008278883639781265
+    },
+    {
+      "name": "translation_phase_1_-1",
+      "pass_": true,
+      "error": 0.00020150169009605642
+    },
+    {
+      "name": "translation_phase_1_0",
+      "pass_": true,
+      "error": 0.0004694103718260539
+    },
+    {
+      "name": "translation_phase_1_1",
+      "pass_": true,
+      "error": 0.0006061884597893151
+    },
+    {
+      "name": "producer_final_summary_exists",
+      "pass_": true
+    },
+    {
+      "name": "producer_final_supported_decision",
+      "pass_": true,
+      "decision": "supported"
+    },
+    {
+      "name": "producer_final_plan_identity",
+      "pass_": true
+    },
+    {
+      "name": "producer_final_nine_stage_identities",
+      "pass_": true
+    },
+    {
+      "name": "final_live_runtime_file_identities",
+      "pass_": true,
+      "file_count": 16322,
+      "mismatches": []
+    },
+    {
+      "name": "final_live_runtime_no_additions",
+      "pass_": true,
+      "additions": []
+    }
+  ],
+  "limitations": [
+    "Coding-agent numerical review, not external human validation.",
+    "No physical device, fabrication, finite-3D, absorption or dispersion validation.",
+    "No new simulation launched by review."
+  ],
+  "review_script_sha256": "a222f7a76353524029316dd4ba0f6462b88d78d5b90f02d6cb03b1625e88abae",
+  "producer_summary_sha256": "26298ca267941d0bfa8f0fc680ca0d5f8915e94a3715fb58bc72bc9221a9a72f"
+}

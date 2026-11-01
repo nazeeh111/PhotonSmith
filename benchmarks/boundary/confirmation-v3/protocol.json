@@ -1,0 +1,61 @@
+{
+  "status": "declared before scoring held-out inputs",
+  "seed": 20261101379,
+  "cases": 48,
+  "harmonics": {
+    "3": 12,
+    "5": 12,
+    "9": 12,
+    "15": 12
+  },
+  "input_sha256": "4a6b425ab4d254e9f9b8ab687ce71651297fe715ea6a821a065ea78817d6e2c6",
+  "timing": {
+    "repetitions": 7,
+    "randomized_method_order_per_case_repeat": true,
+    "paired_case_ratios": "median of per-repeat baseline/native ratios",
+    "summary": "geometric mean over all48cases; stratified reporting byharmonics",
+    "interval": "10000pairedcasebootstrapresamples,seed37833",
+    "threads": "Requested BLAS/Torch=1. Actual own-process thread counts sampled after warmup, before every case and after all cases; total includes idle runtime workers, not strict single-thread JAX.",
+    "warmup": "onepermethodandshape, compilationexcludedbutrecordedseparately;changingwavelengthisanactualruntimeargumentinJAX",
+    "includes": "geometryFourierassembly,solver,objectiveandallsixparametergradients;Python-nativeFFIfornative;compiledJAXtransferandsynchronization;nonfiniteorfailedcallsretained",
+    "excludes": "imports/builds,warmupJIT,reportserialization,independentverification;reportedseparately",
+    "host_limit": "sharedworkstationwalltimingisconditional;processCPUandthreadpoolmetadataaresecondarydiagnostics"
+  },
+  "methods": [
+    "unmodified-public-PhotonSmith",
+    "native-analytic-scattering",
+    "meent-0.13.2-Torch-specialized-1D-TE",
+    "meent-0.13.2-JAX-JIT-specialized-1D-TE",
+    "grcwa-0.1.2-autograd-vector-RCWA-same-1D-orders"
+  ],
+  "fairness": "complex128,samephysicalcoefficientsandretainedorders;meentcoefficientsconjugatedfortimeconvention;grcwasupplies2polarizationsinternallyandisnotassumedthefastestspecializedbaseline",
+  "correctness": {
+    "max_power_absolute_error": 1e-07,
+    "gradient_direction_error": 2e-05,
+    "well_conditioned_power_balance": 1e-08,
+    "external_derivatives": "all6againstactualmeentJAXandTorchplusgrcwaifadapterworks",
+    "finite_differences": "first8frozenlistentries,allsixparameters,steps1e-4/1e-5/1e-6;one-sidedifboundaryexceeded,recordactualsteps"
+  },
+  "performance_gates": {
+    "legacy_geomean_min": 5,
+    "fastest_tested_external_geomean_min": 2,
+    "external_95pct_lower_min": 1
+  },
+  "no_postselection": "No droppingcasesbecauseofperformanceorcorrectness. Ifeditsfollowviewedoutcomes,retainthisasdevelopmentandcreatenewconfirmation. Noglobalfastestclaimfromfinitecomparators.",
+  "reason_for_successor": "After public automated review: algebraic resonance-aware divided differences, frozen-plan completeness validation, saved material metadata. New source identities and fresh unscored cases; no inherited timing claim.",
+  "memory": "Prior version RSS probes retained as historical; not attributed to this revised kernel.",
+  "declared_at_utc": "2026-11-01T07:41:41.075902+00:00",
+  "distribution": {
+    "width_fraction": "independent uniform[.15,.85)",
+    "shift_fraction": "independent uniform[0,1)",
+    "wavelength_um": "independent uniform[1.25,1.9)",
+    "shuffle": "same seeded NumPy generator after case generation"
+  },
+  "sources": {
+    "native/boundary.cpp": "dd55bc7113b2db50a5e5c4d1de14c8435c856b23377f917ffcb38e3fa6f00a65",
+    "photonsmith/boundary.py": "cb091d9cfbd33ddc86651517c2b81908278a1ed7e0a13aee40341a9f560a3aba",
+    "photonsmith/native.py": "fc5090ee3ebe0300bc2d8886c9816d3b8c6af5704eb360aa96fe49ad5a8e1f97",
+    "scripts/benchmark_boundary.py": "4759dd64cbfb17ddcbc6746403120fdea8248021701d922273710d7f2f0aa907",
+    "scripts/summarize_boundary.py": "0f1bad393725d4ec92d7af00b76d2787c499eb73a8e8f152e178801a5ee2b879"
+  }
+}

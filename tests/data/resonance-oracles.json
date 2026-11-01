@@ -1,0 +1,58 @@
+{
+  "precision_decimal_digits": 70,
+  "source": "mpmath evaluation of analytic scalar slab quotient at exact binary64 endpoints; independent review retained in docs/boundary/review/resonance-rc2",
+  "cases": [
+    {
+      "left": 9.869600401089357,
+      "right": 9.869608401089359,
+      "eta": 10000000.0,
+      "reflection": [
+        -0.03800847466396899,
+        -124989.23362639466
+      ],
+      "transmission": [
+        -0.03800847466396899,
+        -124989.23362644466
+      ]
+    },
+    {
+      "left": -1e-12,
+      "right": 1e-12,
+      "eta": 1e-08,
+      "reflection": [
+        -4.166666604166666e-10,
+        49999999.875
+      ],
+      "transmission": [
+        -4.1666666875e-10,
+        49999999.875
+      ]
+    },
+    {
+      "left": -400.000000001,
+      "right": -399.999999999,
+      "eta": 100000000.0,
+      "reflection": [
+        1.9999999999998387e-16,
+        4.999999999999399e-10
+      ],
+      "transmission": [
+        1.484030608155656e-23,
+        3.916191882632839e-17
+      ]
+    },
+    {
+      "left": 986.9604401089358,
+      "right": 986.9604401089359,
+      "eta": 1e-08,
+      "reflection": [
+        -10.501648110722785,
+        24999999.999946203
+      ],
+      "transmission": [
+        -10.501648110722785,
+        24999999.999946203
+      ]
+    }
+  ]
+}

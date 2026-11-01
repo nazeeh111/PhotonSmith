@@ -10,3 +10,6 @@ build/
 *.egg-info/
 experiments/server.log
 *.tmp
+
+# Optional architecture-specific native build products
+photonsmith/_boundary_native.*

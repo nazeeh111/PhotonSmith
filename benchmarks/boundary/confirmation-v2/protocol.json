@@ -1,0 +1,47 @@
+{
+  "status": "declared before scoring held-out inputs",
+  "seed": 20261029378,
+  "cases": 48,
+  "harmonics": {
+    "3": 12,
+    "5": 12,
+    "9": 12,
+    "15": 12
+  },
+  "input_sha256": "dd26f909b8dd8e8971b70c7706080ebb5dd11f4dc2ac2ea326afa79e876c1676",
+  "timing": {
+    "repetitions": 7,
+    "randomized_method_order_per_case_repeat": true,
+    "paired_case_ratios": "median of per-repeat baseline/native ratios",
+    "summary": "geometric mean over all48cases; stratified reporting byharmonics",
+    "interval": "10000pairedcasebootstrapresamples,seed37833",
+    "threads": "threadpoolctl1,torch1,BLASenv1;JAXmayuseitsownworkers andmustberecorded",
+    "warmup": "onepermethodandshape, compilationexcludedbutrecordedseparately;changingwavelengthisanactualruntimeargumentinJAX",
+    "includes": "geometryFourierassembly,solver,objectiveandallsixparametergradients;Python-nativeFFIfornative;compiledJAXtransferandsynchronization;nonfiniteorfailedcallsretained",
+    "excludes": "imports/builds,warmupJIT,reportserialization,independentverification;reportedseparately",
+    "host_limit": "sharedworkstationwalltimingisconditional;processCPUandthreadpoolmetadataaresecondarydiagnostics"
+  },
+  "methods": [
+    "unmodified-public-PhotonSmith",
+    "native-analytic-scattering",
+    "meent-0.13.2-Torch-specialized-1D-TE",
+    "meent-0.13.2-JAX-JIT-specialized-1D-TE",
+    "grcwa-0.1.2-autograd-vector-RCWA-same-1D-orders"
+  ],
+  "fairness": "complex128,samephysicalcoefficientsandretainedorders;meentcoefficientsconjugatedfortimeconvention;grcwasupplies2polarizationsinternallyandisnotassumedthefastestspecializedbaseline",
+  "correctness": {
+    "max_power_absolute_error": 1e-07,
+    "gradient_direction_error": 2e-05,
+    "well_conditioned_power_balance": 1e-08,
+    "external_derivatives": "all6againstactualmeentJAXandTorchplusgrcwaifadapterworks",
+    "finite_differences": "first8frozenlistentries,allsixparameters,steps1e-4/1e-5/1e-6;one-sidedifboundaryexceeded,recordactualsteps"
+  },
+  "performance_gates": {
+    "legacy_geomean_min": 5,
+    "fastest_tested_external_geomean_min": 2,
+    "external_95pct_lower_min": 1
+  },
+  "no_postselection": "No droppingcasesbecauseofperformanceorcorrectness. Ifeditsfollowviewedoutcomes,retainthisasdevelopmentandcreatenewconfirmation. Noglobalfastestclaimfromfinitecomparators.",
+  "reason_for_successor": "v1 viewed; remove unused Torch inverse, retain same scope/metrics/gates and fresh inputs. JAX also receives unused eps placeholder instead of redundant inverse; JIT previously could eliminate it.",
+  "memory": "Separate isolated per-method peak-process RSS probes on the frozen v2cases; imports/compilation included and reported explicitly, not inferred from Python-only allocation tracing."
+}
