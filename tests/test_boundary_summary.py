@@ -1,6 +1,7 @@
 """Incomplete or inconsistent benchmark evidence must never earn passing gates."""
 import importlib.util
 import json
+import math
 import shutil
 import tempfile
 import unittest
@@ -30,7 +31,24 @@ class SummaryTests(unittest.TestCase):
     def test_full_frozen_run_recomputes_published_result(self):
         result = summary.summarize(self.folder)
         published = json.loads((FROZEN/'summary.json').read_text())
-        self.assertEqual(result, published)
+        def compare(actual, expected):
+            self.assertEqual(type(actual), type(expected))
+            if isinstance(expected, dict):
+                self.assertEqual(actual.keys(), expected.keys())
+                for key in expected:
+                    compare(actual[key], expected[key])
+            elif isinstance(expected, list):
+                self.assertEqual(len(actual), len(expected))
+                for left, right in zip(actual, expected):
+                    compare(left, right)
+            elif isinstance(expected, float):
+                # Transcendental reductions vary by a few ulps across libm/CPU.
+                # Counts, identities, structure and pass/fail gates stay exact.
+                self.assertTrue(math.isclose(actual, expected, rel_tol=1e-12, abs_tol=1e-15),
+                                (actual, expected))
+            else:
+                self.assertEqual(actual, expected)
+        compare(result, published)
 
     def test_completed_prefix_cannot_stand_in_for_48_cases(self):
         cases = self.read_cases()[:8]
