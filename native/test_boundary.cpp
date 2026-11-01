@@ -39,6 +39,23 @@ int main() {
         int cases=0;
         for(int n:{3,7,17,33,65})for(int count:{1,3,5})for(int seed:{1,4,7}){check(n,count,seed);++cases;}
         check(7,1,0,true);++cases;
+        // Independent 70-digit scalar quotients, including a sharp resonance,
+        // zero crossing, negative modes and neighboring high-contrast phases.
+        struct Oracle {double x,y,eta;C r,t;};
+        const Oracle pairs[]={
+            {9.869600401089357,9.869608401089359,1e7,
+             C(-.03800847466396899,-124989.23362639466),C(-.03800847466396899,-124989.23362644466)},
+            {-1e-12,1e-12,1e-8,C(-4.166666604166666e-10,49999999.875),C(-4.1666666875e-10,49999999.875)},
+            {-400.000000001,-399.999999999,1e8,
+             C(1.9999999999998387e-16,4.999999999999399e-10),C(1.484030608155656e-23,3.916191882632839e-17)},
+            {986.9604401089358,986.9604401089359,1e-8,
+             C(-10.501648110722785,24999999.999946203),C(-10.501648110722785,24999999.999946203)}
+        };
+        for(const auto&o:pairs){
+            Divided d=close_divided(o.x,o.y,1,o.eta);
+            require(std::abs(d.r-o.r)/std::max(1.,std::abs(o.r))<2e-5,"reflection resonance quotient mismatch");
+            require(std::abs(d.t-o.t)/std::max(1.,std::abs(o.t))<2e-5,"transmission resonance quotient mismatch");
+        }
         std::vector<char> error(10,'X');
         int code=ps_solve(0,1,1,1,1,1,nullptr,nullptr,0,0,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,error.data()+1,8);
         require(code!=0&&error.front()=='X'&&error.back()=='X'&&error[8]=='\0',"bounded error message refusal failed");
@@ -48,6 +65,6 @@ int main() {
         code=ps_bar(5,p,1.55,2.4,.3,2,1,&value,g,err,sizeof(err));require(code==0&&value>0&&value<1,"bar adapter failed");
         p[0]=std::numeric_limits<double>::quiet_NaN();
         require(ps_bar(5,p,1.55,2.4,.3,2,1,&value,g,err,sizeof(err))!=0,"nonfinite geometry not refused");
-        std::cout<<"PASS "<<cases<<" guarded native numerical cases, allocation and bounded-error refusals, bar adapter checks\n";
+        std::cout<<"PASS "<<cases<<" guarded native numerical cases, 4 high-precision quotient cases, allocation and bounded-error refusals, bar adapter checks\n";
     } catch(const std::exception&e) { std::cerr<<"FAIL "<<e.what()<<"\n";return 1; }
 }

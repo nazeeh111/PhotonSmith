@@ -1,10 +1,31 @@
 # Measured result and remaining proof
 
-**Local technical result established; the full external-validation finish line is not achieved.** Nothing here establishes independent human review, adoption, physical-device performance, a public release or a Linux execution result.
+**The full external-validation finish line is not achieved.** The original candidate is public in PR #1 and passed native Linux/macOS and portable-package CI. Subsequent automated review identified a sharp-resonance gradient defect and two reproducibility gaps. See [the correction record](CORRECTIONS.md). The corrected 0.2.0rc2 candidate requires its own measured evidence and exact-source remote checks. Nothing here establishes independent human review, adoption or physical-device performance.
 
-## Fixed confirmation
+## Corrected-kernel confirmation v3
 
-The original pre-implementation targets were at least 5× versus the existing PhotonSmith solver, 2× versus the fastest tested comparable external solver, accurate powers/gradients, independent-author workloads, reproducible public evidence and substantive external engineer validation. The last two remain pending publication/response.
+The corrected source uses C++ SHA256 `dd55bc7113b2db50a5e5c4d1de14c8435c856b23377f917ffcb38e3fa6f00a65`. A fresh 48-case plan was declared before scoring, with 12 cases each at M=3,5,9,15 and seven paired repeats per method. Input SHA256 is `4a6b425ab4d254e9f9b8ab687ce71651297fe715ea6a821a065ea78817d6e2c6`. All 1,680 attempts are retained; none failed or was omitted. [Protocol and raw evidence](../../benchmarks/boundary/confirmation-v3/).
+
+| Comparator | Wall-time speedup | Case-bootstrap 95% interval | Process-CPU speedup |
+|---|---:|---:|---:|
+| Existing PhotonSmith | 11.29× | [9.89, 12.90] | 7.39× |
+| meent 0.13.2 JAX JIT, specialized 1D TE | **3.19×** | **[2.57, 3.90]** | **3.37×** |
+| meent 0.13.2 Torch, specialized 1D TE | 14.02× | [10.91, 18.08] | 8.30× |
+| grcwa 0.1.2 autograd, same retained x orders | 82.86× | [69.19, 99.37] | 25.44× |
+
+Native wins 44/48 case median wall comparisons against the fastest tested external aggregate, meent JAX JIT. Its JAX speedup by M=3,5,9,15 is 6.88×, 3.81×, 2.80× and 1.40×. The four losses are retained. The much larger grcwa ratio includes its internal vector/polarization overhead and is not a general RCWA record. All timings remain conditional on this shared Apple M4 host; neither the old nor new result establishes a portable 10× advantage.
+
+Maximum full-order power discrepancy against meent is 1.35e-14, balance error 9.33e-15 and residual 2.49e-15. Maximum normalized gradient discrepancies are 1.09e-12 against the unchanged dense PhotonSmith baseline, 1.11e-13 against meent JAX, 6.80e-13 against grcwa and 8.17e-8 against meent Torch.
+
+**One original protocol gate fails.** The maximum finite-difference discrepancy is 8.55e-5 at the deliberately largest step, 1e-4, on `v3-m9-09`; the criterion is 2e-5. At steps 1e-5 and 1e-6 the maxima decrease to 8.55e-7 and 9.77e-9. Independent diagnosis reproduces the coarse-step bias with the unchanged dense forward solver and finds analytic-gradient disagreement only 2.90e-14. Post-hoc Richardson extrapolation reduces the diagnostic discrepancy to about 1.23e-10. This supports central-difference truncation as the explanation; it does not change the original rule. The saved `finite_difference` gate remains **false**, and this is **not an all-gates-passing confirmation**. No case, step or failed criterion is hidden, and no new seed was sampled to chase a passing result.
+
+This run records 50 thread snapshots in the actual benchmark process, with 73–74 total threads and one running thread at the observations. These include idle runtime workers and are snapshots outside the timers, not a strict single-thread JAX guarantee. Requested BLAS/Torch numerical limits remain one. The earlier RSS probes concern the earlier source and are retained as historical evidence, not a new memory measurement.
+
+The corrected source passes 40 local tests and the 46 guarded ASan/UBSan native cases plus four high-precision quotient checks on macOS. The 180 externally authored computational workloads were rerun against meent and grcwa with no failures; maximum order-power differences remain 7.18e-12 and 6.05e-12. The three earlier changed-wavelength/order/material design workloads were also replayed once per method with the corrected source; final M31 target powers agree with a separate real-space discretization to 8.83e-5, 5.67e-4 and 2.81e-4. These are development replays, not another timing confirmation. These checks neither remove the failed coarse-step gate nor supply independent human validation. Updated-source remote CI and public recipient execution remain pending its publication.
+
+## Historical original-kernel confirmation v2
+
+The original pre-implementation targets were at least 5× versus the existing PhotonSmith solver, 2× versus the fastest tested comparable external solver, accurate powers/gradients, independent-author workloads, reproducible public evidence and substantive external engineer validation. Public evidence exists; substantive outside reproduction/review/use is still absent. The table below measures the original kernel, not the numerical correction.
 
 Confirmation v2 fixed 48 geometries and wavelengths before scoring, with 12 cases each at M=3,5,9,15. Each method executes the same scalar TE problem with identical complex128 Fourier coefficients and returns the target efficiency plus all six width/shift derivatives. Seven repeats per case randomize method order. **All 1,680 timed attempts are retained, with no failed, missing, duplicated or excluded results.** Compilation/import warmups are excluded from timing and recorded separately; JAX takes wavelength and geometry as dynamic runtime inputs and is synchronized before stopping each timer.
 
@@ -25,6 +46,8 @@ NumPy/SciPy/BLAS and Torch thread limits were requested as one. **The actual JAX
 
 ## Accuracy and operating envelope
 
+The following original-kernel accuracy, phase-cost, RSS and development-use records are historical unless explicitly identified as corrected-source replays above. Their source identities remain in the original manifests; they are not reassigned to the corrected kernel.
+
 On v2 cases, maximum all-order reflected/transmitted power disagreement versus production meent NumPy was **1.943e−14**; maximum lossless balance error was **8.89e−15**. The objective and all six derivatives were also compared with actual meent JAX, Torch and grcwa autograd. Worst normalized gradient disagreement was **3.05e−8** (Torch); JAX was below **2.90e−13**. Independent finite-difference steps 1e−4,1e−5,1e−6 are retained for eight frozen cases; the largest-step maximum normalized error was below 5.13e−6.
 
 Three independently authored meent example geometries provided **180 attempted computational workload cases**, all retained: a uniform high-index film, a two-layer high-index grating and a two-bar structure above a 100-µm homogeneous layer. Their parameters and source commit are recorded. Comparisons at M=3,7,15,31 match full reflected/transmitted order powers against both production meent and grcwa to **7.18e−12 / 6.05e−12** maximum absolute error. They are independent-author computational workloads, not experimental measurements or external human validation. The legacy Moharam example's aliased Fourier assembly was replaced with complete difference-index coefficients; this is geometry reuse checked against production solvers, not an assertion that its old script was reproduced unchanged.
@@ -43,13 +66,15 @@ A clean outside-checkout wheel installation plus explicit kernel build from the 
 
 ## What remains
 
-1. Publish the exact reviewed source/results on the existing PhotonSmith repository after owner approval; run the prepared Linux/macOS native CI and verify remote bytes and a public clean install.
+1. Publish this corrected candidate's exact reviewed source/results on the existing PhotonSmith repository after owner approval; run its Linux/macOS native CI and verify remote bytes and a public clean install. The original public candidate's checks do not substitute for this.
 2. Obtain substantive reproduction/review/use from an external engineer or researcher, or acceptance of a technically useful upstream contribution. A posted request, stars, generated reviews or CI alone cannot satisfy this.
 3. Replicate timing on a quiet independent host before claiming portability or general speed superiority. Absorption, vector/2D periodic polarization, fabrication and hardware measurements remain outside scope.
 
-A defensible **local-result draft**, pending public evidence and external review:
+A defensible **corrected-source local-result draft**, pending its public evidence and external review:
 
-> Engineered a C++/LAPACK photonics solver with analytic matrix-function gradients; measured 3.8× speedup over meent JAX on 48 fixed CPU cases and cross-checked 180 reference-workload cases against meent and grcwa.
+> Engineered a C++/LAPACK photonics solver with analytic matrix-function gradients; measured 3.2× speedup over meent JAX on 48 fixed scalar-TE CPU cases and cross-checked 180 reference workloads against meent and grcwa.
+
+The measured speedup is conditional on the shared host; the report retains the failed coarse-step finite-difference gate and its convergence diagnosis. This draft does not claim an all-gates-passing confirmation.
 
 Do not add “externally validated”, “adopted”, “state of the art”, “new physical device” or a universal 10× claim without the corresponding evidence.
 

@@ -40,6 +40,7 @@ def optimize(params=DEFAULT_PARAMS,wavelength=1.55,target_order=1,iterations=20,
                     options={'maxiter':steps,'ftol':1e-8,'gtol':1e-5,'maxls':12})
     return {'solver':'native-scattering-v1','method':'adjoint','params':best.tolist(),
             'wavelength':float(wavelength),'target_order':target,'harmonics':m,
+            'material_index':float(material_index),'period':2.4,'layer_height':.3,
             'initial_efficiency':float(initial),'efficiency':float(best_value),
             'runtime_seconds':perf_counter()-start,'forward_evaluations':len(history)+1,
             'gradient_evaluations':len(history),'history':history,'optimizer_status':int(result.status),

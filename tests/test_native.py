@@ -56,6 +56,15 @@ class NativeTests(unittest.TestCase):
             with self.assertRaises(SystemExit):boundary_workflow.main(['simulate','--output',str(p)])
             self.assertEqual(original,p.read_bytes())
 
+    def test_nondefault_material_optimization_replays_from_saved_metadata(self):
+        r=boundary_workflow.optimize(wavelength=1.73,target_order=-1,iterations=3,
+                                     harmonics=3,material_index=2.15)
+        self.assertEqual(r['material_index'],2.15)
+        s=boundary_workflow.simulate(r['params'],r['wavelength'],r['harmonics'],r['material_index'])
+        self.assertAlmostEqual(r['efficiency'],s['T'][r['harmonics']+r['target_order']],places=12)
+        self.assertEqual(r['period'],s['period'])
+        self.assertEqual(r['layer_height'],s['layer_height'])
+
     def test_refuse_unsupported_inputs(self):
         for kwargs in ({'harmonics':True},{'harmonics':0},{'target_order':.5},{'wavelength':0},{'material_index':float('nan')}):
             with self.assertRaises(ValueError):native.objective_gradient(physics.DEFAULT_PARAMS,**kwargs)

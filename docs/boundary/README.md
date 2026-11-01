@@ -1,14 +1,14 @@
 # Experimental native TE solver
 
-**Local research candidate, 0.2.0rc1. Public release, Linux execution and independent human validation remain open.**
+**Corrected research candidate, 0.2.0rc2. Independent human validation remains open.** The original public candidate passed Linux/macOS CI; automated review then exposed a sharp-resonance gradient defect and two reproducibility gaps. [Corrections and their evidence](CORRECTIONS.md). This revision needs its own public exact-source checks.
 
 The new C++17/LAPACK backend solves supported lossless, one-dimensionally periodic TE Maxwell problems and computes analytic material/geometry gradients. It does not replace the existing solver, trained model, browser studio or archived experiments.
 
-In a frozen 48-case study on an Apple M4 workstation, combined forward evaluation and all six geometry gradients achieved a **3.79× paired wall-time speedup over meent 0.13.2 JAX JIT**, the fastest tested external comparator (case-bootstrap 95% interval **[3.13, 4.63]**). The corresponding process-CPU ratio was **3.34×**. The original PhotonSmith implementation's ratios were **13.12× wall / 7.21× CPU**. These are measurements on a shared machine, not portable speed guarantees. One case lost to JAX in median wall time. [Results, raw records and caveats](REPORT.md).
+The original kernel's frozen 48-case study on an Apple M4 measured a 3.79× paired wall-time speedup over meent JAX JIT, the fastest tested external comparator. That number belongs to the original source. The corrected kernel receives fresh confirmation v3; [results, raw records and caveats](REPORT.md) distinguish source versions. Shared-machine measurements are not portable speed guarantees.
 
 ## Build and use
 
-Python 3.12+, NumPy 2.3.5, SciPy 1.18.1, an existing C++17 compiler and BLAS/LAPACK are required. macOS uses the system Accelerate framework. Linux links `-llapack -lblas`; Linux CI is prepared but has not run for this candidate.
+Python 3.12+, NumPy 2.3.5, SciPy 1.18.1, an existing C++17 compiler and BLAS/LAPACK are required. macOS uses the system Accelerate framework. Linux links `-llapack -lblas`; the original candidate passed Linux CI, and this revision requires its own verification.
 
 From a source checkout:
 

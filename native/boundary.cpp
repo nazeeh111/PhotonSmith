@@ -40,6 +40,47 @@ static Modal modal(double lam,double h,double eta) {
     C dd=cp-I*((si+(a*a+z)*sp)/(2*a)), dn=-I*((-si+(a*a-z)*sp)/(2*a));
     return {num/den,scale/den,h*h*(dn*den-num*dd)/(den*den),-h*h*scale*dd/(den*den)};
 }
+struct Divided {C r,t;};
+static double sinc(double x) {return x==0?1:std::sin(x)/x;}
+static Divided close_divided(double left,double right,double h,double eta) {
+    // Algebraic C(z), S(z) quotients retain the small eigenphase separation.
+    // A fixed common evanescent scale cancels from r and is retained in t.
+    // Unlike a midpoint derivative these identities resolve sharp resonances.
+    double zi=left*h*h,zj=right*h*h,dz=(left-right)*h*h,a=eta*h;
+    double ci,cj,si,sj,dc,ds,scale=1;
+    if(std::max(std::abs(zi),std::abs(zj))<2e-3) {
+        const double cc[]={1,-.5,1./24,-1./720,1./40320};
+        const double ss[]={1,-1./6,1./120,-1./5040,1./362880};
+        ci=cj=si=sj=dc=ds=0;
+        for(int k=0;k<5;k++) {
+            ci+=cc[k]*std::pow(zi,k);cj+=cc[k]*std::pow(zj,k);
+            si+=ss[k]*std::pow(zi,k);sj+=ss[k]*std::pow(zj,k);
+            for(int j=0;j<k;j++) {
+                double term=std::pow(zi,j)*std::pow(zj,k-1-j);
+                dc+=cc[k]*term;ds+=ss[k]*term;
+            }
+        }
+    } else if(zi>0 && zj>0) {
+        double xi=std::sqrt(zi),xj=std::sqrt(zj),u=(xi+xj)/2,v=dz/(2*(xi+xj));
+        ci=std::cos(xi);cj=std::cos(xj);si=sinc(xi);sj=sinc(xj);
+        dc=-.5*sinc(u)*sinc(v);
+        ds=(std::cos(u)*sinc(v)-sinc(u)*std::cos(v))/(2*xi*xj);
+    } else if(zi<0 && zj<0) {
+        double xi=std::sqrt(-zi),xj=std::sqrt(-zj),u=(xi+xj)/2,v=-dz/(2*(xi+xj));
+        double plus=std::exp(v),minus=std::exp(-v),decay=std::exp(-2*u);
+        ci=(plus+decay*minus)/2;cj=(minus+decay*plus)/2;
+        si=(plus-decay*minus)/(2*xi);sj=(minus-decay*plus)/(2*xj);
+        double su=-std::expm1(-2*u)/(2*u),sv=v==0?1:std::sinh(v)/v;
+        dc=-.5*su*sv;
+        ds=-((1+decay)/2*sv-su*std::cosh(v))/(2*xi*xj);
+        scale=std::exp(-u);
+    } else throw std::runtime_error("Unexpected mixed-sign close eigenphase pair");
+    double cm=(ci+cj)/2,sm=(si+sj)/2,zm=(zi+zj)/2;
+    C di=ci-I*((a*a+zi)*si/(2*a)),dj=cj-I*((a*a+zj)*sj/(2*a));
+    C dd=dc-I*(((a*a+zm)*ds+sm)/(2*a));
+    C rn=.5*si*sj-I*(((a*a-zm)*(ds*cm-sm*dc)-.5*(si*cj+sj*ci))/(2*a));
+    return {h*h*rn/(di*dj),-h*h*scale*dd/(di*dj)};
+}
 static M product(const M&a,const M&b,int n,char transb='N') {
     M c(n*n);C one(1),zero(0);char normal='N';
     zgemm_(&normal,&transb,&n,&n,&n,&one,a.data(),&n,b.data(),&n,&zero,c.data(),&n);
@@ -58,7 +99,7 @@ static M transform_vector(const M&v,const C*x,int n) {
 static M matvec(const M&a,const C*x,int n) {
     M r(n);for(int j=0;j<n;j++)for(int i=0;i<n;i++)r[i]+=a[i+j*n]*x[j];return r;
 }
-struct Layer {M v,r,t;std::vector<double>values;std::vector<Modal>f;double h;};
+struct Layer {M v,r,t;std::vector<double>values,phase;std::vector<Modal>f;double h;};
 static int solve_core(int n,int count,double wl,double period,double nt,double nb,
                      const C*epsilon,const double*heights,int target,int gradient,
                      double*R,double*T,C*ar,C*at,C*state,C*geps,double*residual) {
@@ -99,7 +140,7 @@ static int solve_core(int n,int count,double wl,double period,double nt,double n
         zheev_(&vectors,&upper,&n,q.data(),&n,values.data(),work.data(),&lwork,rwork.data(),&info);
         if(info!=0)throw std::runtime_error("LAPACK Hermitian eigensolver failed");
         Layer layer;layer.v=std::move(q);layer.values=std::move(values);layer.h=h;
-        for(double v:layer.values)layer.f.push_back(modal(v,h,k0));
+        for(double v:layer.values){layer.f.push_back(modal(v,h,k0));layer.phase.push_back(std::sqrt(std::abs(v))*h);}
         layer.r=matrix_function(layer.v,layer.f,n,true);layer.t=matrix_function(layer.v,layer.f,n,false);
         layers.push_back(std::move(layer));
     }
@@ -148,7 +189,9 @@ static int solve_core(int n,int count,double wl,double period,double nt,double n
         M u=transform_vector(l.v,&rhs[2*j*n],n),w=transform_vector(l.v,&rhs[(2*j+3)*n],n),g(n*n);
         for(int c=0;c<n;c++)for(int r=0;r<n;r++) {
             double delta=l.values[r]-l.values[c];C lr,lt;
-            if(std::abs(delta)*l.h*l.h<1e-5){Modal f=modal((l.values[r]+l.values[c])*.5,l.h,k0);lr=f.dr;lt=f.dt;}
+            double gap=std::abs(delta)*l.h*l.h;
+            if(delta==0){lr=l.f[r].dr;lt=l.f[r].dt;}
+            else if(gap<1e-5 || gap<1e-3*(l.phase[r]+l.phase[c])){Divided f=close_divided(l.values[r],l.values[c],l.h,k0);lr=f.r;lt=f.t;}
             else {lr=(l.f[r].r-l.f[c].r)/delta;lt=(l.f[r].t-l.f[c].t)/delta;}
             C mr=std::conj(a[r])*u[c]+std::conj(b[r])*w[c],mt=std::conj(a[r])*w[c]+std::conj(b[r])*u[c];
             g[r+c*n]=std::conj(mr*lr+mt*lt);

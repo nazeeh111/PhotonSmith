@@ -52,17 +52,82 @@ def _scattering(values, h, eta):
     return r, t, dr, dt
 
 
+def _close_divided_difference(left, right, h, eta):
+    """Algebraic slab divided differences without nearly equal subtraction.
+
+    The trigonometric identities retain the small eigenphase separation.
+    Evanescent pairs share a fixed exponential scale, which cancels from r
+    and is retained in t. The algebra retains the finite separation at sharp
+    resonances; floating-point phase and conditioning limits still apply.
+    Closeness alone does not justify replacing a quotient by a derivative.
+    """
+    zi, zj = left*h*h, right*h*h
+    dz = (left-right)*h*h
+    a = eta*h
+    ci, cj, si, sj, dc, ds = [np.empty_like(zi) for _ in range(6)]
+    scale = np.ones_like(zi)
+    small = np.maximum(abs(zi),abs(zj)) < 2e-3
+    x,y = zi[small],zj[small]
+    def polynomial(coefficients):
+        vi,vj,d = np.zeros_like(x),np.zeros_like(y),np.zeros_like(x)
+        for k,c in enumerate(coefficients):
+            vi += c*x**k
+            vj += c*y**k
+            for j in range(k):
+                d += c*x**j*y**(k-1-j)
+        return vi,vj,d
+    ci[small],cj[small],dc[small] = polynomial([1,-.5,1/24,-1/720,1/40320])
+    si[small],sj[small],ds[small] = polynomial([1,-1/6,1/120,-1/5040,1/362880])
+    positive = (~small)&(zi>0)&(zj>0)
+    xi,xj = np.sqrt(zi[positive]),np.sqrt(zj[positive])
+    u=(xi+xj)/2;v=dz[positive]/(2*(xi+xj))
+    sinc_u,sinc_v = np.sinc(u/np.pi),np.sinc(v/np.pi)
+    ci[positive],cj[positive] = np.cos(xi),np.cos(xj)
+    si[positive],sj[positive] = np.sinc(xi/np.pi),np.sinc(xj/np.pi)
+    dc[positive] = -.5*sinc_u*sinc_v
+    ds[positive] = (np.cos(u)*sinc_v-sinc_u*np.cos(v))/(2*xi*xj)
+    negative = (~small)&(zi<0)&(zj<0)
+    xi,xj = np.sqrt(-zi[negative]),np.sqrt(-zj[negative])
+    u=(xi+xj)/2;v=-dz[negative]/(2*(xi+xj))
+    plus,minus=np.exp(v),np.exp(-v)
+    decay=np.exp(-2*u)
+    ci[negative]=(plus+decay*minus)/2
+    cj[negative]=(minus+decay*plus)/2
+    si[negative]=(plus-decay*minus)/(2*xi)
+    sj[negative]=(minus-decay*plus)/(2*xj)
+    sinhc_u=-np.expm1(-2*u)/(2*u)
+    sinhc_v=np.ones_like(v)
+    np.divide(np.sinh(v),v,out=sinhc_v,where=v!=0)
+    dc[negative]=-.5*sinhc_u*sinhc_v
+    ds[negative]=-((1+decay)/2*sinhc_v-sinhc_u*np.cosh(v))/(2*xi*xj)
+    scale[negative]=np.exp(-u)
+    if not np.all(small|positive|negative):
+        raise ArithmeticError('Unexpected mixed-sign close eigenphase pair')
+    cm,sm=(ci+cj)/2,(si+sj)/2
+    zm=(zi+zj)/2
+    di=ci-1j*(a*a+zi)*si/(2*a)
+    dj=cj-1j*(a*a+zj)*sj/(2*a)
+    dd=dc-1j*((a*a+zm)*ds+sm)/(2*a)
+    rn=.5*si*sj-1j*((a*a-zm)*(ds*cm-sm*dc)-.5*(si*cj+sj*ci))/(2*a)
+    return h*h*rn/(di*dj),-h*h*scale*dd/(di*dj)
+
+
 def _loewner(values, h, eta):
     """Fréchet derivatives of analytic slab functions in a Hermitian eigenbasis."""
-    r, t, _, _ = _scattering(values, h, eta)
+    r, t, dr, dt = _scattering(values, h, eta)
     delta = values[:, None]-values[None, :]
-    close = np.abs(delta)*h*h < 1e-5
-    safe = np.where(close, 1, delta)
+    phase = np.sqrt(abs(values))*h
+    gap = abs(delta)*h*h
+    equal = delta == 0
+    close = (~equal)&((gap<1e-5)|(gap<1e-3*(phase[:,None]+phase[None,:])))
+    safe = np.where(equal|close, 1, delta)
     lr = (r[:, None]-r[None, :])/safe
     lt = (t[:, None]-t[None, :])/safe
-    midpoint = (values[:, None]+values[None, :])*0.5
-    _, _, dr, dt = _scattering(midpoint[close], h, eta)
-    lr[close], lt[close] = dr, dt
+    lr[equal]=np.broadcast_to(dr[:,None],delta.shape)[equal]
+    lt[equal]=np.broadcast_to(dt[:,None],delta.shape)[equal]
+    left=np.broadcast_to(values[:,None],delta.shape)[close]
+    right=np.broadcast_to(values[None,:],delta.shape)[close]
+    lr[close],lt[close]=_close_divided_difference(left,right,h,eta)
     return lr, lt
 
 

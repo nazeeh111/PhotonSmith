@@ -79,6 +79,7 @@ def power_check(p,m,wl):
 
 def main():
     from threadpoolctl import threadpool_info,threadpool_limits
+    from boundary_resources import self_threads
     import torch,grcwa,jax
     pa=argparse.ArgumentParser(description=__doc__);pa.add_argument('--cases',type=Path,required=True);pa.add_argument('--output',type=Path,required=True);pa.add_argument('--repeats',type=int,default=7)
     args=pa.parse_args()
@@ -86,10 +87,21 @@ def main():
     if args.repeats<3:raise SystemExit('At least three paired repeats required')
     args.output.mkdir(parents=True)
     torch.set_num_threads(1);torch.set_num_interop_threads(1);grcwa.set_backend('autograd')
-    cases=json.loads(args.cases.read_text());rng=random.Random(37832)
+    frozen_inputs=args.cases.read_bytes();cases=json.loads(frozen_inputs);rng=random.Random(37832)
+    case_ids=[c['id'] for c in cases]
+    if not case_ids or len(set(case_ids))!=len(case_ids):raise SystemExit('Case IDs must be nonempty and unique')
+    for c in cases:
+        if (c['harmonics'] not in (3,5,9,15) or c['period']!=2.4 or c['layer_height']!=.3
+                or c['material_index']!=2. or c['target_order']!=1):
+            raise SystemExit('Benchmark inputs must match the documented fixed physical model')
+    (args.output/'inputs.json').write_bytes(frozen_inputs)
     source=Path(__file__).resolve().parents[1]
     manifest={'cases_sha256':hashlib.sha256(args.cases.read_bytes()).hexdigest(),'platform':platform.platform(),'python':sys.version,'packages':{d.metadata['Name']:d.version for d in importlib.metadata.distributions()},'sources':{p:hashlib.sha256((source/p).read_bytes()).hexdigest() for p in ['photonsmith/physics.py','photonsmith/boundary.py','photonsmith/native.py','native/boundary.cpp','scripts/benchmark_boundary.py']},'native_library':json.loads((source/'photonsmith/_boundary_native.dylib.json').read_text()) if sys.platform=='darwin' else {},'jax_devices':str(jax.devices()),'requested_threads':1,'repeat_count':args.repeats,'warmup':[]}
     manifest_path=args.output/'manifest.json'
+    manifest.update(cases_sha256=hashlib.sha256(frozen_inputs).hexdigest(),expected_case_ids=case_ids,
+                    methods=['native','legacy','meent_torch','meent_jax_jit','grcwa_autograd'],
+                    thread_observations=[])
+    manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
     with threadpool_limits(1):
         compiled={}
         # Warm up on an explicitly development geometry, not confirmation cases.
@@ -107,10 +119,14 @@ def main():
                     v,g=fn();record={'method':name,'m':m,'seconds':time.perf_counter()-start,'value':float(v),'finite':bool(np.all(np.isfinite(g)))}
                 except Exception:record={'method':name,'m':m,'error':traceback.format_exc()}
                 manifest['warmup'].append(record)
-        manifest['threadpools']=threadpool_info();manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
+        manifest['threadpools']=threadpool_info()
+        manifest['thread_observations'].append({'stage':'after_warmup',**self_threads()})
+        manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
         rows=[]
         with (args.output/'raw.jsonl').open('x') as raw:
             for ci,c in enumerate(cases):
+                manifest['thread_observations'].append({'stage':'before_case','case':c['id'],**self_threads()})
+                manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
                 p=np.array(c['params']);m=c['harmonics'];wl=c['wavelength']
                 methods={'legacy':lambda:physics.objective_gradient(p,wavelength=wl,harmonics=m),'native':lambda:native.objective_gradient(p,wavelength=wl,harmonics=m),'meent_torch':lambda:meent_torch(p,m,wl),'meent_jax_jit':lambda:compiled[m](p,wl),'grcwa_autograd':lambda:grcwa_autograd(p,m,wl)}
                 observations={name:[] for name in methods}
@@ -137,6 +153,8 @@ def main():
                 rows.append({'case':c,'observations':observations,'verification':verification})
                 (args.output/'cases.json').write_text(json.dumps(rows,indent=2)+'\n')
                 print(f'{ci+1}/{len(cases)} {c["id"]} power_error={verification["max_power_error"]:.3g}',flush=True)
+        manifest['thread_observations'].append({'stage':'after_all_cases',**self_threads()})
+        manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
     print('Completed; summarize raw paired observations without dropping failures',flush=True)
 
 if __name__=='__main__':main()

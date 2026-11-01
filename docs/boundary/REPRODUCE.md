@@ -1,8 +1,8 @@
 # Reproduce and challenge the result
 
-The authoritative local result is [confirmation-v2](../../benchmarks/boundary/confirmation-v2/) relative to this repository root: `benchmarks/boundary/confirmation-v2`. Its `inputs.json`, `protocol.json`, `raw.jsonl`, `cases.json`, `manifest.json` and `summary.json` are all retained. Precursor v1 is explicitly superseded development evidence. All inputs are authored numerical geometry workloads unless separately attributed as external examples.
+The corrected-source measurement is [confirmation-v3](../../benchmarks/boundary/confirmation-v3/) relative to this repository root: `benchmarks/boundary/confirmation-v3`. Its coarse-step finite-difference gate is false; see REPORT.md rather than inferring all-gate success. Its `inputs.json`, `protocol.json`, `raw.jsonl`, `cases.json`, `manifest.json` and `summary.json` are all retained. Earlier v1/v2 results remain historical evidence for their original sources. All inputs are authored numerical geometry workloads unless separately attributed as external examples.
 
-The original production baseline was PhotonSmith commit `be31575fb848ee548501ec912edc15c7c58cd86f`. Its `photonsmith/physics.py` is byte-unchanged in this candidate. The exact C++ kernel SHA256 is `37d697240a5b3becba4e83622b7484079b4a998af13805b71fa3a43319491547`; source, Python wrapper and built-library identities are in the manifest/review receipts. Native library bytes depend on compiler/platform and must not be assumed universal.
+The original production baseline was PhotonSmith commit `be31575fb848ee548501ec912edc15c7c58cd86f`. Its `photonsmith/physics.py` is byte-unchanged in this candidate. The corrected C++ kernel SHA256 is `dd55bc7113b2db50a5e5c4d1de14c8435c856b23377f917ffcb38e3fa6f00a65`; source, Python wrapper and built-library identities are in the manifest/review receipts. The earlier `37d697240a5b3becba4e83622b7484079b4a998af13805b71fa3a43319491547` belongs to historical v1/v2 measurements. Native library bytes depend on compiler/platform and must not be assumed universal.
 
 ## Minimal correctness
 
@@ -25,7 +25,7 @@ clang++ -std=c++17 -O1 -g -fno-omit-frame-pointer \
 ASAN_OPTIONS=detect_leaks=0 /tmp/photonsmith-native-guarded
 ```
 
-On Linux use `-llapack -lblas` instead of Accelerate. Linux execution remains pending. The macOS check did not run leak detection; system LAPACK itself is not sanitizer-instrumented.
+On Linux use `-llapack -lblas` instead of Accelerate. The original candidate passed native Linux CI; the corrected candidate requires its own remote execution. The macOS check did not run leak detection; system LAPACK itself is not sanitizer-instrumented.
 
 ## External performance and workloads
 
@@ -34,19 +34,19 @@ Use a separate benchmark environment. The lock includes the actual numerical/bac
 ```sh
 python -m pip install -r requirements-boundary.lock
 python scripts/benchmark_boundary.py \
-  --cases benchmarks/boundary/confirmation-v2/inputs.json \
+  --cases benchmarks/boundary/confirmation-v3/inputs.json \
   --output runs/reproduced-confirmation
 python scripts/summarize_boundary.py runs/reproduced-confirmation \
   --output runs/reproduced-confirmation/summary.json
 python scripts/validate_external_profiles.py --output runs/external-profiles.json
 python scripts/boundary_resources.py --method meent_jax_jit \
-  --cases benchmarks/boundary/confirmation-v2/inputs.json \
+  --cases benchmarks/boundary/confirmation-v3/inputs.json \
   --output runs/jax-resource-probe.json
 ```
 
 Repeat the last command with native/legacy/meent_torch/grcwa_autograd and fresh output names. Resource probes inspect only their own process. RSS includes imports/JIT and total process threads include idle workers. They cannot retrospectively measure worker counts in a different timing run.
 
-The benchmark fixes single requested BLAS/Torch thread limits, synchronizes JAX, excludes/records warmup, includes geometry assembly/allocations/FFI, and keeps every attempt. Actual JAX worker count in the saved timing process was not observed; do not label it a strict single-thread comparison. New numbers on another host should be reported as a new measurement, even if every numerical check matches. Shared-machine scheduling can materially change wall-time ratios.
+The benchmark fixes single requested BLAS/Torch thread limits, synchronizes JAX, excludes/records warmup, includes geometry assembly/allocations/FFI, and keeps every attempt. V3 records 50 snapshots in the actual timing process, observing 73–74 total process threads and one running thread at those instants. Total threads include idle runtime workers; snapshots outside timers do not establish a strict single-thread JAX comparison. In historical v2 the timing process's JAX workers were not observed. New numbers on another host should be reported as a new measurement, even if every numerical check matches. Shared-machine scheduling can materially change wall-time ratios.
 
 meent uses the opposite time convention; its Fourier coefficients are conjugated for the same physical geometry. Its specialized 1D TE solve uses `epy_conv` only; unused TM arguments are placeholders, not expensive extra inversions. grcwa is evaluated on the same retained x orders but internally has vector/polarization overhead. No external solver source is patched or bundled into the runtime.
 

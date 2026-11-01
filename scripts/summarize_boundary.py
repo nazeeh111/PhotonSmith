@@ -1,17 +1,74 @@
 """Recompute every summary from paired raw evidence; reject incomplete runs."""
-import argparse,json,math,statistics
+import argparse,hashlib,json,math,statistics
 from pathlib import Path
 import numpy as np
+
+METHODS = ('native','legacy','meent_torch','meent_jax_jit','grcwa_autograd')
+
+
+def validate_evidence(folder, cases, raw, manifest):
+    """Score only a complete, internally consistent frozen experiment."""
+    inputs_path = folder/'inputs.json'
+    if not inputs_path.is_file():
+        raise ValueError('Frozen inputs.json is required to establish planned cases')
+    encoded = inputs_path.read_bytes()
+    if hashlib.sha256(encoded).hexdigest() != manifest['cases_sha256']:
+        raise ValueError('Frozen input hash differs from manifest')
+    planned = json.loads(encoded)
+    case_ids = [c['id'] for c in planned]
+    if not case_ids or len(set(case_ids)) != len(case_ids):
+        raise ValueError('Planned case IDs must be nonempty and unique')
+    if manifest.get('expected_case_ids', case_ids) != case_ids:
+        raise ValueError('Manifest case IDs differ from frozen inputs')
+    if manifest.get('methods', list(METHODS)) != list(METHODS):
+        raise ValueError('Manifest method set differs from this experiment')
+    reps = manifest['repeat_count']
+    if type(reps) is not int or reps < 3:
+        raise ValueError('At least three paired repeats required')
+    if [c['case'] for c in cases] != planned:
+        raise ValueError('Completed cases differ from the complete frozen input plan')
+    expected = {(c, rep, method) for c in case_ids for rep in range(reps) for method in METHODS}
+    if any('error' in r for r in raw):
+        raise ValueError('Run contains failed attempts; no successful-only speed summary')
+    indexed = {(r['case'], r['rep'], r['method']): r for r in raw}
+    if len(indexed) != len(raw) or set(indexed) != expected:
+        raise ValueError('Missing, duplicate or unexpected raw observations')
+    for row in raw:
+        gradient = np.asarray(row['gradient'], dtype=float)
+        if (gradient.shape != (6,) or not np.all(np.isfinite(gradient))
+                or not np.isfinite(row['value'])
+                or any(not np.isfinite(row[k]) or row[k] <= 0 for k in ('wall','cpu'))):
+            raise ValueError('Nonfinite or invalid timing/value/gradient observation')
+    for ci, case in enumerate(cases):
+        observations = case['observations']
+        if set(observations) != set(METHODS):
+            raise ValueError('Unexpected method set')
+        for method, rows in observations.items():
+            if len(rows) != reps or {r['rep'] for r in rows} != set(range(reps)):
+                raise ValueError('Missing or duplicate method repeats')
+            for row in rows:
+                key = (case['case']['id'], row['rep'], method)
+                if row != indexed[key]:
+                    raise ValueError('Case observations differ from raw evidence')
+        verification = case['verification']
+        for key in ('max_power_error','balance_error','residual'):
+            if not np.isfinite(verification[key]) or verification[key] < 0:
+                raise ValueError('Invalid numerical verification')
+        if ci < 8:
+            fd = verification.get('finite_differences', [])
+            if [v['step'] for v in fd] != [1e-4,1e-5,1e-6]:
+                raise ValueError('Missing required finite-difference step sweep')
+            for check in fd:
+                g = np.asarray(check['gradient'], dtype=float)
+                if g.shape != (6,) or not np.all(np.isfinite(g)):
+                    raise ValueError('Invalid finite-difference gradient')
+
 
 def summarize(folder):
     cases=json.loads((folder/'cases.json').read_text())
     raw=[json.loads(x) for x in (folder/'raw.jsonl').read_text().splitlines()]
     manifest=json.loads((folder/'manifest.json').read_text())
-    expected=len(cases)*manifest['repeat_count']*5
-    if len(raw)!=expected:raise ValueError('Incomplete raw observations')
-    if any('error' in r for r in raw):raise ValueError('Run contains failed attempts; no successful-only speed summary')
-    ids={(r['case'],r['rep'],r['method']) for r in raw}
-    if len(ids)!=len(raw):raise ValueError('Duplicate raw observation')
+    validate_evidence(folder, cases, raw, manifest)
     rows=[];fd=[];gradient={};value={};reps=manifest['repeat_count']
     for c in cases:
         observations=c['observations'];reference={r['rep']:r for r in observations['native']}
