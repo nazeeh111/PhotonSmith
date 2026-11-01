@@ -1,23 +1,12 @@
-<div align="center">
-
 # PhotonSmith
 
-**Design where light goes. Let Maxwell's equations verify it.**
+**Design 2D photonic gratings and check the solved light field.**
 
-A local inverse-design laboratory for 2D photonic gratings.<br>
-Neural candidate screening · constrained adjoint optimization · independent full-wave verification
+Choose a wavelength and diffraction order, edit the geometry, and compare neural-assisted screening with direct adjoint search. Independently verify the simulated field and export its configuration.
 
-[![Scientific checks](https://github.com/nazeeh111/PhotonSmith/actions/workflows/ci.yml/badge.svg)](https://github.com/nazeeh111/PhotonSmith/actions/workflows/ci.yml)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-3572A5)](pyproject.toml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-3b7865)](LICENSE)
-
-[Quick start](#quick-start) · [Measured results](#measured-results) · [Reproduce the study](docs/reproducibility.md) · [Physics](docs/physics.md) · [Limitations](#scope-and-limits)
-
-</div>
+[Run the studio](#quick-start) · [Measured results](#measured-results) · [Physics](docs/physics.md) · [Reproduce the study](docs/reproducibility.md)
 
 ![The PhotonSmith studio displaying a real Maxwell solution](docs/studio.png)
-
-Specify a wavelength and an outgoing diffraction order. Edit the geometry, run a neural-assisted or direct adjoint search, then inspect the electric field, spectrum, optimization trace and independent numerical checks. Export the exact design and simulation configuration for replay.
 
 **The included 1550 nm design directs 93.59% of incident power into order +1.** An independently assembled real-space Maxwell solver gives **93.58%**, with **0.65%** relative complex-field difference over the device. These are simulated results for the explicitly defined 2D model, not fabricated-device measurements.
 
