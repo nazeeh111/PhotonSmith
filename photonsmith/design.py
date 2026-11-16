@@ -4,6 +4,7 @@ from time import perf_counter
 import numpy as np
 from scipy.optimize import minimize
 from .physics import DEFAULT_PARAMS, solve, objective_gradient, validate_params
+from .quality import require_finite, admission_metadata
 
 
 def bounds_for(min_feature=0.36, period=2.4):
@@ -39,6 +40,7 @@ def optimize(
     material_index=2.0,
     model=None,
     harmonics=5,
+    backend="legacy",
 ):
     if method not in ("adjoint", "surrogate", "random"):
         raise ValueError("Choose adjoint, surrogate, or random search.")
@@ -64,11 +66,11 @@ def optimize(
         nonlocal evaluations, gradient_evaluations
         if gradient:
             value, g = objective_gradient(
-                x, wavelength, target_order, harmonics, material_index=material_index
+                x, wavelength, target_order, harmonics, material_index=material_index, backend=backend
             )
             gradient_evaluations += 1
         else:
-            r = solve(x, wavelength, harmonics, material_index=material_index)
+            r = solve(x, wavelength, harmonics, material_index=material_index, backend=backend)
             value = float(r["T"][np.flatnonzero(r["orders"] == target_order)[0]])
             g = None
         evaluations += 1
@@ -104,12 +106,14 @@ def optimize(
             candidates = rng.uniform(lo, hi, (1024, 6))
             candidates[0] = p
             predicted = model.predict(candidates, wavelength)["powers"][:, target_order + 1]
+            require_finite(predicted)
             starts = candidates[np.argsort(predicted)[-4:]]
             refined = []
             for x in starts:
 
                 def neural_fun(q):
                     value, gradient = model.objective_gradient(q, wavelength, target_order)
+                    require_finite(value, gradient)
                     return -value, -gradient
 
                 result = minimize(
@@ -120,12 +124,14 @@ def optimize(
                     method="L-BFGS-B",
                     options={"maxiter": 60},
                 )
+                require_finite(result.x)
                 refined.append(result.x)
             for x in refined:
                 value, _ = evaluate(x)
                 if value > best_value:
                     best, best_value = x, value
             prediction = float(model.predict(best, wavelength)["powers"][0, target_order + 1])
+            require_finite(prediction)
 
         def objective(x):
             nonlocal best, best_value
@@ -156,6 +162,8 @@ def optimize(
         prediction_at_warm_start=prediction,
         seed=seed,
         harmonics=harmonics,
+        backend=backend,
+        numerical_admission=admission_metadata(),
         constraint_audit=geometry_audit(best, min_feature),
         budget_note="Iterations are method-specific; wall time, forward evaluations and gradient evaluations are all reported.",
     )

@@ -89,7 +89,7 @@ a {
 .brand small {
   display: block;
   margin-top: 6px;
-  font: 8px var(--mono);
+  font: 11px var(--mono);
   letter-spacing: 2.1px;
   color: #57716d;
 }
@@ -100,7 +100,7 @@ a {
 }
 .nav {
   background: none;
-  color: #6c7a7a;
+  color: #4b6052;
   padding: 0 2px;
   border-bottom: 2px solid transparent;
   font-weight: 550;
@@ -134,7 +134,7 @@ a {
   margin-left: 12px;
   padding-left: 18px;
   border-left: 1px solid #cdd6cf;
-  color: #87928a;
+  color: #4b6052;
 }
 main {
   max-width: 1800px;
@@ -149,11 +149,11 @@ main {
   gap: 20px;
 }
 .eyebrow {
-  font: 9px var(--mono);
+  font: 11px var(--mono);
   font-weight: 500;
   letter-spacing: 1.8px;
   margin: 0 0 10px;
-  color: #6a807b;
+  color: #4b6052;
 }
 .workspace-heading h1 {
   font-weight: 470;
@@ -163,7 +163,7 @@ main {
   line-height: 1.2;
 }
 .heading-sub {
-  color: #64766f;
+  color: #4b6052;
   font-size: 12px;
   margin: 0;
 }
@@ -244,8 +244,8 @@ select {
   margin-bottom: 21px;
 }
 .step {
-  font: 9px var(--mono);
-  color: #749183;
+  font: 11px var(--mono);
+  color: #4b6052;
   border: 1px solid #bfcfc0;
   padding: 2px 4px;
   border-radius: 2px;
@@ -257,9 +257,9 @@ select {
   letter-spacing: -0.2px;
 }
 .tag {
-  font: 8px var(--mono);
+  font: 11px var(--mono);
   margin-left: auto;
-  color: #8b9389;
+  color: #4b6052;
   letter-spacing: 0.5px;
 }
 .label-row {
@@ -277,8 +277,8 @@ select {
   color: #244d40;
 }
 .label-row small {
-  font-size: 10px;
-  color: #839385;
+  font-size: 11px;
+  color: #4b6052;
 }
 input[type="range"] {
   appearance: none;
@@ -309,15 +309,15 @@ input[type="range"]::-moz-range-thumb {
 .range-ends {
   display: flex;
   justify-content: space-between;
-  font: 8px var(--mono);
-  color: #929d8e;
+  font: 11px var(--mono);
+  color: #4b6052;
   margin-top: 10px;
   margin-bottom: 22px;
 }
 .control-label {
   display: block;
-  font-size: 10px;
-  color: #647367;
+  font-size: 11px;
+  color: #4b6052;
   margin: 0 0 8px;
 }
 .segmented {
@@ -329,7 +329,7 @@ input[type="range"]::-moz-range-thumb {
 .segmented button {
   flex: 1;
   background: transparent;
-  color: #7d8b7d;
+  color: #4b6052;
   font: 11px var(--mono);
   padding: 8px;
   border-right: 1px solid #d0d8ca;
@@ -346,15 +346,15 @@ input[type="range"]::-moz-range-thumb {
   color: #22543e;
 }
 .control-note {
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.6;
-  color: #6b7a61;
+  color: #4b6052;
   margin: 11px 0 0;
 }
 .text-button {
   color: #44725b;
   background: none;
-  font-size: 10px;
+  font-size: 11px;
   padding: 0;
 }
 .section-heading .text-button {
@@ -368,12 +368,12 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   gap: 12px;
   margin-top: -5px;
-  font-size: 9px;
-  color: #7d8d7a;
+  font-size: 11px;
+  color: #4b6052;
 }
 .geometry-meta b {
   display: block;
-  font: 10px var(--mono);
+  font: 11px var(--mono);
   color: #53715b;
   margin-top: 3px;
 }
@@ -388,8 +388,8 @@ input[type="range"]::-moz-range-thumb {
   cursor: crosshair;
 }
 .canvas-note {
-  font-size: 9px;
-  color: #8e9c86;
+  font-size: 11px;
+  color: #4b6052;
   margin: 0 0 15px;
   line-height: 1.5;
 }
@@ -400,8 +400,8 @@ input[type="range"]::-moz-range-thumb {
   margin-bottom: 10px;
 }
 .layer-label {
-  font: 9px var(--mono);
-  color: #789078;
+  font: 11px var(--mono);
+  color: #4b6052;
   align-self: center;
 }
 .layer-sliders {
@@ -410,8 +410,8 @@ input[type="range"]::-moz-range-thumb {
   gap: 12px;
 }
 .layer-sliders label {
-  font: 8px var(--mono);
-  color: #8b9784;
+  font: 11px var(--mono);
+  color: #4b6052;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -437,8 +437,8 @@ input[type="range"]::-moz-range-thumb {
   gap: 10px;
 }
 .material-grid label {
-  font-size: 9px;
-  color: #82917a;
+  font-size: 11px;
+  color: #4b6052;
 }
 .material-grid input {
   display: block;
@@ -467,16 +467,16 @@ input[type="range"]::-moz-range-thumb {
 .run-section .button.secondary {
   margin-top: 9px;
   min-height: 37px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .compute-note {
-  font-size: 9px;
-  color: #889781;
+  font-size: 11px;
+  color: #4b6052;
   text-align: center;
   margin: 12px 0 0;
 }
 .compute-note span {
-  color: #5e8c59;
+  color: #4b6052;
   margin-right: 3px;
 }
 .results {
@@ -498,8 +498,8 @@ input[type="range"]::-moz-range-thumb {
   padding: 21px 25px 0;
 }
 .panel-header .eyebrow {
-  font-size: 8px;
-  color: #78918e;
+  font-size: 11px;
+  color: #a5bdb4;
   letter-spacing: 1.5px;
   margin-bottom: 7px;
 }
@@ -510,7 +510,7 @@ input[type="range"]::-moz-range-thumb {
   margin: 0;
 }
 .state-pill {
-  font: 8px var(--mono);
+  font: 11px var(--mono);
   white-space: nowrap;
   color: #92aaa0;
   display: flex;
@@ -545,8 +545,8 @@ input[type="range"]::-moz-range-thumb {
   padding-left: 21px;
 }
 .metrics span {
-  font-size: 9px;
-  color: #7e9698;
+  font-size: 11px;
+  color: #a5bdb4;
   display: block;
   margin-bottom: 6px;
 }
@@ -561,7 +561,7 @@ input[type="range"]::-moz-range-thumb {
   font-size: 15px;
   letter-spacing: 0;
   margin-left: 4px;
-  color: #75958b;
+  color: #a5bdb4;
 }
 .metrics strong.metric-small {
   font-size: 23px;
@@ -593,8 +593,8 @@ input[type="range"]::-moz-range-thumb {
   right: 25px;
   display: flex;
   justify-content: space-between;
-  color: #6d8990;
-  font: 9px var(--mono);
+  color: #a5bdb4;
+  font: 11px var(--mono);
   z-index: 2;
   pointer-events: none;
 }
@@ -612,7 +612,7 @@ input[type="range"]::-moz-range-thumb {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #5d7e7c;
+  color: #a5bdb4;
   z-index: 1;
   background: radial-gradient(ellipse at center, #173037 0, transparent 65%);
 }
@@ -628,15 +628,15 @@ input[type="range"]::-moz-range-thumb {
   margin: 16px 0 7px;
 }
 .field-empty small {
-  font-size: 10px;
-  color: #506d6c;
+  font-size: 11px;
+  color: #a5bdb4;
   max-width: 280px;
   text-align: center;
 }
 .axis {
   position: absolute;
-  color: #678786;
-  font: 8px var(--mono);
+  color: #a5bdb4;
+  font: 11px var(--mono);
   z-index: 2;
   pointer-events: none;
 }
@@ -646,7 +646,7 @@ input[type="range"]::-moz-range-thumb {
 }
 .axis-x span {
   margin-left: 18px;
-  color: #5f797b;
+  color: #a5bdb4;
 }
 .axis-z {
   left: 10px;
@@ -661,8 +661,8 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #698e87;
-  font: 9px var(--mono);
+  color: #a5bdb4;
+  font: 11px var(--mono);
   z-index: 2;
 }
 .field-scale i {
@@ -672,7 +672,7 @@ input[type="range"]::-moz-range-thumb {
   display: inline-block;
 }
 .field-scale small {
-  font-size: 8px;
+  font-size: 11px;
   margin-left: 9px;
 }
 .field-toolbar {
@@ -686,10 +686,10 @@ input[type="range"]::-moz-range-thumb {
   border-color: #2b4249;
 }
 .segmented.dark button {
-  font: 9px var(--sans);
+  font: 11px var(--sans);
   padding: 6px 12px;
   border-color: #2b4249;
-  color: #728e91;
+  color: #a5bdb4;
 }
 .segmented.dark button.selected {
   color: #b8decc;
@@ -701,8 +701,8 @@ input[type="range"]::-moz-range-thumb {
   gap: 16px;
 }
 .playback label {
-  font-size: 9px;
-  color: #7f9a97;
+  font-size: 11px;
+  color: #a5bdb4;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -750,19 +750,19 @@ input[type="range"]::-moz-range-thumb {
   padding: 18px 20px 0;
 }
 .chart-panel .eyebrow {
-  color: #81927b;
-  font-size: 7px;
+  color: #4b6052;
+  font-size: 11px;
 }
 .chart-panel h2 {
   font-size: 15px;
   color: #344c3c;
 }
 .legend {
-  font-size: 8px;
+  font-size: 11px;
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #92a18c;
+  color: #4b6052;
   white-space: nowrap;
 }
 .legend i {
@@ -782,7 +782,7 @@ input[type="range"]::-moz-range-thumb {
   overflow: visible;
 }
 .chart-panel svg text {
-  font: 10px var(--mono);
+  font: 11px var(--mono);
   fill: #98a28e;
 }
 .chart-panel svg .grid {
@@ -808,8 +808,8 @@ input[type="range"]::-moz-range-thumb {
   justify-content: space-between;
   border-top: 1px solid #e0e5d8;
   padding: 10px 20px;
-  font: 8px var(--mono);
-  color: #8a9c80;
+  font: 11px var(--mono);
+  color: #4b6052;
 }
 .verification-panel {
   margin-top: 17px;
@@ -824,9 +824,9 @@ input[type="range"]::-moz-range-thumb {
   border-right: 1px solid #ccd8c5;
 }
 .verification-intro .eyebrow {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 1.3px;
-  color: #718768;
+  color: #4b6052;
   margin-bottom: 7px;
 }
 .verification-intro h2 {
@@ -836,8 +836,8 @@ input[type="range"]::-moz-range-thumb {
   margin: 0;
 }
 .verification-intro p:not(.eyebrow) {
-  font-size: 10px;
-  color: #809076;
+  font-size: 11px;
+  color: #4b6052;
   line-height: 1.65;
   max-width: 320px;
   margin: 10px 0 15px;
@@ -845,7 +845,7 @@ input[type="range"]::-moz-range-thumb {
 .button.verify {
   padding: 8px 10px;
   min-height: 32px;
-  font-size: 10px;
+  font-size: 11px;
   border-color: #b3c6ab;
   background: #edf3e7;
   color: #4e6a42;
@@ -879,8 +879,8 @@ input[type="range"]::-moz-range-thumb {
   color: #426039;
 }
 .evidence-state p {
-  font-size: 9px;
-  color: #8c9b80;
+  font-size: 11px;
+  color: #4b6052;
   margin: 4px 0 0;
 }
 .verification-evidence dl {
@@ -890,8 +890,8 @@ input[type="range"]::-moz-range-thumb {
   margin: 19px 0 10px;
 }
 .verification-evidence dt {
-  font-size: 8px;
-  color: #8a9a7d;
+  font-size: 11px;
+  color: #4b6052;
   margin-bottom: 5px;
 }
 .verification-evidence dd {
@@ -900,8 +900,8 @@ input[type="range"]::-moz-range-thumb {
   margin: 0;
 }
 .validation-note {
-  font-size: 8px;
-  color: #93a087;
+  font-size: 11px;
+  color: #4b6052;
   margin: 12px 0 0;
   line-height: 1.6;
 }
@@ -909,13 +909,13 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   justify-content: space-between;
   margin-top: 18px;
-  font: 8px var(--mono);
-  color: #94a18c;
+  font: 11px var(--mono);
+  color: #4b6052;
   gap: 10px;
 }
 .bottom-meta .text-button {
-  font-size: 8px;
-  color: #6d8a62;
+  font-size: 11px;
+  color: #4b6052;
 }
 .informational {
   max-width: 1100px;
@@ -929,7 +929,7 @@ input[type="range"]::-moz-range-thumb {
 }
 .intro {
   font-size: 15px;
-  color: #6e8273;
+  color: #4b6052;
   max-width: 750px;
   line-height: 1.7;
 }
@@ -950,7 +950,7 @@ input[type="range"]::-moz-range-thumb {
 .method-grid p {
   font-size: 12px;
   line-height: 1.8;
-  color: #6d806d;
+  color: #4b6052;
 }
 .limitation-box {
   background: #f3f3e9;
@@ -966,13 +966,14 @@ input[type="range"]::-moz-range-thumb {
 }
 .limitation-box p {
   font-size: 12px;
-  color: #78866d;
+  color: #4b6052;
   line-height: 1.8;
 }
 .provenance-box {
   font: 11px/1.8 var(--mono);
-  color: #75886d;
+  color: #4b6052;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .back-studio {
   margin-top: 30px;
@@ -991,8 +992,8 @@ input[type="range"]::-moz-range-thumb {
   padding: 22px;
 }
 .benchmark-card h3 {
-  font: 10px var(--mono);
-  color: #7e9270;
+  font: 11px var(--mono);
+  color: #4b6052;
   margin: 0 0 12px;
 }
 .benchmark-card strong {
@@ -1002,7 +1003,7 @@ input[type="range"]::-moz-range-thumb {
 .benchmark-card p {
   font-size: 11px;
   line-height: 1.7;
-  color: #8c9b7f;
+  color: #4b6052;
 }
 .evidence-table {
   border-collapse: collapse;
@@ -1017,8 +1018,8 @@ input[type="range"]::-moz-range-thumb {
   border-bottom: 1px solid #d0dacc;
 }
 .evidence-table th {
-  font: 10px var(--mono);
-  color: #7d9172;
+  font: 11px var(--mono);
+  color: #4b6052;
 }
 .evidence-table td {
   color: #506e47;
@@ -1030,7 +1031,7 @@ input[type="range"]::-moz-range-thumb {
   padding: 20px;
   overflow: auto;
   font: 11px/1.8 var(--mono);
-  color: #638052;
+  color: #4b6052;
   max-height: 520px;
 }
 dialog {
@@ -1055,7 +1056,7 @@ dialog h2 {
 }
 dialog p:not(.eyebrow) {
   font-size: 12px;
-  color: #7d9073;
+  color: #4b6052;
   line-height: 1.8;
 }
 dialog > .button {
@@ -1067,7 +1068,7 @@ dialog > .button {
   top: 10px;
   right: 15px;
   background: none;
-  color: #7a8e70;
+  color: #4b6052;
   font-size: 25px;
 }
 body.busy {
@@ -1077,7 +1078,7 @@ body.busy .primary {
   background: #5b8066;
 }
 .chart-panel .panel-header .legend {
-  font-size: 7px;
+  font-size: 11px;
 }
 @keyframes pulse {
   50% {
@@ -1123,7 +1124,7 @@ body.busy .primary {
     padding-left: 12px;
   }
   .metrics span {
-    font-size: 8px;
+    font-size: 11px;
   }
   .metrics strong {
     font-size: 28px;
@@ -1146,7 +1147,7 @@ body.busy .primary {
   }
   .chart-footer {
     padding: 9px 14px;
-    font-size: 7px;
+    font-size: 11px;
   }
   .verification-intro,
   .verification-evidence {
@@ -1199,7 +1200,7 @@ body.busy .primary {
     font-size: 21px;
   }
   .heading-sub {
-    font-size: 10px;
+    font-size: 11px;
     max-width: 320px;
   }
   .heading-actions {
@@ -1209,7 +1210,7 @@ body.busy .primary {
   }
   .heading-actions select,
   .heading-actions button {
-    font-size: 10px;
+    font-size: 11px;
     min-height: 31px;
     padding: 6px 9px;
   }
@@ -1237,7 +1238,7 @@ body.busy .primary {
     line-height: 1.25;
   }
   .metrics span {
-    font-size: 8px;
+    font-size: 11px;
   }
   .field-stage {
     height: 310px;
@@ -1246,14 +1247,14 @@ body.busy .primary {
     padding: 10px 13px;
   }
   .segmented.dark button {
-    font-size: 8px;
+    font-size: 11px;
     padding: 6px 7px;
   }
   .playback {
     gap: 7px;
   }
   .playback label {
-    font-size: 8px;
+    font-size: 11px;
   }
   .chart-grid {
     grid-template-columns: 1fr;
@@ -1268,7 +1269,7 @@ body.busy .primary {
     align-items: center;
   }
   .chart-footer {
-    font-size: 8px;
+    font-size: 11px;
   }
   .verification-panel {
     grid-template-columns: 1fr;
@@ -1314,7 +1315,7 @@ body.busy .primary {
     font-size: 24px;
   }
   .brand small {
-    font-size: 7px;
+    font-size: 11px;
     letter-spacing: 2.4px;
   }
   .topbar nav {
@@ -1334,7 +1335,7 @@ body.busy .primary {
     gap: 10px;
   }
   .workspace-heading .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
     letter-spacing: 1.3px;
   }
   .workspace-heading h1 {
@@ -1344,7 +1345,7 @@ body.busy .primary {
   }
   .heading-sub {
     max-width: 240px;
-    font-size: 10px;
+    font-size: 11px;
   }
   .heading-actions {
     gap: 8px;
@@ -1352,10 +1353,10 @@ body.busy .primary {
   .heading-actions select {
     width: 100px;
     max-width: 100px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .heading-actions button {
-    font-size: 10px;
+    font-size: 11px;
   }
   .workbench {
     grid-template-columns: 1fr;
@@ -1399,59 +1400,59 @@ body.busy .primary {
     gap: 7px;
   }
   .layer-sliders label {
-    font-size: 7px;
+    font-size: 11px;
   }
   .geometry-meta {
-    font-size: 7px;
+    font-size: 11px;
     gap: 8px;
   }
   .geometry-meta b {
-    font-size: 8px;
+    font-size: 11px;
   }
   .material-grid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
   .material-grid label {
-    font-size: 8px;
+    font-size: 11px;
   }
   .control-note {
-    font-size: 8px;
+    font-size: 11px;
   }
   .canvas-note {
-    font-size: 8px;
+    font-size: 11px;
   }
   .run-section .button {
-    font-size: 10px;
+    font-size: 11px;
     padding: 9px;
     gap: 10px;
   }
   .run-section .button.secondary {
-    font-size: 8px;
+    font-size: 11px;
     gap: 4px;
   }
   .run-section select {
-    font-size: 9px;
+    font-size: 11px;
     padding: 8px;
   }
   .compute-note {
-    font-size: 7px;
+    font-size: 11px;
   }
   .segmented button {
-    font-size: 9px;
+    font-size: 11px;
     padding: 7px 4px;
   }
   .segmented button span {
     margin-left: 5px;
   }
   .range-ends {
-    font-size: 7px;
+    font-size: 11px;
   }
   .control-label {
-    font-size: 8px;
+    font-size: 11px;
   }
   .metrics {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     padding: 18px 15px;
   }
@@ -1463,7 +1464,7 @@ body.busy .primary {
     line-height: 1.6;
   }
   .metrics span {
-    font-size: 7px;
+    font-size: 11px;
     min-height: 20px;
   }
   .metrics strong small {
@@ -1480,10 +1481,10 @@ body.busy .primary {
     font-size: 15px;
   }
   .field-panel .panel-header .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
   }
   .state-pill {
-    font-size: 7px;
+    font-size: 11px;
     padding: 4px 6px;
     max-width: 130px;
     white-space: normal;
@@ -1494,7 +1495,7 @@ body.busy .primary {
   .field-caption {
     left: 20px;
     right: 15px;
-    font-size: 7px;
+    font-size: 11px;
   }
   .axis-x {
     left: 20px;
@@ -1514,7 +1515,7 @@ body.busy .primary {
     gap: 10px;
   }
   .verification-evidence dt {
-    font-size: 7px;
+    font-size: 11px;
   }
   .verification-evidence dd {
     font-size: 12px;
@@ -1523,10 +1524,10 @@ body.busy .primary {
     margin-top: 14px;
   }
   .bottom-meta {
-    font-size: 7px;
+    font-size: 11px;
   }
   .bottom-meta .text-button {
-    font-size: 7px;
+    font-size: 11px;
   }
   .informational {
     margin-top: 15px;
@@ -1564,8 +1565,8 @@ body.busy .primary {
 }
 
 .angle-note {
-  font: 9px var(--mono);
-  color: #5c7b59;
+  font: 11px var(--mono);
+  color: #4b6052;
   margin: 10px 0 0;
 }
 .metrics.stale strong {
@@ -1593,19 +1594,23 @@ body.busy .primary {
 }
 .experiment-note {
   font-size: 12px;
-  color: #738769;
+  color: #4b6052;
   line-height: 1.7;
   max-width: 750px;
 }
 .table-scroll {
   overflow-x: auto;
 }
+.table-scroll:focus-visible {
+  outline: 2px solid #285d4e;
+  outline-offset: 2px;
+}
 .evidence-table {
   white-space: nowrap;
 }
 .raw-evidence summary {
   font: 11px var(--mono);
-  color: #67835d;
+  color: #4b6052;
   cursor: pointer;
   padding: 13px 0;
 }
@@ -1615,8 +1620,8 @@ body.busy .primary {
 
 .surrogate-estimate {
   display: block;
-  font: 8px var(--mono);
-  color: #7fa89b;
+  font: 11px var(--mono);
+  color: #a5bdb4;
   margin-top: 6px;
   letter-spacing: 0;
 }
@@ -1628,3 +1633,12 @@ body.busy .primary {
     height: 230px;
   }
 }
+
+/* Preserve readable axis labels while keeping narrow charts scrollable. */
+.chart-scroll{overflow-x:auto}
+.chart-scroll:focus-visible{outline:2px solid #285d4e;outline-offset:2px}
+.chart-panel .chart-scroll svg{width:100%;min-width:480px;height:auto;overflow:hidden}
+.chart-panel .chart-scroll svg text{font-size:13px;fill:#465b4d}
+.chart-panel .chart-scroll svg .empty-label{font-size:13px;fill:#465b4d}
+.chart-panel .legend,.chart-panel .panel-header .legend,.chart-footer{color:#526650;font-size:11px}
+.chart-scroll-hint{display:block;color:#526650;font-size:11px;margin:8px 20px 0}

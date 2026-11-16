@@ -6,11 +6,29 @@ Choose a wavelength and diffraction order, edit a three-layer grating, and compa
 
 [Run the studio](#quick-start) · [Simulation results](#simulation-results) · [Physics](docs/physics.md) · [Reproduce the study](docs/reproducibility.md)
 
-![The PhotonSmith studio displaying a real Maxwell solution](docs/studio.png)
+![The PhotonSmith studio showing the simulated 1550 nm refined design](docs/studio-0.1.1-dev.png)
+
+[Phone view and capture details](docs/current-captures.md) · [Historical 0.1.0 studio image](docs/studio.png)
 
 **The included 1550 nm design directs 93.59% of incident power into order +1.** An independently assembled real-space Maxwell solver gives **93.58%**, with **0.65%** relative complex-field difference over the device. These are simulated results for the explicitly defined 2D model, not fabricated-device measurements.
 
+## Numerical admission and experimental stable backend
+
+Every reported forward solve is screened for finite values, relative boundary residual at most `1e-8`, and lossless power-balance error at most `1e-7`. An ill-conditioning warning, failed screen, nonfinite field or gradient, or failed adjoint residual raises `NumericalRefusal`; the local HTTP API reports `numerical-refusal` with status 422, and the CLI exits 2 without publishing a numerical result. Optimizers do not turn a refused evaluation into an improved design. These thresholds are engineering checks, not guarantees of solution accuracy, Fourier-order convergence, physical-model validity or fabrication readiness.
+
+The original transfer/exponential solver remains the default and the only backend for field plots and the Studio workflow. An opt-in experimental Python scattering backend reconciles the bounded PR1 implementation for order-resolved results and gradients:
+
+```python
+from photonsmith.physics import solve, objective_gradient
+result = solve(harmonics=9, layer_height=1.0, backend="stable")
+value, gradient = objective_gradient(harmonics=9, layer_height=1.0, backend="stable")
+```
+
+The stable adapter covers the existing three-bar model with 1–15 harmonics; it explicitly refuses `fields=True`. A small residual and balanced power do not prove Fourier-order convergence or measured-device accuracy. `design.optimize(..., backend="stable")` is available for local Python use. For a command-line search, choose it explicitly with `photonsmith optimize --backend stable --method adjoint --output result.json`. Omit `--backend` for the legacy default. Studio, HTTP, and CLI simulation and validation keep the gated legacy primary solver. Simulation and fine validation use interior fields. The optimization result records the selected order’s efficiency and search history.
+
 ## Quick start
+
+Current source is unreleased `0.1.1.dev0`. The historical `0.1.0` wheel predates the numerical-admission checks and experimental stable-backend option introduced above; install the current source to use them.
 
 Python **3.12 or 3.13** is recommended. No API key, account or cloud service is required to run the tool.
 

@@ -9,6 +9,7 @@ import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import numpy as np
 from .physics import DEFAULT_PARAMS, validate_params
+from .quality import NumericalRefusal
 from .surrogate import Surrogate
 from .design import optimize, bounds_for
 from .reporting import public_simulation, validate_design
@@ -187,6 +188,8 @@ class Handler(BaseHTTPRequestHandler):
             finally:
                 LOCK.release()
             self.send_json(result)
+        except NumericalRefusal as error:
+            self.send_json({"error": str(error), "code": "numerical-refusal"}, 422)
         except (ValueError, TypeError, KeyError, OverflowError) as error:
             self.send_json({"error": str(error)}, 400)
         except Exception:

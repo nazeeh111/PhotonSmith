@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1.dev0 · Unreleased
+
+- Refuse ill-conditioned or numerically unacceptable solves and expose the bounded experimental stable backend as an explicit Python or CLI optimization choice.
+- Improve narrow-screen chart readability and keyboard scrolling.
+
 ## 0.1.0 · 2026-10-25
 
 First public research release.

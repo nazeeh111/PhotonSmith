@@ -7,8 +7,10 @@ nonmagnetic and nondispersive. Periodic x; exact exterior radiation.
 """
 
 from __future__ import annotations
+import warnings
 import numpy as np
-from scipy.linalg import expm, expm_frechet, solve as dense_solve
+from scipy.linalg import expm, expm_frechet, solve as dense_solve, LinAlgWarning
+from .quality import NumericalRefusal, admit_forward, require_finite, require_residual, admission_metadata
 
 DEFAULT_PARAMS = np.array([0.45, 0.45, 0.45, 0.15, 0.4, 0.65])
 DEFAULTS = dict(period=2.4, layer_height=0.3, material_index=2.0)
@@ -56,11 +58,15 @@ def _system(params, wavelength, harmonics, period, layer_height, material_index)
     if int(harmonics) != harmonics or not 1 <= harmonics <= 15:
         raise ValueError("harmonics must be an integer from 1 to 15.")
     harmonics = int(harmonics)
+    if material_index > np.sqrt(np.finfo(float).max):
+        raise NumericalRefusal("Material index exceeds finite numerical range.")
     orders = np.arange(-harmonics, harmonics + 1)
     n = len(orders)
-    k0 = 2 * np.pi / wavelength
-    kx = 2 * np.pi * orders / period
-    kz = np.sqrt((k0 * k0 - kx * kx).astype(complex))
+    with np.errstate(over="ignore", divide="ignore", invalid="ignore"):
+        k0 = 2 * np.pi / wavelength
+        kx = 2 * np.pi * orders / period
+        kz = np.sqrt((k0 * k0 - kx * kx).astype(complex))
+    require_finite(k0, kx, kz)
     if np.min(np.abs(kz)) < 1e-8:
         raise ValueError("Wavelength lies at a diffraction cutoff; move it slightly.")
     eye = np.eye(n)
@@ -71,9 +77,15 @@ def _system(params, wavelength, harmonics, period, layer_height, material_index)
     for j in range(3):
         eps, dw, ds = epsilon_matrix(p[j], p[j + 3], orders, material_index, True)
         q = k0 * k0 * eps - np.diag(kx * kx)
-        g = np.block([[zero, eye], [-q, zero]]) * layer_height
+        with np.errstate(over="ignore", divide="ignore", invalid="ignore"):
+            g = np.block([[zero, eye], [-q, zero]]) * layer_height
+        require_finite(eps, dw, ds, q, g)
         generators.append(g)
-        blocks.append(expm(g))
+        try:
+            with np.errstate(over="ignore", divide="ignore", invalid="ignore"):
+                blocks.append(expm(g))
+        except (ValueError, OverflowError, np.linalg.LinAlgError) as exc:
+            raise NumericalRefusal("Layer exponential failed; simulation refused.") from exc
         deps.append((dw, ds))
     a = np.zeros((8 * n, 8 * n), complex)
     b = np.zeros(8 * n, complex)
@@ -87,7 +99,21 @@ def _system(params, wavelength, harmonics, period, layer_height, material_index)
         a[row : row + 2 * n, col + 2 * n : col + 4 * n] = -np.eye(2 * n)
     a[-n:, 6 * n : 7 * n] = -1j * np.diag(kz)
     a[-n:, 7 * n : 8 * n] = eye
-    state = dense_solve(a, b, check_finite=False)
+    require_finite(a, b, *blocks, *generators)
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", LinAlgWarning)
+            state = dense_solve(a, b, check_finite=False)
+    except (LinAlgWarning, np.linalg.LinAlgError) as exc:
+        raise NumericalRefusal("Boundary solve is singular or ill-conditioned; simulation refused.") from exc
+    require_finite(state)
+    incident = np.zeros(n, complex)
+    incident[int(harmonics)] = 1
+    flux = np.maximum(kz.real, 0) / k0
+    transmission = flux * abs(state[6*n:7*n])**2
+    reflection = flux * abs(state[:n] - incident)**2
+    residual = float(np.linalg.norm(a @ state - b) / np.linalg.norm(b))
+    admit_forward(residual, transmission, reflection)
     return dict(
         p=p,
         orders=orders,
@@ -101,6 +127,7 @@ def _system(params, wavelength, harmonics, period, layer_height, material_index)
         generators=generators,
         deps=deps,
         blocks=blocks,
+        residual=residual,
     )
 
 
@@ -114,12 +141,19 @@ def solve(
     period=2.4,
     layer_height=0.3,
     material_index=2.0,
+    backend="legacy",
 ):
     """Solve all propagating diffraction efficiencies and optional complex field.
 
     harmonics=M retains orders -M..M. Evanescent orders carry zero power.
     field[z,x] covers 0.45 um of exterior on each side of the device.
     """
+    if backend not in ("legacy", "stable"):
+        raise ValueError("Backend must be legacy or stable.")
+    if backend == "stable":
+        if fields:
+            raise ValueError("Stable backend does not support interior field reconstruction.")
+        return _stable_solve(params, wavelength, harmonics, period, layer_height, material_index)
     if fields and (int(nx) != nx or int(nz) != nz or not 8 <= nx <= 1024 or not 8 <= nz <= 1024):
         raise ValueError("Field sample counts must be integers from 8 to 1024.")
     nx, nz = int(nx), int(nz)
@@ -143,13 +177,14 @@ def solve(
         power_balance=float(T.sum() + R.sum()),
         amplitudes_t=t,
         amplitudes_r=r,
-        residual=float(np.linalg.norm(s["a"] @ state - s["b"]) / np.linalg.norm(s["b"])),
+        residual=s["residual"],
         params=s["p"].copy(),
         wavelength=float(wavelength),
         harmonics=int(harmonics),
         period=float(period),
         layer_height=float(layer_height),
         material_index=float(material_index),
+        numerical_admission=admission_metadata(),
     )
     if fields:
         x = np.linspace(0, period, nx, endpoint=False)
@@ -162,9 +197,14 @@ def solve(
         # Eigen decomposition provides inexpensive interior reconstruction; the
         # solved boundary states (not eigenvectors) determine amplitudes.
         eig = []
-        for g in s["generators"]:
-            vals, vecs = np.linalg.eig(g / layer_height)
-            eig.append((vals, vecs, np.linalg.inv(vecs)))
+        try:
+            for g in s["generators"]:
+                vals, vecs = np.linalg.eig(g / layer_height)
+                inverse = np.linalg.inv(vecs)
+                require_finite(vals, vecs, inverse)
+                eig.append((vals, vecs, inverse))
+        except np.linalg.LinAlgError as exc:
+            raise NumericalRefusal("Field reconstruction failed; simulation refused.") from exc
         for iz, zz in enumerate(z):
             if zz < 0:
                 fm = incident * np.exp(1j * kz * zz) + r * np.exp(-1j * kz * zz)
@@ -178,6 +218,7 @@ def solve(
                 distance = (x / period - p[j + 3] + 0.5) % 1 - 0.5
                 eps[iz, abs(distance) < p[j] / 2] = material_index**2
             f[iz] = fm @ basis
+        require_finite(x, z, f, eps)
         out.update(x=x, z=z, field=f, epsilon=eps)
     return out
 
@@ -190,6 +231,7 @@ def objective_gradient(
     period=2.4,
     layer_height=0.3,
     material_index=2.0,
+    backend="legacy",
 ):
     """Efficiency and exact real-parameter discrete adjoint gradient.
 
@@ -197,6 +239,10 @@ def objective_gradient(
     Matrix-exponential Frechet derivatives differentiate each binary layer.
     No geometry or objective finite differences are used in this gradient.
     """
+    if backend not in ("legacy", "stable"):
+        raise ValueError("Backend must be legacy or stable.")
+    if backend == "stable":
+        return _stable_gradient(params, wavelength, target_order, harmonics, period, layer_height, material_index)
     s = _system(params, wavelength, harmonics, period, layer_height, material_index)
     n = s["n"]
     orders = s["orders"]
@@ -209,7 +255,15 @@ def objective_gradient(
     objective = float(ratio * abs(t) ** 2)
     c = np.zeros(8 * n, complex)
     c[6 * n + q] = ratio * t
-    adjoint = dense_solve(s["a"].conj().T, c, check_finite=False)
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", LinAlgWarning)
+            adjoint = dense_solve(s["a"].conj().T, c, check_finite=False)
+    except (LinAlgWarning, np.linalg.LinAlgError) as exc:
+        raise NumericalRefusal("Adjoint solve is singular or ill-conditioned; simulation refused.") from exc
+    require_finite(adjoint)
+    adjoint_residual = np.linalg.norm(s["a"].conj().T @ adjoint - c) / max(np.linalg.norm(c), np.finfo(float).tiny)
+    require_residual(adjoint_residual, "Adjoint")
     grad = np.zeros(6)
     for j in range(3):
         start = n + 2 * n * j
@@ -220,4 +274,39 @@ def objective_gradient(
             dg[n:, :n] = -(s["k0"] ** 2) * de * layer_height
             dp = expm_frechet(s["generators"][j], dg, compute_expm=False)
             grad[j + 3 * k] = -2 * np.real(np.vdot(lam, dp @ u))
+    require_finite(objective, grad)
     return objective, grad
+
+
+def _stable_solution(params, wavelength, harmonics, period, layer_height, material_index):
+    from . import boundary
+    if isinstance(harmonics, (bool, np.bool_)) or not isinstance(harmonics, (int, np.integer)) or not 1 <= harmonics <= 15:
+        raise ValueError("Stable adapter supports integer harmonics 1..15.")
+    try:
+        solution = boundary.bar_solution(params, wavelength, harmonics, period, layer_height, material_index)
+    except (ArithmeticError, np.linalg.LinAlgError) as exc:
+        raise NumericalRefusal("Stable boundary solve failed; simulation refused.") from exc
+    admit_forward(solution.residual, solution.T, solution.R, solution.state, solution.r, solution.t)
+    return solution
+
+
+def _stable_solve(params, wavelength, harmonics, period, layer_height, material_index):
+    s = _stable_solution(params, wavelength, harmonics, period, layer_height, material_index)
+    return dict(orders=s.orders, T=s.T, R=s.R, total_T=float(s.T.sum()), total_R=float(s.R.sum()),
+                power_balance=float(s.T.sum()+s.R.sum()), amplitudes_t=s.t, amplitudes_r=s.r,
+                residual=s.residual, params=validate_params(params).copy(), wavelength=float(wavelength),
+                harmonics=int(harmonics), period=float(period), layer_height=float(layer_height),
+                material_index=float(material_index), backend="stable", numerical_admission=admission_metadata())
+
+
+def _stable_gradient(params, wavelength, target_order, harmonics, period, layer_height, material_index):
+    s = _stable_solution(params, wavelength, harmonics, period, layer_height, material_index)
+    value, geps = s.transmission_gradient(target_order)
+    gradient = np.zeros(6)
+    p = validate_params(params)
+    for j, g in enumerate(geps):
+        _, dw, ds = epsilon_matrix(p[j], p[j+3], s.orders, material_index, True)
+        gradient[j] = 2*np.vdot(g,dw).real
+        gradient[j+3] = 2*np.vdot(g,ds).real
+    require_finite(value, gradient, *geps)
+    return value, gradient

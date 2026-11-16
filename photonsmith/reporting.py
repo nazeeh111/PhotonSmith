@@ -54,6 +54,7 @@ def public_simulation(
         balance=r["power_balance"],
         efficiency=efficiency(r, target_order),
         residual=r["residual"],
+        numerical_admission=r["numerical_admission"],
         field=dict(
             nx=len(r["x"]),
             nz=len(r["z"]),

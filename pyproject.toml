@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "photonsmith"
-version = "0.1.0"
+version = "0.1.1.dev0"
 description = "Local 2D photonic inverse-design laboratory with independently checked Maxwell physics"
 readme = "README.md"
 authors = [{name = "Nazeeh Abdul-Hadi"}]

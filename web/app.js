@@ -872,8 +872,17 @@ function renderExperiments(data) {
   root.append(intro);
   const runs = Array.isArray(data.runs) ? data.runs : [];
   if (runs.length) {
+    const hint = document.createElement("p");
+    hint.id = "experiment-table-hint";
+    hint.className = "experiment-note";
+    hint.textContent = "Scroll sideways to see all columns.";
+    root.append(hint);
     const wrap = document.createElement("div");
     wrap.className = "table-scroll";
+    wrap.tabIndex = 0;
+    wrap.setAttribute("role", "region");
+    wrap.setAttribute("aria-label", "Recorded design searches");
+    wrap.setAttribute("aria-describedby", hint.id);
     const table = document.createElement("table");
     table.className = "evidence-table";
     const thead = document.createElement("thead"),

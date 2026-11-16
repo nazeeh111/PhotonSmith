@@ -3,6 +3,8 @@
 import argparse
 import json
 from pathlib import Path
+import sys
+from .quality import NumericalRefusal
 from .server import parse_config
 from .design import optimize
 from .reporting import public_simulation, validate_design
@@ -10,7 +12,7 @@ from .surrogate import Surrogate
 from .resources import asset_root
 
 
-def main(argv=None):
+def _run(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["simulate", "validate", "optimize"])
     parser.add_argument(
@@ -20,11 +22,17 @@ def main(argv=None):
     parser.add_argument("--method", choices=["adjoint", "surrogate", "random"], default="surrogate")
     parser.add_argument("--iterations", type=int, default=20)
     parser.add_argument(
+        "--backend", choices=["legacy", "stable"], default=None,
+        help="Optimization only: legacy (default) or experimental stable, without interior fields",
+    )
+    parser.add_argument(
         "--fine",
         action="store_true",
         help="Use a 128×181 independent grid and compare complex fields",
     )
     args = parser.parse_args(argv)
+    if args.backend is not None and args.action != "optimize":
+        parser.error("--backend is supported only for optimize")
     raw = json.loads(args.config.read_text())
     raw = raw.get("configuration", raw)
     if "min_lateral_bar_gap" in raw:
@@ -39,11 +47,20 @@ def main(argv=None):
     else:
         path = asset_root() / "experiments" / "surrogate.npz"
         result = optimize(
-            **cfg, method=args.method, iterations=args.iterations, model=Surrogate(path)
+            **cfg, method=args.method, iterations=args.iterations, backend=args.backend or "legacy",
+            model=Surrogate(path) if args.method == "surrogate" else None
         )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, allow_nan=False))
     print(f"Saved {args.action} result to {args.output}")
+
+
+def main(argv=None):
+    try:
+        return _run(argv)
+    except NumericalRefusal as exc:
+        print(f"PhotonSmith: {exc}", file=sys.stderr)
+        raise SystemExit(2) from None
 
 
 if __name__ == "__main__":

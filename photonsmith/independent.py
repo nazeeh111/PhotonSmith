@@ -7,10 +7,24 @@ share only the exact analytic Fourier representation of a rectangular bar.
 """
 
 from __future__ import annotations
+import warnings
 import numpy as np
 from scipy.sparse import lil_matrix
-from scipy.sparse.linalg import spsolve
+from scipy.sparse.linalg import spsolve, MatrixRankWarning
+from .quality import NumericalRefusal, admit_forward, require_finite, admission_metadata
 from .physics import validate_params, epsilon_matrix, DEFAULT_PARAMS
+
+
+def _checked_solve(matrix, rhs):
+    require_finite(matrix.data, rhs)
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", MatrixRankWarning)
+            value = spsolve(matrix, rhs)
+    except (MatrixRankWarning, np.linalg.LinAlgError) as exc:
+        raise NumericalRefusal("Independent sparse solve failed; simulation refused.") from exc
+    require_finite(value)
+    return value
 
 
 def solve_fd(
@@ -82,7 +96,7 @@ def solve_fd(
             a[sl, slice((iz - 1) * n, iz * n)] = eye / h**2
             a[sl, slice((iz + 1) * n, (iz + 2) * n)] = eye / h**2
     aa = a.tocsc()
-    u = spsolve(aa, b).reshape(nz, n)
+    u = _checked_solve(aa, b).reshape(nz, n)
     incident = np.zeros(n, complex)
     incident[harmonics] = 1
     t = u[-1]
@@ -90,6 +104,8 @@ def solve_fd(
     flux = np.maximum(kz.real, 0) / k0
     T = flux * abs(t) ** 2
     R = flux * abs(r) ** 2
+    residual = float(np.linalg.norm(aa @ u.ravel() - b) / np.linalg.norm(b))
+    admit_forward(residual, T, R, u, t, r)
     out = dict(
         orders=orders,
         T=T,
@@ -99,14 +115,17 @@ def solve_fd(
         power_balance=float(T.sum() + R.sum()),
         amplitudes_t=t,
         amplitudes_r=r,
-        residual=float(np.linalg.norm(aa @ u.ravel() - b) / np.linalg.norm(b)),
+        residual=residual,
+        numerical_admission=admission_metadata(),
         steps_per_layer=int(steps_per_layer),
         harmonics=int(harmonics),
     )
     if fields:
         x = np.linspace(0, period, nx, endpoint=False)
         z = np.linspace(0, 3 * layer_height, nz)
-        out.update(x=x, z=z, field=u @ np.exp(1j * np.outer(kx, x)))
+        field = u @ np.exp(1j * np.outer(kx, x))
+        require_finite(field)
+        out.update(x=x, z=z, field=field)
     return out
 
 
@@ -209,13 +228,15 @@ def solve_fdfd(
     aa = bmat([[row.get(j) for j in range(nz)] for row in block_rows], format="csc")
     b = np.zeros(nz * nx, complex)
     b[:nx] = 4j * k0 / hz
-    u = spsolve(aa, b).reshape(nz, nx)
+    u = _checked_solve(aa, b).reshape(nz, nx)
     t = np.fft.fft(u[-1]) / nx
     r = np.fft.fft(u[0] - 1) / nx
     flux = np.maximum(kz.real, 0) / k0
     T = flux * abs(t) ** 2
     R = flux * abs(r) ** 2
     idx = np.argsort(m)
+    residual = float(np.linalg.norm(aa @ u.ravel() - b) / np.linalg.norm(b))
+    admit_forward(residual, T, R, u, t, r)
     out = dict(
         orders=m[idx].astype(int),
         T=T[idx],
@@ -225,11 +246,13 @@ def solve_fdfd(
         power_balance=float(T.sum() + R.sum()),
         amplitudes_t=t[idx],
         amplitudes_r=r[idx],
-        residual=float(np.linalg.norm(aa @ u.ravel() - b) / np.linalg.norm(b)),
+        residual=residual,
+        numerical_admission=admission_metadata(),
         nx=nx,
         steps_per_layer=steps_per_layer,
     )
     if fields:
         epsilon = np.array([layers[min(iz // steps_per_layer, 2)] for iz in range(nz)])
+        require_finite(u, epsilon)
         out.update(x=x, z=np.arange(nz) * hz, field=u, epsilon=epsilon)
     return out
