@@ -2,9 +2,9 @@
 
 **Design 2D photonic gratings and check the solved light field.**
 
-Choose a wavelength and diffraction order, edit the geometry, and compare neural-assisted screening with direct adjoint search. Independently verify the simulated field and export its configuration.
+Choose a wavelength and diffraction order, edit a three-layer grating, and compare neural-assisted screening with direct adjoint search. Inspect the Maxwell-solved field, check it with a separate numerical formulation, and export the geometry and evidence.
 
-[Run the studio](#quick-start) · [Measured results](#measured-results) · [Physics](docs/physics.md) · [Reproduce the study](docs/reproducibility.md)
+[Run the studio](#quick-start) · [Simulation results](#simulation-results) · [Physics](docs/physics.md) · [Reproduce the study](docs/reproducibility.md)
 
 ![The PhotonSmith studio displaying a real Maxwell solution](docs/studio.png)
 
@@ -56,7 +56,7 @@ Runtime dependencies are **NumPy and SciPy**. PyTorch is optional for retraining
 | Independent check | Compare separate Maxwell formulations and numerical refinements, with explicit acceptance criteria |
 | Exports | Download SVG geometry and complete JSON parameters, fields, spectrum, trace and verification |
 
-Start with **1550 nm · refined +1** in the sample selector, or explore the verified 1410 nm / −1 and 1630 nm / +1 designs. Edited controls mark previous results stale. Verification re-simulates an edited geometry before checking it independently.
+Start with **1550 nm · refined +1** in the sample selector. Inspect the field and spectrum, then run the independent check or export the design. You can also explore the verified 1410 nm / −1 and 1630 nm / +1 examples. Editing a control marks previous results stale; verification re-simulates an edited geometry before checking it independently.
 
 <details>
 <summary>Watch the solved monochromatic field</summary>
@@ -67,7 +67,7 @@ This is phase animation of `Re(E⊥ exp(−iωt))`, not a pulse simulation. Two 
 
 </details>
 
-## Measured results
+## Simulation results
 
 ### Strongest included design
 
