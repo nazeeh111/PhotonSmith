@@ -7,13 +7,13 @@ import mimetypes
 from pathlib import Path
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-import numpy as np
-from .physics import DEFAULT_PARAMS, validate_params
+from .physics import DEFAULT_PARAMS
 from .quality import NumericalRefusal
 from .surrogate import Surrogate
-from .design import optimize, bounds_for
+from .design import optimize
 from .reporting import public_simulation, validate_design
 from .resources import asset_root
+from .configuration import parse_config, parse_harmonics, parse_fine
 
 ROOT = asset_root()
 LOCK = threading.Lock()
@@ -24,32 +24,6 @@ def load_json(name, default=None):
     return json.loads(path.read_text()) if path.exists() else default
 
 
-def parse_config(body):
-    if not isinstance(body, dict):
-        raise ValueError("Expected a JSON object.")
-    params = validate_params(body.get("params", DEFAULT_PARAMS)).tolist()
-    wave = float(body.get("wavelength", 1.55))
-    index = float(body.get("material_index", 2.0))
-    order = body.get("target_order", 1)
-    feature = float(body.get("min_feature", 0.36))
-    if not np.isfinite(wave) or not 1.3 <= wave <= 1.7:
-        raise ValueError("Wavelength must be between 1.3 and 1.7 um.")
-    if not np.isfinite(index) or not 1 <= index <= 2.5:
-        raise ValueError("Refractive index must be between 1 and 2.5.")
-    if order not in (-1, 0, 1) or isinstance(order, bool):
-        raise ValueError("Target order must be -1, 0, or +1.")
-    bounds = bounds_for(feature)
-    if any(v < lo - 1e-10 or v > hi + 1e-10 for v, (lo, hi) in zip(params, bounds)):
-        raise ValueError(
-            "Geometry violates the selected lateral bar/gap width. Adjust widths or lower the constraint."
-        )
-    return dict(
-        params=params,
-        wavelength=wave,
-        target_order=int(order),
-        material_index=index,
-        min_feature=feature,
-    )
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -126,6 +100,10 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError("Expected a JSON configuration smaller than 16 KiB.")
             body = json.loads(self.rfile.read(size))
             cfg = parse_config(body)
+            simulation_harmonics = parse_harmonics(body)
+            search_harmonics = parse_harmonics(body, default=5)
+            validation = (dict(harmonics=parse_harmonics(body, default=13, minimum=7), fine=parse_fine(body))
+                          if self.path != '/api/simulate' else {})
             if not LOCK.acquire(blocking=False):
                 self.send_json(
                     {"error": "Another calculation is running. Try again when it finishes."},
@@ -135,9 +113,9 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 if self.path == "/api/validate":
                     c = {k: v for k, v in cfg.items() if k != "min_feature"}
-                    result = validate_design(**c)
+                    result = validate_design(**c, **validation)
                 elif self.path == "/api/simulate":
-                    result = public_simulation(**cfg)
+                    result = public_simulation(**cfg, harmonics=simulation_harmonics)
                     if self.model is not None and cfg["material_index"] == 2.0:
                         result["prediction"] = {
                             "efficiency": float(
@@ -159,10 +137,10 @@ class Handler(BaseHTTPRequestHandler):
                         **cfg,
                         method=body.get("method", "surrogate"),
                         iterations=iterations,
-                        model=self.model,
+                        model=self.model, harmonics=search_harmonics,
                     )
                     cfg["params"] = search["params"]
-                    result = public_simulation(**cfg)
+                    result = public_simulation(**cfg, harmonics=simulation_harmonics)
                     result.update(
                         {
                             k: v
@@ -171,7 +149,7 @@ class Handler(BaseHTTPRequestHandler):
                         }
                     )
                     c = {k: v for k, v in cfg.items() if k != "min_feature"}
-                    result["validation"] = validate_design(**c)
+                    result["validation"] = validate_design(**c, **validation)
                     if self.model is not None and cfg["material_index"] == 2.0:
                         result["prediction"] = {
                             "efficiency": float(
@@ -183,7 +161,7 @@ class Handler(BaseHTTPRequestHandler):
                         }
                     result["provenance"]["history_harmonics"] = search["harmonics"]
                     result["provenance"]["status"] = (
-                        "Final M9 simulation; independent validation attached. Search used M5."
+                        f"Final M{simulation_harmonics} simulation; independent validation attached. Search used M{search_harmonics}."
                     )
             finally:
                 LOCK.release()

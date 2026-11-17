@@ -18,13 +18,13 @@ def main():
         from .server import main as studio
 
         studio(args[1:] if args else [])
-    elif args[0] in ("simulate", "validate", "optimize"):
+    elif args[0] in ("simulate", "validate", "optimize", "converge"):
         from .cli import main as command
 
         command(args)
     elif args[0] in ("-h", "--help"):
         print(
-            "PhotonSmith: local 2D photonic inverse design\n\nUsage:\n  photonsmith [studio] [--port 8765]\n  photonsmith simulate|validate|optimize --output result.json [--config config.json]\n\nUse photonsmith COMMAND --help for command options."
+            "PhotonSmith: local 2D photonic inverse design\n\nUsage:\n  photonsmith [studio] [--port 8765]\n  photonsmith simulate|validate|optimize|converge --output result.json [--config config.json]\n\nUse photonsmith COMMAND --help for command options."
         )
     else:
         raise SystemExit(f"Unknown command {args[0]!r}. Use photonsmith --help.")
