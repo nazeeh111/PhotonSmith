@@ -1,16 +1,21 @@
 # PhotonSmith
 
-**Design 2D photonic gratings and check the solved light field.**
+**Shape a grating. Solve the light. Check the answer.**
 
-Choose a wavelength and diffraction order, edit a three-layer grating, and compare neural-assisted screening with direct adjoint search. Inspect the Maxwell-solved field, check it with a separate numerical formulation, and export the geometry and evidence.
+Edit a three-layer 2D photonic grating, choose a wavelength and diffraction order, and follow a design from neural candidate screening through an actual Maxwell solve to a separate numerical check. Export the geometry together with the field, spectrum and evidence.
 
-[Run the studio](#quick-start) · [Simulation results](#simulation-results) · [Physics](docs/physics.md) · [Reproduce the study](docs/reproducibility.md)
+[Run the Studio](#quick-start) · [Inspect the design](experiments/designs/1550nm-refined-config.json) · [Simulation results](#simulation-results) · [Physics](docs/physics.md)
 
-![The PhotonSmith studio showing the simulated 1550 nm refined design](docs/studio-0.1.1-dev.png)
+<a href="docs/presentation/field-and-spectrum.svg">
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/presentation/field-and-spectrum-mobile.png">
+  <img src="docs/presentation/field-and-spectrum.png" alt="One periodic grating cell with its stored real electric field at 1550 nm, beside all 21 stored wavelength solves for transmitted order plus one." width="1000">
+</picture>
+</a>
 
-[Phone view and capture details](docs/current-captures.md) · [Historical 0.1.0 studio image](docs/studio.png)
+The figure uses the **stored M9 Maxwell field and spectrum** of the refined 1550 nm geometry. Color shows the real electric field relative to unit incident amplitude; the dark outline marks the dielectric. These are solver outputs, not neural field predictions or fabricated-device measurements. [Exact arrays, plotting choices and accessible values](docs/presentation/README.md).
 
-**The included 1550 nm design directs 93.59% of incident power into order +1.** An independently assembled real-space Maxwell solver gives **93.58%**, with **0.65%** relative complex-field difference over the device. These are simulated results for the explicitly defined 2D model, not fabricated-device measurements.
+At M13, the included geometry directs **93.58595%** of incident power into order +1. The separately assembled real-space Maxwell solver gives **93.58045%** with **0.6502%** relative complex-field difference. [Read the complete check and its criteria](experiments/designs/interactive-refined-validation.json). The spectrum above and these finer validation values remain separate resolutions of the same model.
 
 ## Numerical admission and experimental stable backend
 
@@ -63,6 +68,12 @@ For the delivered local Mac checkout, double-click `PhotonSmith.command` if `.ve
 Runtime dependencies are **NumPy and SciPy**. PyTorch is optional for retraining; Matplotlib is optional for generating scientific figures. Everything runs locally. The server binds only to loopback and the browser fetches no external assets.
 
 ## Inside the studio
+
+![The current PhotonSmith Studio showing the simulated refined 1550 nm design](docs/studio-0.1.1-dev.png)
+
+[Phone view and current capture details](docs/current-captures.md) · [Historical 0.1.0 studio image](docs/studio.png) · [Reproduce the study](docs/reproducibility.md)
+
+
 
 | Control or view | What it does |
 | --- | --- |
@@ -169,3 +180,4 @@ The executed verification uses the two bundled Maxwell formulations, both author
 Corrections supported by reproducible geometries, convergence studies and measured comparisons are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md), [CHANGELOG.md](CHANGELOG.md) and [CITATION.cff](CITATION.cff).
 
 [MIT licensed](LICENSE).
+
