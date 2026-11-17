@@ -1,0 +1,48 @@
+{
+  "method": "Matplotlib source-derived figures from exact retained JSON; no solver, inference, new experiment, image enhancement or smoothing",
+  "runtime": {
+    "python": "3.13.2 (v3.13.2:4f8bb3947cf, Feb  4 2025, 11:51:10) [Clang 15.0.0 (clang-1500.3.9.4)]",
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4"
+  },
+  "font_policy": [
+    "DejaVu Sans",
+    "Arial",
+    "sans-serif"
+  ],
+  "figures": [
+    {
+      "repository": "PhotonSmith",
+      "inputs": [
+        {
+          "path": "experiments/designs/interactive-refined-1550nm.json",
+          "sha256": "bf63ba3ebec2013dde9f10cbd65fa438634d71abd1bbf504577701dbd8a23b1e"
+        }
+      ],
+      "transformations": [
+        "Stored real field displayed without filtering, normalization or interpolation.",
+        "Symmetric diverging color limits around zero; equal x/z physical scale.",
+        "epsilon=2.5 contour marks binary air/dielectric boundary.",
+        "Spectrum efficiency multiplied by 100; all 21 samples retained, lines connect sampled solves.",
+        "M13 independent validation remains separately labeled in README."
+      ],
+      "outputs": [
+        {
+          "path": "docs/presentation/field-and-spectrum-mobile.png",
+          "sha256": "6bc66368738d47272d205eb4eed9435af293fa20ab5bfbb9741997c5ce888836"
+        },
+        {
+          "path": "docs/presentation/field-and-spectrum-mobile.svg",
+          "sha256": "fe3fd65db0644f31f583fb9e56881332d8b8c87194d76edfc4f7ee9fdf4738f7"
+        }
+      ]
+    }
+  ],
+  "source_to_svg": {
+    "series": "source-spectrum",
+    "source_samples": 21,
+    "exported_vertices": 21,
+    "maximum_svg_coordinate_error": 4.923688265989767e-07,
+    "path_simplify": true
+  }
+}
