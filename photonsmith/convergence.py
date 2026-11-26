@@ -1,12 +1,60 @@
 """Auditable Fourier-order studies using either existing Maxwell backend."""
 import numpy as np
 from .physics import solve, DEFAULT_PARAMS, validate_params
+from .quality import NumericalRefusal
 from .reporting import plain
+
+
+def _power_observables(sample):
+    return np.r_[sample['T'], sample['R'], sample['transmission'], sample['reflection']]
+
+
+def _compare_grid(configuration, finest, tolerance):
+    from .independent import solve_fdfd
+
+    orders = finest['propagating_orders']
+    grid_samples = []
+    for nx, steps in ((32, 15), (64, 30), (96, 45)):
+        result = solve_fdfd(**configuration, nx=nx, steps_per_layer=steps)
+        # Both solvers use ascending order labels. Include all continuum
+        # channels and retain the discrete radiation totals separately.
+        matching = np.isin(result['orders'], orders)
+        if not np.array_equal(result['orders'][matching], orders):
+            raise NumericalRefusal('Real-space grid did not resolve the continuum order labels.')
+        transmission = result['T'][matching]
+        reflection = result['R'][matching]
+        grid_samples.append(dict(
+            nx=nx, steps_per_layer=steps, T=transmission, R=reflection,
+            transmission=result['total_T'], reflection=result['total_R'],
+            outside_continuum_T=float(result['T'][~matching].sum()),
+            outside_continuum_R=float(result['R'][~matching].sum()),
+            balance=result['power_balance'], residual=result['residual'],
+            numerical_admission=result['numerical_admission'],
+        ))
+
+    medium, fine = map(_power_observables, grid_samples[-2:])
+    grid_change = float(np.max(np.abs(fine - medium)))
+    solver_difference = float(np.max(np.abs(fine - _power_observables(finest))))
+    outside_continuum = max(grid_samples[-1]['outside_continuum_T'],
+                            grid_samples[-1]['outside_continuum_R'])
+    return dict(
+        solver=('Independent real-space finite differences with a radiation boundary '
+                'using the discrete lateral symbol and a centered axial derivative'),
+        propagating_orders=orders,
+        samples=grid_samples,
+        finest_grid_max_power_change=grid_change,
+        finest_cross_solver_max_power_difference=solver_difference,
+        meets_comparison_tolerance=bool(max(grid_change, solver_difference, outside_continuum) < tolerance),
+        criterion=('Each shared T/R channel, total T/R, and finest-grid power outside '
+                   'continuum labels are checked against the study tolerance.'),
+        scope='Finite grid and cross-formulation comparisons using the same two-dimensional TE material model.',
+    )
 
 
 def spectral_study(params=DEFAULT_PARAMS, *, wavelength=1.55, target_order=1,
                    material_index=2.0, period=2.4, layer_height=0.3,
-                   orders=(3, 5, 7, 9, 11, 13), backend='stable', tolerance=0.003):
+                   orders=(3, 5, 7, 9, 11, 13), backend='stable', tolerance=0.003,
+                   independent=False):
     """Compare all propagating channel powers at the last three sampled orders.
 
     Meeting a finite sequence tolerance is evidence for that sample sequence,
@@ -54,13 +102,21 @@ def spectral_study(params=DEFAULT_PARAMS, *, wavelength=1.55, target_order=1,
     total_range = float(max(np.ptp([r['transmission'] for r in rows[-3:]]),
                             np.ptp([r['reflection'] for r in rows[-3:]])))
     delta = max(channel_range, total_range)
-    return plain(dict(schema='photonsmith-spectral-study-v1', backend=backend,
-                      configuration=dict(params=params, wavelength=wavelength, target_order=target_order,
-                                         material_index=material_index, period=period, layer_height=layer_height),
-                      samples=rows, tail_harmonics=list(orders[-3:]),
-                      tail_max_channel_power_range=channel_range, tail_max_total_power_range=total_range,
-                      tolerance=tolerance, meets_sampled_tolerance=bool(delta < tolerance),
-                      criterion='Strictly below tolerance for each propagating T/R channel and total T/R over the last three samples.',
-                      limitations=['Finite sampled-order agreement is not a convergence certificate or error bound.',
-                                   'Uses one Fourier-modal formulation, not independent solver validation.',
-                                   'Lossless nondispersive 2D TE model; no fabrication or measurement validation.']))
+    geometry = dict(params=params, wavelength=wavelength, material_index=material_index,
+                    period=period, layer_height=layer_height)
+    report = dict(
+        schema='photonsmith-spectral-study-v1', backend=backend,
+        configuration=dict(params=params, wavelength=wavelength, target_order=target_order,
+                           material_index=material_index, period=period, layer_height=layer_height),
+        samples=rows, tail_harmonics=list(orders[-3:]),
+        tail_max_channel_power_range=channel_range, tail_max_total_power_range=total_range,
+        tolerance=tolerance, meets_sampled_tolerance=bool(delta < tolerance),
+        criterion='Strictly below tolerance for each propagating T/R channel and total T/R over the last three samples.',
+        limitations=['Finite sampled-order agreement is not a convergence certificate or error bound.',
+                     'Uses one Fourier-modal formulation, not independent solver validation.',
+                     'Lossless nondispersive 2D TE model; no fabrication or measurement validation.'],
+    )
+    if independent:
+        report['limitations'][1] = 'The sampled-order criterion uses one Fourier-modal formulation.'
+        report['independent_comparison'] = _compare_grid(geometry, rows[-1], tolerance)
+    return plain(report)
