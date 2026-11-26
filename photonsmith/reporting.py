@@ -86,12 +86,17 @@ def public_simulation(
     return plain(out)
 
 
-def validate_design(params, wavelength=1.55, target_order=1, material_index=2.0, fine=False):
+def validate_design(params, wavelength=1.55, target_order=1, material_index=2.0, fine=False, harmonics=13):
+    if type(harmonics) is not int or not 7 <= harmonics <= 15:
+        raise ValueError('Validation requires an integer final harmonic order from 7 to 15.')
+    orders = list(range(3, harmonics + 1, 2))
+    if orders[-1] != harmonics:
+        orders.append(harmonics)
     resolutions = (
         [(32, 15), (64, 30), (96, 45), (128, 60)] if fine else [(32, 15), (64, 30), (96, 45)]
     )
     spectral = []
-    for m in [3, 5, 7, 9, 11, 13]:
+    for m in orders:
         r = solve(params, wavelength, m, material_index=material_index)
         spectral.append(
             dict(
@@ -127,6 +132,7 @@ def validate_design(params, wavelength=1.55, target_order=1, material_index=2.0,
     cross = abs(independent[-1]["efficiency"] - spectral[-1]["efficiency"])
     result = dict(
         spectral_convergence=spectral,
+        final_harmonics=harmonics,
         grid_convergence=independent,
         primary_efficiency=spectral[-1]["efficiency"],
         independent_efficiency=independent[-1]["efficiency"],
@@ -155,7 +161,7 @@ def validate_design(params, wavelength=1.55, target_order=1, material_index=2.0,
         primary = solve(
             params,
             wavelength,
-            13,
+            harmonics,
             fields=True,
             nx=128,
             nz=361,
