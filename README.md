@@ -31,6 +31,28 @@ value, gradient = objective_gradient(harmonics=9, layer_height=1.0, backend="sta
 
 The stable adapter covers the existing three-bar model with 1–15 harmonics; it explicitly refuses `fields=True`. A small residual and balanced power do not prove Fourier-order convergence or measured-device accuracy. `design.optimize(..., backend="stable")` is available for local Python use. For a command-line search, choose it explicitly with `photonsmith optimize --backend stable --method adjoint --output result.json`. Omit `--backend` for the legacy default. Studio, HTTP, and CLI simulation and validation keep the gated legacy primary solver. Simulation and fine validation use interior fields. The optimization result records the selected order’s efficiency and search history.
 
+## Sample Fourier-order agreement from the terminal
+
+```sh
+photonsmith converge --config experiments/sample-config.json --output study.json
+photonsmith converge --config tall-device.json --backend stable --orders 9 11 13 15 --tolerance 0.003 --output tall-study.json
+```
+
+The new `converge` command defaults to the existing experimental stable backend,
+without interior fields or neural inference. It honors `period` and `layer_height`
+from the configuration alongside geometry, wavelength and material index. It checks
+all propagating transmission/reflection channels and total powers over the last
+three requested harmonic orders, and retains every sampled power/residual. The
+smallest basis must include all propagating channels. A numerical refusal aborts
+the study; failed resolutions are never skipped. Existing output is refused.
+
+`meets_sampled_tolerance` describes that finite sequence and threshold only. It is
+not a convergence certificate, physical error bound or independent-solver check.
+A failed tolerance check is saved as a completed diagnostic with `false`; invalid
+input or numerical refusal exits 2 without a result. Use the existing `validate`
+command for the separate real-space formulation. The original simulation,
+optimization, weights and saved study identities are unchanged.
+
 ## Quick start
 
 Current source is unreleased `0.1.1.dev0`. The historical `0.1.0` wheel predates the numerical-admission checks and experimental stable-backend option introduced above; install the current source to use them.
@@ -181,3 +203,45 @@ Corrections supported by reproducible geometries, convergence studies and measur
 
 [MIT licensed](LICENSE).
 
+
+## Configuration fidelity
+
+Simulation, optimization and validation now use the same scientific input parser
+in the CLI and HTTP API. Inputs may be bare or under `configuration`, as in Studio
+exports. Do not mix scientific fields at both levels. `min_feature` and
+`min_lateral_bar_gap` are aliases; conflicting values are rejected. The documented
+TE convention is checked when supplied.
+
+The field-bearing Studio family, SVG exports and trained surrogate use period
+**2.4 µm** and layer height **0.3 µm**. Supplying different dimensions to
+`simulate`, `optimize` or `validate` now fails explicitly, instead of silently
+simulating that fixed family. The separate `converge` command retains its variable-dimension route without
+interior fields. Python solvers retain explicit dimension arguments; the stable
+backend does not reconstruct interior fields.
+
+`harmonics` now takes effect: simulation uses that order; CLI optimization uses it
+for search; validation samples increasing orders ending at that order. Validation
+requires a terminal order from 7–15 so its final-three comparison is defined. The
+HTTP optimization workflow includes validation and therefore requires 7–15 when
+an explicit order is supplied. With the field omitted, previous phase defaults
+remain: M5 search, M9 field simulation, M13 validation. The surrogate remains the
+original M5-trained warm-start estimate, even when exact search uses another order.
+No weights or historical study outputs are regenerated.
+
+All four CLI result commands refuse an existing `--output` path, including a
+symlink, before starting a calculation. Choose a new filename for each result.
+Complete JSON is written and flushed to a private temporary file in the output
+directory, then published with an atomic create that cannot replace a competing
+writer's result. Write or publication failure leaves the destination untouched;
+retry with the same unused path. A crash may leave a hidden `.tmp` file, but never
+publishes its partial contents as a result. If a run finished publishing before
+its success message was lost, inspect that existing JSON rather than overwrite it.
+The destination filesystem must support hard links; unsupported publication fails
+explicitly. This does not promise durability through power loss.
+
+For validation, `independent: {"nx":128,"steps_per_layer":60}` selects the existing
+fine endpoint and complex-field comparison; 96/45 selects the ordinary endpoint.
+Other endpoint grids are refused. `--fine` agrees with 128/60 and refuses a
+conflicting 96/45 request. Command-specific flags appear only on their own CLI
+subcommand, so an irrelevant flag cannot silently do nothing. Thresholds remain
+engineering checks for this finite numerical study, not physical error bounds.
