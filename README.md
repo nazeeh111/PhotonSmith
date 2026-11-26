@@ -50,8 +50,17 @@ the study; failed resolutions are never skipped. Existing output is refused.
 not a convergence certificate, physical error bound or independent-solver check.
 A failed tolerance check is saved as a completed diagnostic with `false`; invalid
 input or numerical refusal exits 2 without a result. Use the existing `validate`
-command for the separate real-space formulation. The original simulation,
-optimization, weights and saved study identities are unchanged.
+command for field-bearing validation in the standard geometry.
+
+For a variable-dimension study, add `--independent` to compare against the
+existing real-space finite-difference solver at three grids. The report compares
+the two finest grids and compares the finest grid with the highest Fourier order
+using each shared channel and total transmission/reflection. It also records power
+in discrete-grid channels outside the continuum propagating orders. The separate
+`meets_comparison_tolerance` result applies the same power tolerance to those
+differences and the finest grid's power outside the continuum orders. A refusal
+in either solver aborts the requested study. The two discretizations still model
+the same lossless 2D TE problem.
 
 ## Quick start
 

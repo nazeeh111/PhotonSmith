@@ -54,6 +54,8 @@ def _run(argv=None):
             command.add_argument('--backend', choices=['legacy', 'stable'], default='stable')
             command.add_argument('--orders', type=int, nargs='+', default=[3,5,7,9,11,13])
             command.add_argument('--tolerance', type=float, default=.003)
+            command.add_argument('--independent', action='store_true',
+                                 help='Compare with three independent real-space grids')
     args = parser.parse_args(argv)
     if args.action == 'optimize' and args.iterations < 1:
         parser.error('--iterations must be positive')
@@ -65,11 +67,15 @@ def _run(argv=None):
         from .convergence import spectral_study
         allowed = ('params', 'wavelength', 'target_order', 'material_index', 'period', 'layer_height')
         result = spectral_study(**{k: raw[k] for k in allowed if k in raw},
-                                orders=args.orders, backend=args.backend, tolerance=args.tolerance)
+                                orders=args.orders, backend=args.backend, tolerance=args.tolerance,
+                                independent=args.independent)
         result['source_configuration_sha256'] = hashlib.sha256(raw_bytes).hexdigest()
         text = json.dumps(result, indent=2, allow_nan=False) + '\n'
         _publish_result(args.output, text)
         print(f'Saved sampled-order study to {args.output}; meets tolerance: {result["meets_sampled_tolerance"]}')
+        if args.independent:
+            comparison = result['independent_comparison']
+            print(f'Independent comparison meets tolerance: {comparison["meets_comparison_tolerance"]}')
         return
     cfg = parse_config(raw)
     if args.action == "simulate":

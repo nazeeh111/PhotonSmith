@@ -1,13 +1,65 @@
 """Power-channel studies are finite-sequence diagnostics, not certificates."""
+import json
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
+
 import numpy as np
+from photonsmith.cli import main
 from photonsmith.convergence import spectral_study
 from photonsmith.physics import DEFAULT_PARAMS
 from photonsmith.quality import NumericalRefusal
 
 
 class SpectralStudyTests(unittest.TestCase):
+    def test_cli_distinguishes_fourier_agreement_from_grid_disagreement(self):
+        with TemporaryDirectory() as folder:
+            config = Path(folder) / 'geometry.json'
+            output = Path(folder) / 'study.json'
+            config.write_text(json.dumps(dict(period=2.6, layer_height=0.45, material_index=2.2)),
+                              encoding='utf-8')
+            main(['converge', '--config', str(config), '--output', str(output), '--independent'])
+            report = json.loads(output.read_text(encoding='utf-8'))
+        self.assertTrue(report['meets_sampled_tolerance'])
+        comparison = report['independent_comparison']
+        self.assertFalse(comparison['meets_comparison_tolerance'])
+        self.assertGreater(comparison['finest_cross_solver_max_power_difference'], 0.006)
+        self.assertEqual(comparison['propagating_orders'], [-1, 0, 1])
+        self.assertEqual([sample['nx'] for sample in comparison['samples']], [32, 64, 96])
+
+    def test_real_space_reference_approaches_uniform_medium_analytic_solution(self):
+        report = spectral_study(period=2.7, layer_height=0.41, material_index=1.0,
+                                orders=[3, 5, 7], independent=True)
+        comparison = report['independent_comparison']
+        self.assertTrue(comparison['meets_comparison_tolerance'])
+        samples = comparison['samples']
+        errors = [max(abs(np.array(sample['T']) - [0, 1, 0])) for sample in samples]
+        self.assertGreater(errors[0], errors[1])
+        self.assertGreater(errors[1], errors[2])
+        self.assertLess(errors[2], 3e-8)
+
+    def test_report_exposes_discrete_only_orders_near_cutoff(self):
+        report = spectral_study(period=4.649, layer_height=0.41, independent=True)
+        self.assertTrue(report['meets_sampled_tolerance'])
+        comparison = report['independent_comparison']
+        self.assertEqual(comparison['propagating_orders'], [-2, -1, 0, 1, 2])
+        finest = comparison['samples'][-1]
+        self.assertGreater(finest['outside_continuum_T'], 0.02)
+        self.assertAlmostEqual(sum(finest['T']) + finest['outside_continuum_T'],
+                               finest['transmission'])
+        self.assertFalse(comparison['meets_comparison_tolerance'])
+
+    def test_grid_comparison_preserves_all_distinct_diffraction_labels(self):
+        report = spectral_study(period=6.5 * 1.55, layer_height=0.41, material_index=1.0,
+                                orders=[7, 9, 11], independent=True)
+        comparison = report['independent_comparison']
+        self.assertEqual(comparison['propagating_orders'], list(range(-6, 7)))
+        for sample in comparison['samples']:
+            self.assertEqual(len(sample['T']), 13)
+            np.testing.assert_allclose(sample['T'], [0] * 6 + [1] + [0] * 6, atol=3e-6)
+        self.assertTrue(comparison['meets_comparison_tolerance'])
+
     def test_uniform_medium_analytic_solution_and_backend_agreement(self):
         for backend in ('legacy', 'stable'):
             report = spectral_study(material_index=1., orders=[3,5,7], backend=backend)

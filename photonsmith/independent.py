@@ -141,8 +141,9 @@ def solve_fdfd(
 ):
     """Fully real-space finite-difference Maxwell verification.
 
-    Independent binary-cell integration, periodic second differences in x,
-    centered differences in z, exact radiation for the discrete x stencil.
+    Independent binary-cell integration and second differences in x and z.
+    The radiation condition uses the discrete lateral symbol with a centered
+    axial ghost derivative.
     Converge BOTH nx and steps_per_layer against continuum Maxwell.
     """
     from scipy.sparse import diags, eye, kron, bmat, csc_matrix
@@ -198,8 +199,10 @@ def solve_fdfd(
     lateral[0, -1] = lateral[-1, 0] = 1 / hx**2
     lateral = lateral.tocsc()
     # For a Fourier eigenvector, the discrete periodic Laplacian has eigenvalue
-    # -4/hx^2 sin^2(pi*m/nx). Its DtN map eliminates the discrete exterior.
-    m = np.fft.fftfreq(nx) * nx
+    # -4/hx^2 sin^2(pi*m/nx). Use the resulting lateral symbol in
+    # the radiation boundary imposed by a centered axial ghost derivative.
+    # Round FFT labels before converting them to integers.
+    m = np.rint(np.fft.fftfreq(nx) * nx).astype(int)
     kz = np.sqrt((k0 * k0 - 4 * np.sin(np.pi * m / nx) ** 2 / hx**2).astype(complex))
     fourier = np.fft.fft(np.eye(nx), axis=0)
     dtn = np.fft.ifft(kz[:, None] * fourier, axis=0)
@@ -238,7 +241,7 @@ def solve_fdfd(
     residual = float(np.linalg.norm(aa @ u.ravel() - b) / np.linalg.norm(b))
     admit_forward(residual, T, R, u, t, r)
     out = dict(
-        orders=m[idx].astype(int),
+        orders=m[idx],
         T=T[idx],
         R=R[idx],
         total_T=float(T.sum()),
